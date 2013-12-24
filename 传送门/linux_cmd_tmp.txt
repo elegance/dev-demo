@@ -1,0 +1,20 @@
+1. 
+sudo !!
+python -m SimpleHTTPServer
+ping && traceroute ===> mtr
+nl
+shuf	(not too much o use)
+ss	socket info
+last 	last login user info (/var/log/wtmp)
+curl ifconfg.me		outer ip addr
+tree
+pstree
+
+2. 
+空格 command  # command 不记录到 history
+stat [file]	fs detail info
+
+mount | column -t
+clear ===> Ctrl + l
+file	# file type
+look command	# forge command, get like command's
