@@ -1,7 +1,9 @@
 {
   "auth": "orh",
   "name": "demo",
+  "auth": "orh",
   "version": "1.0.0",
+  "mail":"webdevelop@sohu.com",
   "devDependencies": {
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-concat": "~0.3.0"
