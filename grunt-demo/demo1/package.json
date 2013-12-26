@@ -1,5 +1,6 @@
 {
   "name": "demo",
+  "auth": "orh",
   "version": "1.0.0",
   "mail":"webdevelop@sohu.com",
   "devDependencies": {
