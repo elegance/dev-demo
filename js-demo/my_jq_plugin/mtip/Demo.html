@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title></title>
+	<script src="../lib/jquery-1.8.1.min.js"></script>
+	<script src="js/mtip.js"></script>
+</head>
+<body>
+	<span title="test111" id="mtip1">test111</span>
+	<span title="" id="mtip2">test222</span>
+</body>
+<script type="text/javascript">
+	$(function() {
+		$("#mtip1").mtip();
+		$("#mtip2").mtip({content: '测试测试</br>测试测试'});
+	});
+</script>
+</html>
