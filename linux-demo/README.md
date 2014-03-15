@@ -25,3 +25,8 @@
 setfacl [m]:
 	m:修改
 	R: 递归
+
+### 磁盘/挂载相关
+1. # eject 	#弹出光驱，加上 "-t"参数收回光驱托盘
+2. # mount -t ntfs-3g /dev/sdb5 /mnt/ntfs	#挂载ntfs的磁盘，要先安装好了ntfs-3g哦，还有用lsblk看下计算机块设备信息
+3. # mount -o loop xyz.iso /media/cdrom/	#挂载iso镜像
