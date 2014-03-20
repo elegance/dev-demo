@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title>评分模版</title>
+		<style type="text/css">
+			body{font-size:12px;}
+			.red {color:red;}
+			.scoreItem {margin:30px 0px 0 30px; }
+			.scoreRule {margin-top:10px;margin-left:60px;}
+			input.itemInput {border:0; border-bottom:1px solid blue; width:400px;}
+			input.groupInput {border:0; border-bottom:1px solid blue; width:150px;}
+			input.score{width:30px; }
+			a.blue{color:#0365C0;text-decoration:underline;cursor:pointer;}
+			span.delItem{float:right;margin-right:20px; cursor:pointer;}
+		</style>
+		<script type="text/javascript" src="../common/jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+		<fieldset>
+			<legend>评分模板配置</legend>
+			<div style="text-align:center;">
+				评分模板名称：<input type="text" value="电话记录评分模板" />
+				是否生效：<select id="status" name="status">
+					<option value="0">有效</option>
+					<option value="1">无效</option>
+				</select>
+			</div>
+			<fieldset style="margin:30px 60px 20px 60px;">
+				<legend>
+					<span class="red">*</span> 分类：<input value="服务技巧" class="groupInput"/>
+				</legend>
+				<div class="scoreItem">
+					<span class="red">*</span> 评分项：<input value="礼貌情况？" class="itemInput">
+					<span class="delItem" onmouseover="focusItem(this);" onmouseout="blurItem(this)" onclick="delItem(this)">
+						<img src="image/icon_del.gif" title="删除评分项" >
+					</span>
+					<div class="scoreRule">
+						<ol>
+							<li>
+							<input type="text" class="itemInput" value="" />
+							分值：<input class="score" type="text" value="" />分
+								 <input type='button' title='删除细则' onclick='delRule(this)' class='btnDelRule' value='   -   '/>
+							</li>
+							<img src="image/btn_addcontinue.gif" style="cursor:pointer" id="item_add" onclick="addRule(this)">
+						</ol>
+					</div>
+				</div>   
+				<div>
+					<img src="image/btn_addcontinue.gif" style="cursor:pointer" id="item_add" onclick="addItem(this)">
+				</div>
+			</fieldset>
+		</fieldset>
+
+	</body>
+<script type="text/javascript">
+//鼠标移到item除按钮区域，高亮显示背景
+function focusItem(obj){
+	var _item_div = obj.parentNode;
+	_item_div.style.background="#D1E6FE";
+}
+//鼠标移开删除按钮区域，移除高亮背景
+function blurItem(obj){
+	var _item_div = obj.parentNode;
+	_item_div.style.background="";
+}
+//删除整个题目
+function delItem(obj){
+	var _item_div = obj.parentNode;
+	_item_div.parentNode.removeChild(_item_div);
+}
+//删除细则
+function delRule(obj){
+	var _rule_li = obj.parentNode;
+	_rule_li.parentNode.removeChild(_rule_li);
+}
+//添加细则
+function addRule(obj){
+	var $templateRule = $(templateFactory('rule'));
+	$(obj).before($templateRule);
+}
+//添加item
+function addItem(obj){
+	var $templateItem = $(templateFactory('item'));
+	$(obj.parentNode).before($templateItem);
+}
+
+//dom node utils
+function insertAfter(node, refrenceNode){
+	refrenceNode.parentNode.insertBefore(node,refrenceNode);
+}
+
+//template factory
+function templateFactory(_type){
+	var ruleTemplate = "<li><input type='text' name='ruleNames' class='itemInput'/> 分值："
+		+"<input name='ruleScores' class='score' type='text'/>分 "
+		+"<input type='button' title='删除细则' onclick='delRule(this)' class='btnDelRule' value='   -   '/></li>";
+
+	var itemTemplate = "<div class='scoreItem'> <span class='red'>*</span> 评分项：<input itemNames class='itemInput'>"
+		+"<span class='delItem' onmouseover='focusItem(this);' onmouseout='blurItem(this)' onclick='delItem(this)'>"
+		+"<img src='image/icon_del.gif' title='删除评分项' > </span>"
+		+"<div class='scoreRule'> <ol>"
+		+ruleTemplate
+		+"</ol></div>"
+		+"</div>";
+				  
+	switch(_type){
+		case 'rule':
+			return ruleTemplate;
+			break;
+		case 'item':
+			return itemTemplate;
+			break;
+		case 'group':
+			return null;
+			break;
+		default:
+			break;
+	}
+}
+</script>

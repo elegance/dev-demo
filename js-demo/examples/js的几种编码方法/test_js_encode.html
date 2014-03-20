@@ -1,0 +1,40 @@
+<!doctype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>encodeURIComponent、decodeURIComponent、toUnicode</title>
+<script>
+	var str = 'dopageaction.ha?page=%2Ffundweb%2Fschema5%2Fservice%2Fservice%2Ehtml';
+	//document.write(decodeURIComponent(str));
+	function $(_id){
+		return document.getElementById(_id);
+	}
+	function toUnicode(_value){
+		var str = ""
+		 for( i=0;    i<_value.length; i++ )
+		 {
+		  temp = _value.charCodeAt(i).toString(16);
+		  str    += "\\u"+ new Array(5-String(temp).length).join("0") +temp;
+		 }
+		 
+		 return str;
+	}
+</script>
+<body>
+	<div>
+		in: <input type="text" id="id1" size="80"/>  
+		<input type="button" value="encodeURIComponent" onclick="$('id2').value=encodeURIComponent($('id1').value);" />
+	   	rs:<input type="text" id="id2" size="80"/>
+	</div>
+	<div>
+		in: <input type="text" id="id3" size="80"/> 
+		<input type="button" value="decodeURIComponent" onclick="$('id4').value=decodeURIComponent($('id3').value);" />
+		rs:<input type="text" id="id4" size="80"/>
+	</div>
+	<div>
+		in: <input type="text" id="id5" size="80"/> 
+		<input type="button" value="toUnicode" onclick="$('id6').value= toUnicode($('id5').value);" />
+		rs:<input type="text" id="id6" size="80"/>
+	</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<script type="text/javascript" src="../common/jquery-1.7.1.min.js"></script>
+	<title></title>
+</head>
+<script type="text/javascript">
+	function getPhoneInfo () {
+		var tel = $("#tel").val(),
+			getUrl =  "http://virtual.paipai.com/extinfo/GetMobileProductInfo?mobile=" + tel + "&amount=10000&callname=callBack"
+			$.ajax({
+					url: getUrl,
+					dataType: "jsonp",
+					crossDomain: true
+				});
+	}
+	function callBack(data) {
+		$("#result").text(data.province);
+	}
+</script>
+<body>
+	<input type="text" id="tel" value="13472860611"/> 
+	<input id="btnGo" onclick="getPhoneInfo()" type="button" value="获取"/><br/>
+	<span id="result"></span>
+</body>
+</html>
