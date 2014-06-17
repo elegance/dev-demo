@@ -1,22 +1,22 @@
 ## 用此README 作为记录一些命令笔记到文档
 
 ### 查看系统基本信息基础命令
-1. # uname -a	#显示操作系信息(包括内核版本号、操作系统版本等)
-2. # cat /etc/issue		#显示发型版本信息
-3. # cat /proc/cpuinfo	#查看cpu信息
-4. # cat /proc/memoinfo	#查看内存信息
-5. # hostname	#查看计算机名
-6. # lsblk	#查看计算机块设备,包括还未挂载的磁盘等,比如需要手动mount的前可以用此命令查看块设备
-7. # lsusb	#查看系统中的usb设备。比如在插用usb接口格式的外置网卡时，可用此查看网卡的基本信息来查找驱动
-8. # env	#显示用户环境变量
+1. `# uname -a`	#显示操作系信息(包括内核版本号、操作系统版本等)
+2. `# cat /etc/issue`		#显示发型版本信息
+3. `# cat /proc/cpuinfo`	#查看cpu信息
+4. `# cat /proc/memoinfo`	#查看内存信息
+5. `# hostname`	#查看计算机名
+6. `# lsblk`	#查看计算机块设备,包括还未挂载的磁盘等,比如需要手动mount的前可以用此命令查看块设备
+7. `# lsusb`	#查看系统中的usb设备。比如在插用usb接口格式的外置网卡时，可用此查看网卡的基本信息来查找驱动
+8. `# env`	#显示用户环境变量
 
 
 ### 网络设置
-1. # ifconfig	#查询、设定网卡与ip网域等相关参数
-2. # ifup eth0	#启动网络接口，eth0为网络卡的代号 ,在ifconfig输出的第一列可以查看到
-3. # ifdown eth0	#停止网络接口
-4. # route	#查询、设定路由表
-5. # ip	#复合式命令，可修改上述提到的功能
+1. `# ifconfig`	#查询、设定网卡与ip网域等相关参数
+2. `# ifup eth0`	#启动网络接口，eth0为网络卡的代号 ,在ifconfig输出的第一列可以查看到
+3. `# ifdown eth0`	#停止网络接口
+4. `# route`	#查询、设定路由表
+5. `# ip`	#复合式命令，可修改上述提到的功能
 
 ### 系统管理(用户、组管理)
 
@@ -26,7 +26,11 @@ setfacl [m]:
 	m:修改
 	R: 递归
 
+### 文件操作 
+1. `scp root@192.168.80.3:/root/lrzsz-0.12.20.tar.gz ./` 从目标机器拷贝文件到本机
+
+
 ### 磁盘/挂载相关
-1. # eject 	#弹出光驱，加上 "-t"参数收回光驱托盘
-2. # mount -t ntfs-3g /dev/sdb5 /mnt/ntfs	#挂载ntfs的磁盘，要先安装好了ntfs-3g哦，还有用lsblk看下计算机块设备信息
-3. # mount -o loop xyz.iso /media/cdrom/	#挂载iso镜像
+1. `# eject` 	#弹出光驱，加上 "-t"参数收回光驱托盘
+2. `# mount -t ntfs-3g /dev/sdb5 /mnt/ntfs`	#挂载ntfs的磁盘，要先安装好了ntfs-3g哦，还有用lsblk看下计算机块设备信息
+3. `# mount -o loop xyz.iso /media/cdrom/`	#挂载iso镜像
