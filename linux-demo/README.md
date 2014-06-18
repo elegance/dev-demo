@@ -10,7 +10,6 @@
 7. `# lsusb`	#查看系统中的usb设备。比如在插用usb接口格式的外置网卡时，可用此查看网卡的基本信息来查找驱动
 8. `# env`	#显示用户环境变量
 
-
 ### 网络设置
 1. `# ifconfig`	#查询、设定网卡与ip网域等相关参数
 2. `# ifup eth0`	#启动网络接口，eth0为网络卡的代号 ,在ifconfig输出的第一列可以查看到
@@ -19,9 +18,26 @@
 5. `# ip`	#复合式命令，可修改上述提到的功能
 
 ### 系统管理(用户、组管理)
-
+1. 查看用户系信息 `# id root`
 
 ### 文件权限、文件夹权限
+1. `chgrp` 改变文档所属群组
+```
+# chgrp [-R] grp_name dir_name/file_name
+```
+2. `chown` 改变文档拥有者
+```
+# chown [-R] user_name dir_name/file_name
+# chown [-R] user_name:grp_name dir_name/file_name
+```
+3. `chmod` 改变文档的权限(x:1, w:2, r:4)
+```
+# chmod [-R] nnn dir_name/file_name
+# chmod (a|u|g|o)(=|+|-)(r|w|x) dirName/fileName
+# chmod u=rwx,g=rx,o=r filename
+```
+
+
 setfacl [m]:
 	m:修改
 	R: 递归
