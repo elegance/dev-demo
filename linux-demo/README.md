@@ -19,6 +19,7 @@
 
 ### 系统管理(用户、组管理)
 1. 查看用户系信息 `# id root`
+2. 
 
 ### 文件权限、文件夹权限
 1. `chgrp` 改变文档所属群组
@@ -33,8 +34,8 @@
 3. `chmod` 改变文档的权限(x:1, w:2, r:4)
 ```
 # chmod [-R] nnn dir_name/file_name
-# chmod (a|u|g|o)(=|+|-)(r|w|x) dirName/fileName
-# chmod u=rwx,g=rx,o=r filename
+# chmod (a|u|g|o)(=|+|-)(r|w|x) dirName/file_name
+# chmod u=rwx,g=rx,o=r file_name
 ```
 
 
@@ -48,5 +49,5 @@ setfacl [m]:
 
 ### 磁盘/挂载相关
 1. `# eject` 	#弹出光驱，加上 "-t"参数收回光驱托盘
-2. `# mount -t ntfs-3g /dev/sdb5 /mnt/ntfs`	#挂载ntfs的磁盘，要先安装好了ntfs-3g哦，还有用lsblk看下计算机块设备信息
+2. `# mount -t ntfs-3g /dev/sdb5 /mnt/ntfs`	#挂载ntfs的磁盘，要先安装好了`ntfs-3g`哦，还有用lsblk看下计算机块设备信息
 3. `# mount -o loop xyz.iso /media/cdrom/`	#挂载iso镜像
