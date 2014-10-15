@@ -19,7 +19,21 @@
 
 ### 系统管理(用户、组管理)
 1. 查看用户系信息 `# id root`
-2. 
+
+### 用户管理
+1. useradd [-u UID] [-g初始群组] [-G 次要群组] [-mM] [-c 说明栏] [-d 家目录绝对路径] [-s shell] 使用者账号名
+`useradd -m -g grp_test -c "张三的第二个帐号" zhangsan2`  #创建用户`zhagnsan2`，给定初始群组`grp_test`,-m 强制建立家目录(默认建立) ，-c是备注说明(comment)
+`useradd -D`   #useradd的默认参数
+2. passwd [-l] [-u] [--sdtin] [-S] 
+3. usermod [-cdegGlsuLU] username
+-c  ：后面接账号的说明
+-d  ：后面接账号的家目录
+-g  ：后面接初始群组
+-G  ：后面接次要群组
+-a  ：与-G 合用，可『增加次要群组的支持』而非『设定』
+-l  ：后面接账号名称。即修改账号名称
+-L  ：暂时将用户冻结，使他无法登入
+-U  ：将 /etc/shadow 密码栏的 ! 拿掉，解冻啦
 
 ### 文件权限、文件夹权限
 1. `chgrp` 改变文档所属群组
