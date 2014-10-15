@@ -17,8 +17,18 @@
 4. `# route`	#查询、设定路由表
 5. `# ip`	#复合式命令，可修改上述提到的功能
 
-### 系统管理(用户、组管理)
+### 系统管理、组管理
 1. 查看用户系信息 `# id root`
+2. groupadd [-g gid] [-r] 组名
+> -g: 指定的GID,不常用
+  -r: 建立系统群组
+
+`groupadd test_group`
+3. groupmod [-g gid] [-n new_grpname] 群组名
+`groupmod -n test_group1 test_group`
+4. groupdel grpname
+`groupdel test_group1`
+5. *gpasswd: 群组管理员功能，待补充*
 
 ### 用户管理
 1. useradd [-u UID] [-g初始群组] [-G 次要群组] [-mM] [-c 说明栏] [-d 家目录绝对路径] [-s shell] 使用者账号名
@@ -34,6 +44,7 @@
 -l  ：后面接账号名称。即修改账号名称
 -L  ：暂时将用户冻结，使他无法登入
 -U  ：将 /etc/shadow 密码栏的 ! 拿掉，解冻啦
+
 
 ### 文件权限、文件夹权限
 1. `chgrp` 改变文档所属群组
