@@ -19,7 +19,17 @@
 
 ### 系统管理(用户、组管理)
 1. 查看用户系信息 `# id root`
-2. 
+2. groupadd [-g gid] [-r] 组名
+> -g: 指定的GID,不常用
+  -r: 建立系统群组
+
+`groupadd test_group`
+3. groupmod [-g gid] [-n new_grpname] 群组名
+`groupmod -n test_group1 test_group`
+4. groupdel grpname
+`groupdel test_group1`
+5. *gpasswd: 群组管理员功能，待补充*
+
 
 ### 文件权限、文件夹权限
 1. `chgrp` 改变文档所属群组
