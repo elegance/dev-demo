@@ -17,6 +17,20 @@
 4. `# route`	#查询、设定路由表
 5. `# ip`	#复合式命令，可修改上述提到的功能
 
+### 禁止、允许主机被ping
+```
+# echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all	##禁止被ping
+# echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_all	##启用被ping
+```
+系统启动时生效：
+`# vim /etc/rc.d/rc.local` 添加下面一行
+` echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_all`
+
+### 修改ssh默认22端口
+`# vim /etc/ssh/sshd_config` 修改Port的值，去掉前面的#号注释,修改完后重启下`sshd`服务
+`# service sshd restart`
+`# vim /etc/sysconfig/iptables` 如果有防火墙的话记得把端口添加到防火墙去。
+
 ### 系统管理、组管理
 1. 查看用户系信息 `# id root`
 2. 新增组 `groupadd`
