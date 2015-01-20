@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>圆形进度条</title>
+
+<script type="text/javascript">
+window.onload = function(){
+
+	var box1 = document.getElementById('box1'),
+        box2 = document.getElementById('box2'),
+        box3 = document.getElementById('box3'),
+        box4 = document.getElementById('box4'),
+        box5 = document.getElementById('box5'),
+        box6 = document.getElementById('box6'),
+        box7 = document.getElementById('box7'),
+        box8 = document.getElementById('box8'),
+        box9 = document.getElementById('box9'),
+        box10 = document.getElementById('box10');
+
+	function loadImg (data, obj){
+			var i = 0,
+                it = (120 - data) / 2,  // 当值月大时，填充速度越快
+                imgLeft;
+
+			setInterval(function(){
+				i++
+				if(i > data){
+					i = data
+				}
+				imgLeft = -(i*44+(i*10))+'px'
+				obj.style.backgroundPosition = imgLeft + '\t' + '0px'
+				obj.innerHTML = i+'%';
+			}, it); // 间隔调用 递增，如果不需要这个效果可以根据上面的js修改
+	
+	}
+	loadImg(10, box1);
+	loadImg(20, box2);
+	loadImg(30, box3);
+	loadImg(40, box4);
+	loadImg(50, box5);
+	loadImg(60, box6);
+	loadImg(70, box7);
+	loadImg(80, box8);
+	loadImg(90, box9);
+	loadImg(100, box10);
+}
+</script>
+
+<style type="text/css">
+.process{
+	width:44px;
+	margin:20px auto 0 auto;
+	height:44px;
+	line-height:44px;
+	text-align:center;
+    font-size: 12px;
+	background: url(images/investjd.png);
+}
+</style>
+
+</head>
+<body>
+    <div class="process" id="box1"></div>
+    <div class="process" id="box2"></div>
+    <div class="process" id="box3"></div>
+    <div class="process" id="box4"></div>
+    <div class="process" id="box5"></div>
+    <div class="process" id="box6"></div>
+    <div class="process" id="box7"></div>
+    <div class="process" id="box8"></div>
+    <div class="process" id="box9"></div>
+    <div class="process" id="box10"></div>
+</body>
+</html>
