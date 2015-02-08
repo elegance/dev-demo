@@ -3,83 +3,96 @@
 " -----------------  WebSite: http://www.noteing.com
 " -----------------     Date: 2012-05-01
 
-colorscheme blackboard       " ç€è‰²æ¨¡å¼ï¼šè“è‰²èƒŒæ™¯,Vim\vimfiles\colorsä¸‹
-set guifont=Envy_Code_R:h11  " å­—ä½“ && å­—å·ï¼Œç³»ç»Ÿå®‰è£…çš„å­—ä½“
-set tabstop=4                " è®¾ç½®tabé”®çš„å®½åº¦
-set shiftwidth=4             " æ¢è¡Œæ—¶è¡Œé—´äº¤é”™ä½¿ç”¨4ä¸ªç©ºæ ¼
-set autoindent               " è‡ªåŠ¨å¯¹é½
-set backspace=2              " è®¾ç½®é€€æ ¼é”®å¯ç”¨
-set cindent shiftwidth=4     " è‡ªåŠ¨ç¼©è¿›4ç©ºæ ¼
-set smartindent              " æ™ºèƒ½è‡ªåŠ¨ç¼©è¿›
-set ai!                      " è®¾ç½®è‡ªåŠ¨ç¼©è¿›
-set nu!                      " æ˜¾ç¤ºè¡Œå·
-"set showmatch               " æ˜¾ç¤ºæ‹¬å·é…å¯¹æƒ…å†µ
-set mouse=a                  " å¯ç”¨é¼ æ ‡
-set ruler                    " å³ä¸‹è§’æ˜¾ç¤ºå…‰æ ‡ä½ç½®çš„çŠ¶æ€è¡Œ
-set incsearch                " å¼€å¯å®æ—¶æœç´¢åŠŸèƒ½
-set hlsearch                 " å¼€å¯é«˜äº®æ˜¾ç¤ºç»“æœ
-set nowrapscan               " æœç´¢åˆ°æ–‡ä»¶ä¸¤ç«¯æ—¶ä¸é‡æ–°æœç´¢
-set nocompatible             " å…³é—­å…¼å®¹æ¨¡å¼
-set vb t_vb=                 " å…³é—­æç¤ºéŸ³
-"set cursorline              " çªå‡ºæ˜¾ç¤ºå½“å‰è¡Œ
-set hidden                   " å…è®¸åœ¨æœ‰æœªä¿å­˜çš„ä¿®æ”¹æ—¶åˆ‡æ¢ç¼“å†²åŒº
-set list                     " æ˜¾ç¤ºTabç¬¦ï¼Œä½¿ç”¨ä¸€é«˜äº®ç«–çº¿ä»£æ›¿
+"colorscheme blackboard       " ×ÅÉ«Ä£Ê½£ºÀ¶É«±³¾°,Vim\vimfiles\colorsÏÂ
+
+"# ÅäÉ«À´Ô´https://github.com/altercation/vim-colors-solarized
+"# Òª½«solarized.vim ÎÄ¼şÒÆ¶¯ÖÁvimÏÂµÄcolorsÏÂ
+set background=dark
+"set background=light
+colorscheme solarized
+
+
+
+
+
+
+
+set guifont=Envy_Code_R:h11  " ×ÖÌå && ×ÖºÅ£¬ÏµÍ³°²×°µÄ×ÖÌå
+set tabstop=4                " ÉèÖÃtab¼üµÄ¿í¶È
+set shiftwidth=4             " »»ĞĞÊ±ĞĞ¼ä½»´íÊ¹ÓÃ4¸ö¿Õ¸ñ
+set autoindent               " ×Ô¶¯¶ÔÆë
+set backspace=2              " ÉèÖÃÍË¸ñ¼ü¿ÉÓÃ
+set cindent shiftwidth=4     " ×Ô¶¯Ëõ½ø4¿Õ¸ñ
+set smartindent              " ÖÇÄÜ×Ô¶¯Ëõ½ø
+set ai!                      " ÉèÖÃ×Ô¶¯Ëõ½ø
+set nu!                      " ÏÔÊ¾ĞĞºÅ
+"set showmatch               " ÏÔÊ¾À¨ºÅÅä¶ÔÇé¿ö
+set mouse=a                  " ÆôÓÃÊó±ê
+set ruler                    " ÓÒÏÂ½ÇÏÔÊ¾¹â±êÎ»ÖÃµÄ×´Ì¬ĞĞ
+set incsearch                " ¿ªÆôÊµÊ±ËÑË÷¹¦ÄÜ
+set hlsearch                 " ¿ªÆô¸ßÁÁÏÔÊ¾½á¹û
+set nowrapscan               " ËÑË÷µ½ÎÄ¼şÁ½¶ËÊ±²»ÖØĞÂËÑË÷
+set nocompatible             " ¹Ø±Õ¼æÈİÄ£Ê½
+set vb t_vb=                 " ¹Ø±ÕÌáÊ¾Òô
+"set cursorline              " Í»³öÏÔÊ¾µ±Ç°ĞĞ
+set hidden                   " ÔÊĞíÔÚÓĞÎ´±£´æµÄĞŞ¸ÄÊ±ÇĞ»»»º³åÇø
+set list                     " ÏÔÊ¾Tab·û£¬Ê¹ÓÃÒ»¸ßÁÁÊúÏß´úÌæ
 set listchars=tab:\|\ ,
 
-syntax enable                " æ‰“å¼€è¯­æ³•é«˜äº®
-syntax on                    " å¼€å¯æ–‡ä»¶ç±»å‹ä¾¦æµ‹
-filetype indent on           " é’ˆå¯¹ä¸åŒçš„æ–‡ä»¶ç±»å‹é‡‡ç”¨ä¸åŒçš„ç¼©è¿›æ ¼å¼
-filetype plugin on           " é’ˆå¯¹ä¸åŒçš„æ–‡ä»¶ç±»å‹åŠ è½½å¯¹åº”çš„æ’ä»¶
-filetype plugin indent on    " å¯ç”¨è‡ªåŠ¨è¡¥å…¨
+syntax enable                " ´ò¿ªÓï·¨¸ßÁÁ
+syntax on                    " ¿ªÆôÎÄ¼şÀàĞÍÕì²â
+filetype indent on           " Õë¶Ô²»Í¬µÄÎÄ¼şÀàĞÍ²ÉÓÃ²»Í¬µÄËõ½ø¸ñÊ½
+filetype plugin on           " Õë¶Ô²»Í¬µÄÎÄ¼şÀàĞÍ¼ÓÔØ¶ÔÓ¦µÄ²å¼ş
+filetype plugin indent on    " ÆôÓÃ×Ô¶¯²¹È«
 
 
 if has("gui_running")
-	au GUIEnter * simalt ~x  " çª—å£å¯åŠ¨æ—¶è‡ªåŠ¨æœ€å¤§åŒ–
-	"winpos 20 20            " æŒ‡å®šçª—å£å‡ºç°çš„ä½ç½®ï¼Œåæ ‡åŸç‚¹åœ¨å±å¹•å·¦ä¸Šè§’
-	"set lines=20 columns=90 " æŒ‡å®šçª—å£å¤§å°ï¼Œlinesä¸ºé«˜åº¦ï¼Œcolumnsä¸ºå®½åº¦
-	set guioptions-=m       " éšè—èœå•æ 
-	set guioptions-=T       " éšè—å·¥å…·æ 
-	"set guioptions-=L       " éšè—å·¦ä¾§æ»šåŠ¨æ¡
-	"set guioptions-=r       " éšè—å³ä¾§æ»šåŠ¨æ¡
-	"set guioptions-=b       " éšè—åº•éƒ¨æ»šåŠ¨æ¡
-	"set showtabline=0       " éšè—Tabæ 
+	au GUIEnter * simalt ~x  " ´°¿ÚÆô¶¯Ê±×Ô¶¯×î´ó»¯
+	"winpos 20 20            " Ö¸¶¨´°¿Ú³öÏÖµÄÎ»ÖÃ£¬×ø±êÔ­µãÔÚÆÁÄ»×óÉÏ½Ç
+	"set lines=20 columns=90 " Ö¸¶¨´°¿Ú´óĞ¡£¬linesÎª¸ß¶È£¬columnsÎª¿í¶È
+	set guioptions-=m       " Òş²Ø²Ëµ¥À¸
+	set guioptions-=T       " Òş²Ø¹¤¾ßÀ¸
+	"set guioptions-=L       " Òş²Ø×ó²à¹ö¶¯Ìõ
+	"set guioptions-=r       " Òş²ØÓÒ²à¹ö¶¯Ìõ
+	"set guioptions-=b       " Òş²Øµ×²¿¹ö¶¯Ìõ
+	"set showtabline=0       " Òş²ØTabÀ¸
 endif
 
-set writebackup              " è®¾ç½®æ— å¤‡ä»½æ–‡ä»¶
+set writebackup              " ÉèÖÃÎŞ±¸·İÎÄ¼ş
 set nobackup
-set autochdir                " è®¾å®šæ–‡ä»¶æµè§ˆå™¨ç›®å½•ä¸ºå½“å‰ç›®å½•
-"set nowrap                  " è®¾ç½®ä¸è‡ªåŠ¨æ¢è¡Œ
-set foldmethod=syntax        " é€‰æ‹©ä»£ç æŠ˜å ç±»å‹
-set foldlevel=100            " ç¦æ­¢è‡ªåŠ¨æŠ˜å 
+set autochdir                " Éè¶¨ÎÄ¼şä¯ÀÀÆ÷Ä¿Â¼Îªµ±Ç°Ä¿Â¼
+"set nowrap                  " ÉèÖÃ²»×Ô¶¯»»ĞĞ
+set foldmethod=syntax        " Ñ¡Ôñ´úÂëÕÛµşÀàĞÍ
+set foldlevel=100            " ½ûÖ¹×Ô¶¯ÕÛµş
 
-set laststatus=2             " å¼€å¯çŠ¶æ€æ ä¿¡æ¯
-set cmdheight=2              " å‘½ä»¤è¡Œçš„é«˜åº¦ï¼Œé»˜è®¤ä¸º1ï¼Œè¿™é‡Œè®¾ä¸º2
+set laststatus=2             " ¿ªÆô×´Ì¬À¸ĞÅÏ¢
+set cmdheight=2              " ÃüÁîĞĞµÄ¸ß¶È£¬Ä¬ÈÏÎª1£¬ÕâÀïÉèÎª2
 
-" æ¯è¡Œè¶…è¿‡80ä¸ªçš„å­—ç¬¦ç”¨ä¸‹åˆ’çº¿æ ‡ç¤º
+" Ã¿ĞĞ³¬¹ı80¸öµÄ×Ö·ûÓÃÏÂ»®Ïß±êÊ¾
 au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*.lua,*.pl,*.pm,*.php,*.py,*.rb,*.erb,*.vim,*.js,*.css,*.xml,*.html,*.xhtml 2match Underlined /.\%81v/
 
 
-" è®¾ç½®ç¼–ç 
+" ÉèÖÃ±àÂë
 set fenc=utf-8
 set encoding=utf-8
 set fileencodings=utf-8,gbk,cp936,latin-1
-" è§£å†³èœå•ä¹±ç 
+" ½â¾ö²Ëµ¥ÂÒÂë
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
-" è§£å†³consleè¾“å‡ºä¹±ç 
+" ½â¾öconsleÊä³öÂÒÂë
 language messages zh_CN.utf-8
 
 
 " For Haskell
-:let hs_highlight_delimiters=1            " é«˜äº®å®šç•Œç¬¦
-:let hs_highlight_boolean=1               " æŠŠTrueå’ŒFalseè¯†åˆ«ä¸ºå…³é”®å­—
-:let hs_highlight_types=1                 " æŠŠåŸºæœ¬ç±»å‹çš„åå­—è¯†åˆ«ä¸ºå…³é”®å­—
-:let hs_highlight_more_types=1            " æŠŠæ›´å¤šå¸¸ç”¨ç±»å‹è¯†åˆ«ä¸ºå…³é”®å­—
-:let hs_highlight_debug=1                 " é«˜äº®è°ƒè¯•å‡½æ•°çš„åå­—
-:let hs_allow_hash_operator=1             " é˜»æ­¢æŠŠ#é«˜äº®ä¸ºé”™è¯¯
+:let hs_highlight_delimiters=1            " ¸ßÁÁ¶¨½ç·û
+:let hs_highlight_boolean=1               " °ÑTrueºÍFalseÊ¶±ğÎª¹Ø¼ü×Ö
+:let hs_highlight_types=1                 " °Ñ»ù±¾ÀàĞÍµÄÃû×ÖÊ¶±ğÎª¹Ø¼ü×Ö
+:let hs_highlight_more_types=1            " °Ñ¸ü¶à³£ÓÃÀàĞÍÊ¶±ğÎª¹Ø¼ü×Ö
+:let hs_highlight_debug=1                 " ¸ßÁÁµ÷ÊÔº¯ÊıµÄÃû×Ö
+:let hs_allow_hash_operator=1             " ×èÖ¹°Ñ#¸ßÁÁÎª´íÎó
 
 
-" ======= å¼•å· && æ‹¬å·è‡ªåŠ¨åŒ¹é… ======= "
+" ======= ÒıºÅ && À¨ºÅ×Ô¶¯Æ¥Åä ======= "
 
 :inoremap ( ()<ESC>i
 
@@ -111,63 +124,68 @@ function ClosePair(char)
 	endif
 endf
 
-"Vundle æ’ä»¶ç®¡ç†{{{
+"Vundle ²å¼ş¹ÜÀí{{{
 filetype off
-" æ­¤å¤„è§„å®šVundleçš„è·¯å¾„
+" ´Ë´¦¹æ¶¨VundleµÄÂ·¾¶
 set rtp+=$VIM/vimfiles/bundle/vundle/
 call vundle#rc('$VIM/vimfiles/bundle/')
-"ç”¨ vundleæ¥ç®¡ç† vundle
+"ÓÃ vundleÀ´¹ÜÀí vundle
 Bundle 'gmarik/vundle'    
 filetype plugin indent on
-"å®‰è£…æ’ä»¶ï¼Œ3ç§æ–¹å¼å®‰è£… ç½‘ä¸Šçš„æ’ä»¶:
+"°²×°²å¼ş£¬3ÖÖ·½Ê½°²×° ÍøÉÏµÄ²å¼ş:
 
-"æ ¼å¼â‘ ï¼šGithubä¸Šå…¶ä»–ç”¨æˆ·çš„ä»“åº“ï¼ˆévim-scriptsè´¦æˆ·é‡Œçš„ä»“åº“ï¼Œæ‰€ä»¥è¦åŠ Githubç”¨æˆ·åï¼‰
+"¸ñÊ½¢Ù£ºGithubÉÏÆäËûÓÃ»§µÄ²Ö¿â£¨·Çvim-scriptsÕË»§ÀïµÄ²Ö¿â£¬ËùÒÔÒª¼ÓGithubÓÃ»§Ãû£©
 "#->
-"æ¯”snipmateæ›´å¼ºçš„ä»£ç ç‰‡æ®µè¡¥,è¿™ä¸ªæš‚æ—¶ä¸é€‚ç”¨å› ä¸ºç½‘é€Ÿè¿˜æ²¡æ‰¾åˆ°å¾ˆå¥½çš„èµ„æ–™æ¥ä½¿ç”¨å®ƒæš‚æ—¶å…ˆä½¿ç”¨snipmate
+"±Èsnipmate¸üÇ¿µÄ´úÂëÆ¬¶Î²¹,Õâ¸öÔİÊ±²»ÊÊÓÃÒòÎªÍøËÙ»¹Ã»ÕÒµ½ºÜºÃµÄ×ÊÁÏÀ´Ê¹ÓÃËüÔİÊ±ÏÈÊ¹ÓÃsnipmate
 "Bundle 'drmingdrmer/xptemplate'   
 Bundle 'msanders/snipmate.vim'
-"#-> ç¼–å†™htmlä»£ç 
-Bundle 'mattn/zencoding-vim'
-"#-> js æ£€æŸ¥,Node.js must be in your path.  nodejs.org
+
+"#->ÅäÉ«
+Bundle 'altercation/vim-colors-solarized'
+
+"#-> ±àĞ´html´úÂë
+"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
+"#-> js ¼ì²é,Node.js must be in your path.  nodejs.org
 ""Bundle 'wookiehangover/jshint.vim'
 Bundle 'walm/jshint.vim'
-"#æ”¯æŒå¤šé‡é€‰å–å†…å®¹çš„ Vim æ’ä»¶ https://github.com/terryma/vim-multiple-cursors
+"#Ö§³Ö¶àÖØÑ¡È¡ÄÚÈİµÄ Vim ²å¼ş https://github.com/terryma/vim-multiple-cursors
 Bundle 'terryma/vim-multiple-cursors'
 
-"æ ¼å¼â‘¡ï¼švim-scriptsé‡Œé¢çš„ä»“åº“ï¼Œç›´æ¥æ‰“ä»“åº“åå³å¯ã€‚
-"#-> vimè„šæœ¬ï¼Œæä¾›äº†ä¸€äº›å®ç”¨å‡½æ•°å’Œå‘½ä»¤,å…¶å®ƒæ’ä»¶æœ‰å¯èƒ½ä¾èµ–å®ƒ
+"¸ñÊ½¢Ú£ºvim-scriptsÀïÃæµÄ²Ö¿â£¬Ö±½Ó´ò²Ö¿âÃû¼´¿É¡£
+"#-> vim½Å±¾£¬Ìá¹©ÁËÒ»Ğ©ÊµÓÃº¯ÊıºÍÃüÁî,ÆäËü²å¼şÓĞ¿ÉÄÜÒÀÀµËü
 Bundle 'L9'
 "#-> 
 Bundle 'ctags.vim'
 Bundle 'taglist.vim'
 
-"#-> VIMä¸­çš„æ–‡ä»¶æŸ¥æ‰¾åˆ©å™¨
+"#-> VIMÖĞµÄÎÄ¼ş²éÕÒÀûÆ÷
 Bundle 'FuzzyFinder'    
-"#-> å¯ä»¥æ‰“å¼€å†å²æ–‡ä»¶åˆ—è¡¨ä»¥è¾¾åˆ°å¿«é€Ÿåˆ‡æ¢æ–‡ä»¶çš„ç›®çš„
+"#-> ¿ÉÒÔ´ò¿ªÀúÊ·ÎÄ¼şÁĞ±íÒÔ´ïµ½¿ìËÙÇĞ»»ÎÄ¼şµÄÄ¿µÄ
 Bundle 'bufexplorer.zip' 
 
-"#-> VIM ä¸­æŸ¥çœ‹ä¸€ä¸ªæ–‡ä»¶ä¸­åŒ…å«çš„å‡½æ•°åˆ—è¡¨ï¼Œæˆ–æ˜¯ä¸€ä¸ªç±»åŒ…å«çš„æ–¹æ³•åˆ—è¡¨
+"#-> VIM ÖĞ²é¿´Ò»¸öÎÄ¼şÖĞ°üº¬µÄº¯ÊıÁĞ±í£¬»òÊÇÒ»¸öÀà°üº¬µÄ·½·¨ÁĞ±í
 "Bundle 'taglist.vim'    
 
-"#-> é«˜äº®æ˜¾ç¤ºå¤šä¸ªå•è¯
+"#-> ¸ßÁÁÏÔÊ¾¶à¸öµ¥´Ê
 Bundle 'Mark'    
-"#-> æ‰“å¼€å¤§æ–‡ä»¶
+"#-> ´ò¿ª´óÎÄ¼ş
 Bundle 'LargeFile'
 "{{
-let g:LargeFile=10 "æŠŠå¤§æ–‡ä»¶çš„æ ‡å‡†å®šä¹‰ä¸º10MB
+let g:LargeFile=10 "°Ñ´óÎÄ¼şµÄ±ê×¼¶¨ÒåÎª10MB
 "}}"
-"#-> æä¾›æ—¥å†çš„åŠŸèƒ½ï¼Œå¹¶ä¸”å¯ä»¥è®°ç¬”è®°
+"#-> Ìá¹©ÈÕÀúµÄ¹¦ÄÜ£¬²¢ÇÒ¿ÉÒÔ¼Ç±Ê¼Ç
 "Bundle 'calendar.vim'
 "{{
-let g:calendar_diary = "E:/vimdiary" " è®¾ç½®æ—¥è®°çš„å­˜å‚¨è·¯å¾„
-let g:calendar_monday = 1 "ä»¥æ˜ŸæœŸä¸€ä¸ºå¼€å§‹
-let g:calendar_focus_today = 1 " å…‰æ ‡åœ¨å½“å¤©çš„æ—¥æœŸä¸Š
-let g:calendar_mark = 'left-fit' "å¯ä»¥è®©*å’Œæ•°å­—å¯é è¿‘
+let g:calendar_diary = "E:/vimdiary" " ÉèÖÃÈÕ¼ÇµÄ´æ´¢Â·¾¶
+let g:calendar_monday = 1 "ÒÔĞÇÆÚÒ»Îª¿ªÊ¼
+let g:calendar_focus_today = 1 " ¹â±êÔÚµ±ÌìµÄÈÕÆÚÉÏ
+let g:calendar_mark = 'left-fit' "¿ÉÒÔÈÃ*ºÍÊı×Ö¿É¿¿½ü
 "}}
 
-"#-> ä¸€ä¸ªä»¥æ ‘å½¢ç»“æ„å¯¼èˆªæ–‡ä»¶ç³»ç»Ÿçš„æ’ä»¶
+"#-> Ò»¸öÒÔÊ÷ĞÎ½á¹¹µ¼º½ÎÄ¼şÏµÍ³µÄ²å¼ş
 Bundle 'The-NERD-tree'    
-"{{ NERD-tree çš„é…ç½®
+"{{ NERD-tree µÄÅäÖÃ
 "NERDTree plugin
 let NERDTreeWinPos = "left" "where NERD tree window is placed on the screen
 "let NERDTreeWinSize = 31 "size of the NERD tree
@@ -178,14 +196,14 @@ Bundle 'winmanager'
 "{{
 "let g:winManagerWindowLayout = "BufExplorer,FileExplorer|TagList"
 let g:winManagerWindowLayout = "TagList|FileExplorer,BufExplorer"
-"è®¾ç½®winmanagerçš„å®½åº¦ï¼Œé»˜è®¤ä¸º25
+"ÉèÖÃwinmanagerµÄ¿í¶È£¬Ä¬ÈÏÎª25
 let g:winManagerWidth = 30
 let g:AutoOpenWinManager = 1
-"å®šä¹‰æ‰“å¼€å…³é—­winmanageræŒ‰é”®
+"¶¨Òå´ò¿ª¹Ø±Õwinmanager°´¼ü
 nmap <silent> <F8> :WMToggle<cr>
 "}}"
 
-"æ ¼å¼â‘¢ï¼šéGithubçš„Gitä»“åº“,è¿™é‡Œæˆ‘å·²ç»æŠŠå®ƒ æ³¨é‡Šæ‰äº†ï¼Œå½“æ‰§è¡Œ BundleInstallæ—¶è¿™ä¸ªæ’ä»¶å°±ä¸ä¼šå®‰è£…äº†ï¼Œæ‰§è¡ŒBundleClean å°±ä¼šæ¸…é™¤è¿™ä¸ªæ’ä»¶æ‰€å ç”¨çš„ç›®å½•
+"¸ñÊ½¢Û£º·ÇGithubµÄGit²Ö¿â,ÕâÀïÎÒÒÑ¾­°ÑËü ×¢ÊÍµôÁË£¬µ±Ö´ĞĞ BundleInstallÊ±Õâ¸ö²å¼ş¾Í²»»á°²×°ÁË£¬Ö´ĞĞBundleClean ¾Í»áÇå³ıÕâ¸ö²å¼şËùÕ¼ÓÃµÄÄ¿Â¼
 "Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 filetype plugin indent on     " required 
 "}}}"
