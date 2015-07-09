@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title></title>
+</head>
+<body>
+	<form id="cashForm" action="http://www.storevm.org:8660/paygw/services/Cash" method="post" target="_blank">
+		<pre>
+		<input name="usrCustId" type="text">
+		<input name="ordId" type="text">
+		<input name="openAcctId" type="text">
+		<input name="remark" type="text">
+
+		<div class="out-amount-sure color-grey line-bottom-dotted">
+			可提现金额：<span class="color-orange">9,000,000.00</span>元
+		</div>
+		<div class="into-amount margin-top20">
+			<div class="attestation-title text-right color-grey fl">
+				提现金额：
+			</div>
+			<div class="fl">
+				<input class="attestation" name="transAmt" type="text"/>&nbsp;&nbsp;&nbsp;&nbsp;<span class="color-grey">元</span>
+			</div>
+		</div>
+		<div class="into-amount margin-top20 text-center">
+			<input class="btn btn-blue btn-determined" type="submit" value="确定提现" />
+		</div>
+		</pre>
+	</form>
+	
+	<form method="post" action="http://www.storevm.org:8660/paygw/services/Cash">
+		<pre>
+		userCustrId: <input type="text" name="usrCustId" type="text" value="6000060000757435">
+		ordId: <input type="text" name="ordId" type="text">
+		openAcctId: <input type="text" name="openAcctId" type="text">
+		remark: <input type="text" name="remark" type="text">
+		transAmt: <input type="text" name="transAmt" type="text">
+		<input type="submit" value="提交">
+		</pre>
+	</form>
+</body>
+</html>
