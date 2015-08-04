@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>Bootstrap 入门模板</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:http:// -->
+<!--[if lt IE 9]>
+	  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">策略管理</div>
+	<div class="panel-body">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				</div>
+				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				</div>
+				<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+				<div class="col-sm-4">
+					<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- Table -->
+	<table class="table">
+		<thead>
+			<tr>
+				<td>策略名称</td>
+				<td>目标股票</td>
+				<td>配置资金</td>
+				<td>当前总资产</td>
+				<td>可用金额</td>
+				<td>冻结资金</td>
+				<td>总盈亏</td>
+				<td>持仓盈亏</td>
+				<td>平仓盈亏</td>
+				<td>市值</td>
+				<td>自动确认</td>
+				<td>涨跌停下单</td>
+				<td>当前状态</td>
+				<td>虚拟市场</td>
+				<td>实盘营收</td>
+			</tr>
+		</thead>
+		<tbody id="dataBody">
+		<tr>
+			<td>zzcs</td>
+			<td>0</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>pool3</td>
+			<td>0</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>ssstest</td>
+			<td>2621</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				否
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>haidytest4</td>
+			<td>8</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				否
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>stockpool1</td>
+			<td>0</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>stock-picking15</td>
+			<td>3</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>stock-picking12</td>
+			<td>3</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				否
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>孙琦测试1</td>
+			<td>2763</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>stock-picking11</td>
+			<td>35</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				否
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				不投放
+			</td>
+			<td>
+				不投放
+			</td>
+		</tr>
+		<tr>
+			<td>stock-picking10</td>
+			<td>0</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>500000.00</td>
+			<td>0.00</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>
+				<font color="red"> 0.00</font>
+			</td>
+			<td>0.00</td>
+			<td>
+				全自动确认	
+			</td>
+			<td>
+				是
+			</td>
+			<td>
+				<font color="#E1E100">未启动</font>
+			</td>
+			<td>
+				已投放
+			</td>
+			<td>
+				投放但未审核
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<div id="pageBar" style="float:right"><ul class="pagination"><li class="first disabled"><a href="#">首页</a></li><li class="prev disabled"><a href="#">前一页</a></li><li class="page active"><a href="#">1</a></li><li class="page"><a href="#">2</a></li><li class="page"><a href="#">3</a></li><li class="page"><a href="#">4</a></li><li class="page"><a href="#">5</a></li><li class="page"><a href="#">6</a></li><li class="page"><a href="#">7</a></li><li class="page"><a href="#">8</a></li><li class="page"><a href="#">9</a></li><li class="page"><a href="#">10</a></li><li class="page"><a href="#">11</a></li><li class="page"><a href="#">12</a></li><li class="next"><a href="#">下一页</a></li><li class="last"><a href="#">尾页</a></li></ul></div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
