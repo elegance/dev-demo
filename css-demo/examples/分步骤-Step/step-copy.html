@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+<title></title>
+<style>
+* {
+	margin: 0;
+}
+*, button {
+	font-family: arial,"Microsoft YaHei";
+}
+.active-email.main .step, .active-email-complete.main .step, .bind-mobile.main .step, .certification.main .step, .fill-basic-info.main .step, .register-complete.main .step, .setting-base.main .exp-upgrade .step {
+	height: 65px;
+	position: relative;
+	margin-bottom: 8px;
+}
+.active-email.main .step::before, .active-email-complete.main .step::before, .bind-mobile.main .step::before, .certification.main .step::before, .fill-basic-info.main .step::before, .register-complete.main .step::before, .setting-base.main .exp-upgrade .step::before {
+	display: block;
+	position: absolute;
+	top: 17px;
+	left: 110px;
+	width: 480px;
+	height: 2px;
+	background-color: #999;
+	content: "";
+}
+.main > .center-content .block {
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 0 7px rgba(200, 200, 200, .75);
+	box-shadow: 0px 0px 7px rgba(200,200,200,0.75);
+	overflow: hidden;
+	width: 280px;
+	position: relative;
+	margin: 90px auto 0;
+	padding: 30px 125px;
+	border: 1px solid #c9ccd0;
+	background-color: #fafafa;
+	font-size: 12px;
+}
+.active-email.main .block, .active-email-complete.main .block, .bind-mobile.main .block, .certification.main .block, .fill-basic-info.main .block, .register-complete.main .block, .setting-base.main .exp-upgrade .block {
+	padding: 0;
+	border: 1px solid #e6e6e6;
+	width: 700px;
+}
+.center-content {
+	position: relative;
+	width: 980px;
+	margin: 0 auto;
+}
+.main > .center-content {
+	padding-bottom: 50px;
+	border-bottom: 1px solid #ddd;
+	min-height: 410px;
+}
+body {
+	position: relative;
+	font-family: arial,"Microsoft YaHei";
+	font-size: 12px;
+	color: #787878;
+	background: url(../image/global/bg.png);
+	overflow: visible;
+}
+html {
+	-webkit-text-size-adjust: none;
+}
+.active-email.main .step .step-block, .active-email-complete.main .step .step-block, .bind-mobile.main .step .step-block, .certification.main .step .step-block, .fill-basic-info.main .step .step-block, .register-complete.main .step .step-block, .setting-base.main .exp-upgrade .step .step-block {
+	display: inline-block;
+	padding-top: 50px;
+	position: relative;
+	width: 60px;
+	text-align: center;
+}
+.active-email.main .step .step-block::after, .active-email-complete.main .step .step-block::after, .bind-mobile.main .step .step-block::after, .certification.main .step .step-block::after, .fill-basic-info.main .step .step-block::after, .register-complete.main .step .step-block::after, .setting-base.main .exp-upgrade .step .step-block::after {
+	-webkit-border-radius: 18px;
+	border-radius: 18px;
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 36px;
+	height: 18px;
+	padding: 8px 0 10px;
+	margin-left: -18px;
+	text-align: center;
+	font-size: 18px;
+	color: #fff;
+	background-color: #999;
+}
+.active-email.main .step .step-block::before, .active-email-complete.main .step .step-block::before, .bind-mobile.main .step .step-block::before, .certification.main .step .step-block::before, .fill-basic-info.main .step .step-block::before, .register-complete.main .step .step-block::before, .setting-base.main .exp-upgrade .step .step-block::before {
+	display: block;
+	position: absolute;
+	top: 17px;
+	right: 40px;
+	height: 2px;
+	content: "";
+}
+.active-email.main .step .done.step-block, .active-email-complete.main .step .done.step-block, .bind-mobile.main .step .done.step-block, .certification.main .step .done.step-block, .fill-basic-info.main .step .done.step-block, .register-complete.main .step .done.step-block, .setting-base.main .exp-upgrade .step .done.step-block {
+	color: #4bc86a;
+}
+.active-email.main .step .step1.step-block, .active-email-complete.main .step .step1.step-block, .bind-mobile.main .step .step1.step-block, .certification.main .step .step1.step-block, .fill-basic-info.main .step .step1.step-block, .register-complete.main .step .step1.step-block, .setting-base.main .exp-upgrade .step .step1.step-block {
+	z-index: 6;
+	left: 12.8%;
+}
+.active-email.main .step .done.step-block::after, .active-email.main .step .done.step-block::before, .active-email-complete.main .step .done.step-block::after, .active-email-complete.main .step .done.step-block::before, .bind-mobile.main .step .done.step-block::after, .bind-mobile.main .step .done.step-block::before, .certification.main .step .done.step-block::after, .certification.main .step .done.step-block::before, .fill-basic-info.main .step .done.step-block::after, .fill-basic-info.main .step .done.step-block::before, .register-complete.main .step .done.step-block::after, .register-complete.main .step .done.step-block::before, .setting-base.main .exp-upgrade .step .done.step-block::after, .setting-base.main .exp-upgrade .step .done.step-block::before {
+	background-color: #4bc86a;
+}
+.active-email.main .step .step1.step-block::after, .active-email-complete.main .step .step1.step-block::after, .bind-mobile.main .step .step1.step-block::after, .certification.main .step .step1.step-block::after, .fill-basic-info.main .step .step1.step-block::after, .register-complete.main .step .step1.step-block::after, .setting-base.main .exp-upgrade .step .step1.step-block::after {
+	content: "1";
+}
+.active-email.main .step .now.step-block, .active-email-complete.main .step .now.step-block, .bind-mobile.main .step .now.step-block, .certification.main .step .now.step-block, .fill-basic-info.main .step .now.step-block, .register-complete.main .step .now.step-block, .setting-base.main .exp-upgrade .step .now.step-block {
+	color: #5ac5ff;
+}
+.active-email.main .step .step2.step-block, .active-email-complete.main .step .step2.step-block, .bind-mobile.main .step .step2.step-block, .certification.main .step .step2.step-block, .fill-basic-info.main .step .step2.step-block, .register-complete.main .step .step2.step-block, .setting-base.main .exp-upgrade .step .step2.step-block {
+	z-index: 5;
+	left: 20.3%;
+}
+.active-email.main .step .now.step-block::after, .active-email.main .step .now.step-block::before, .active-email-complete.main .step .now.step-block::after, .active-email-complete.main .step .now.step-block::before, .bind-mobile.main .step .now.step-block::after, .bind-mobile.main .step .now.step-block::before, .certification.main .step .now.step-block::after, .certification.main .step .now.step-block::before, .fill-basic-info.main .step .now.step-block::after, .fill-basic-info.main .step .now.step-block::before, .register-complete.main .step .now.step-block::after, .register-complete.main .step .now.step-block::before, .setting-base.main .exp-upgrade .step .now.step-block::after, .setting-base.main .exp-upgrade .step .now.step-block::before {
+	background-color: #5ac5ff;
+}
+.active-email.main .step .step2.step-block::after, .active-email-complete.main .step .step2.step-block::after, .bind-mobile.main .step .step2.step-block::after, .certification.main .step .step2.step-block::after, .fill-basic-info.main .step .step2.step-block::after, .register-complete.main .step .step2.step-block::after, .setting-base.main .exp-upgrade .step .step2.step-block::after {
+	content: "2";
+}
+.active-email.main .step .step2.step-block::before, .active-email-complete.main .step .step2.step-block::before, .bind-mobile.main .step .step2.step-block::before, .certification.main .step .step2.step-block::before, .fill-basic-info.main .step .step2.step-block::before, .register-complete.main .step .step2.step-block::before, .setting-base.main .exp-upgrade .step .step2.step-block::before {
+	width: 100px;
+}
+.active-email.main .step .step3.step-block, .active-email-complete.main .step .step3.step-block, .bind-mobile.main .step .step3.step-block, .certification.main .step .step3.step-block, .fill-basic-info.main .step .step3.step-block, .register-complete.main .step .step3.step-block, .setting-base.main .exp-upgrade .step .step3.step-block {
+	z-index: 4;
+	left: 27.8%;
+}
+.active-email.main .step .step3.step-block::after, .active-email-complete.main .step .step3.step-block::after, .bind-mobile.main .step .step3.step-block::after, .certification.main .step .step3.step-block::after, .fill-basic-info.main .step .step3.step-block::after, .register-complete.main .step .step3.step-block::after, .setting-base.main .exp-upgrade .step .step3.step-block::after {
+	content: "3";
+}
+.active-email.main .step .step3.step-block::before, .active-email-complete.main .step .step3.step-block::before, .bind-mobile.main .step .step3.step-block::before, .certification.main .step .step3.step-block::before, .fill-basic-info.main .step .step3.step-block::before, .register-complete.main .step .step3.step-block::before, .setting-base.main .exp-upgrade .step .step3.step-block::before {
+	width: 200px;
+}
+.active-email.main .step .step4.step-block, .active-email-complete.main .step .step4.step-block, .bind-mobile.main .step .step4.step-block, .certification.main .step .step4.step-block, .fill-basic-info.main .step .step4.step-block, .register-complete.main .step .step4.step-block, .setting-base.main .exp-upgrade .step .step4.step-block {
+	z-index: 3;
+	left: 35.3%;
+}
+.active-email.main .step .step4.step-block::after, .active-email-complete.main .step .step4.step-block::after, .bind-mobile.main .step .step4.step-block::after, .certification.main .step .step4.step-block::after, .fill-basic-info.main .step .step4.step-block::after, .register-complete.main .step .step4.step-block::after, .setting-base.main .exp-upgrade .step .step4.step-block::after {
+	content: "4";
+}
+.active-email.main .step .step4.step-block::before, .active-email-complete.main .step .step4.step-block::before, .bind-mobile.main .step .step4.step-block::before, .certification.main .step .step4.step-block::before, .fill-basic-info.main .step .step4.step-block::before, .register-complete.main .step .step4.step-block::before, .setting-base.main .exp-upgrade .step .step4.step-block::before {
+	width: 300px;
+}
+.active-email.main .step .step5.step-block, .active-email-complete.main .step .step5.step-block, .bind-mobile.main .step .step5.step-block, .certification.main .step .step5.step-block, .fill-basic-info.main .step .step5.step-block, .register-complete.main .step .step5.step-block, .setting-base.main .exp-upgrade .step .step5.step-block {
+	z-index: 2;
+	left: 42.8%;
+}
+.active-email.main .step .step5.step-block::after, .active-email-complete.main .step .step5.step-block::after, .bind-mobile.main .step .step5.step-block::after, .certification.main .step .step5.step-block::after, .fill-basic-info.main .step .step5.step-block::after, .register-complete.main .step .step5.step-block::after, .setting-base.main .exp-upgrade .step .step5.step-block::after {
+	content: "5";
+}
+.active-email.main .step .step5.step-block::before, .active-email-complete.main .step .step5.step-block::before, .bind-mobile.main .step .step5.step-block::before, .certification.main .step .step5.step-block::before, .fill-basic-info.main .step .step5.step-block::before, .register-complete.main .step .step5.step-block::before, .setting-base.main .exp-upgrade .step .step5.step-block::before {
+	width: 400px;
+}
+</style>
+</head>
+<body><div class="main active-email"><div class="center-content"><div class="block"><div class="step">
+	<span class="step-block step1  done">填写信息</span>
+	<span class="step-block step2 now ">激活邮箱</span>
+	<span class="step-block step3  ">绑定手机</span>
+    <span class="step-block step4  ">身份认证</span>
+	<span class="step-block step5 ">完成</span>
+</div></div></div></div></body>
+</html>
+
