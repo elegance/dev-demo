@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>lodash</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<p class="bg-primary">_(value): 通过lodash的构造方法来包装对象使其拥有lodash的方法</p>
+<pre>
+	var wrapped = _([1, 2, 3]);
+
+	// returns an unwrapped value
+	wrapped.reduce(function(total, n) {
+	  return total + n;
+	});
+	// → 6
+
+	// returns a wrapped value
+	var squares = wrapped.map(function(n) {
+	  return n * n;
+	});
+
+	_.isArray(squares);
+	// → false
+
+	_.isArray(squares.value());
+	// → true
+</pre>
+<p class="bg-primary">_.chain(value): 创建lodash链对象</p>
+<pre>
+	var users = [
+	  { 'user': 'barney',  'age': 36 },
+	  { 'user': 'fred',    'age': 40 },
+	  { 'user': 'pebbles', 'age': 1 }
+	];
+
+	var youngest = _.chain(users)
+	  .sortBy('age')
+	  .map(function(chr) {
+		return chr.user + ' is ' + chr.age;
+	  })
+	  .first()
+	  .value();
+	// → 'pebbles is 1'
+</pre>
+<p class="bg-primary">_.tap(value, interceptor, [thisArg]): 在链操作中加入拦截器</p>
+<script src="http://cdn.bootcss.com/lodash.js/3.10.1/lodash.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>lodash</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<p class="bg-primary">_.chunk(array, [size=1]), 把数组分块，分出几部分</p>
+<pre>
+	_.chunk(['a', 'b', 'c', 'd'], 2); //2：即分为2块
+		// → [['a', 'b'],['c', 'd']]
+
+	_.chunk(['a', 'b', 'c', 'd'], 3);
+		// → [['a', 'b', 'c'],[d']]
+</pre>
+
+<p class="bg-primary">_.compact(array), 返回紧凑的数组，过滤掉数组中的假值，如：false、null、0、''、undefined、NaN</p>
+<pre>
+	_.compact([0, 1, false, 2, '', 3]);
+		// → [1, 2, 3]
+</pre>
+<p class="bg-primary">_.difference(array, [values]), 返回数组不同于另一个数组的元素，可以理解为not in</p>
+<pre>
+	_.difference([1, 2, 3], [4, 2]);
+		// → [1, 3]
+</pre>
+<p class="bg-danger">_.drop(array, [n=1]), 功能等同于数组的<kbd>[].slice</kbd>方法，所以可以略过</p>
+<pre>
+	_.drop([1, 2, 3]);
+		// → [2, 3]
+	_.drop([1, 2, 3], 2);
+		// → [3]
+	_.drop([1, 2, 3], 5);
+		// → []
+	_.drop([1, 2, 3], 0);
+		// → [1, 2, 3]
+</pre>
+<p class="bg-danger">_.dropRight(array, [n=1]), 相当于是drop方法从右往左取值,同样可以使用<kbd>[].reverse().slice来代替</kbd></p>
+<pre>
+	_.dropRight([1, 2, 3]);	//从右往左删除1个
+		// → [1, 2]
+	_.dropRight([1, 2, 3], 2);	//从右往左删除2个
+		// → [1]
+	_.dropRight([1, 2, 3], 5);
+		// → []
+	_.dropRight([1, 2, 3], 0);
+		// → [1, 2, 3]
+</pre>
+<p class="bg-danger">_.dropRightWhile: (个人看了下感觉使用场景不高，就不看了)详细见：https://lodash.com/docs/#dropRightWhile</p>
+<p class="bg-danger">_.dropWhile: 同上https://lodash.com/docs/#dropWhile</p>
+<p class="bg-primary">_.fill(array, value, [start=0], [end=array.length]), 填充数组内容，这个方法会是直接在原数组上操作的</p>
+<pre>
+	_.fill([1, 2, 3], 0);
+		// → [0, 0, 0]
+	var array = [1, 2, 3];
+
+	_.fill(array, 'a');
+	console.log(array);
+	// → ['a', 'a', 'a']
+
+	_.fill(Array(3), 2);
+	// → [2, 2, 2]
+
+	_.fill([4, 6, 8], '*', 1, 2);
+	// → [4, '*', 8]
+</pre>
+<p class="bg-primary">_.findIndex(array, [predicate=_.identity], [thisArg]), 查找符合条件对象第一次出现的索引</p>
+<pre>
+	var users = [
+	  { 'user': 'barney',  'active': false },
+	  { 'user': 'fred',    'active': false },
+	  { 'user': 'pebbles', 'active': true }
+	];
+
+	_.findIndex(users, function(chr) {
+	  return chr.user == 'barney';
+	});
+	// → 0
+
+	// using the `_.matches` callback shorthand
+	_.findIndex(users, { 'user': 'fred', 'active': false });
+	// → 1
+
+	// using the `_.matchesProperty` callback shorthand
+	_.findIndex(users, 'active', false);
+	// → 0
+
+	// using the `_.property` callback shorthand
+	_.findIndex(users, 'active');
+	// → 2
+</pre>
+<p class="bg-primary">_.findLastIndex(array, [predicate=_.identity], [thisArg]), 从后面往前查找符合条件对象第一次出现的索引</p>
+
+<p class="bg-primary">_.first(arr): 返回数组中第一个元素(感觉就是 arr[0]嘛。。)</p>
+<p class="bg-primary">_.flatten(arr, [isDeep]): 扁平化的输出数组，isDepp代表是否扁平化嵌套的对象</p>
+<pre>
+	_.flatten([1, [2, 3, [4]]]);
+	// → [1, 2, 3, [4]]
+
+	// using `isDeep`
+	_.flatten([1, [2, 3, [4]]], true);
+	// → [1, 2, 3, 4]
+</pre>
+<p class="bg-primary">_.flattenDeep(arr): 扁平化的输出数组包括嵌套的对象，等价于_.flatten(arr, true)</p>
+<p class="bg-primary">_.indexOf(array, value, [fromIndex=0]): 查找元素第一次出现的位置</p>
+<p class="bg-primary">_.initial(array): 取数组的所有元素除去最后一个元素</p>
+<p class="bg-primary">_.intersection([arrays]): 取数组间的并集元素</p>
+<pre>
+	_.intersection([1, 2], [4, 2], [2, 1]);
+	// → [2]
+</pre>
+<p class="bg-primary">_.last(arr): 返回数组中最后一个元素(感觉就是 arr[arr.length-1]嘛。。)</p>
+<p class="bg-primary">_.lastIndexOf(array, value, [fromIndex=array.length-1]): 参考indexOf</p>
+<p class="bg-primary">_.pull(array, values..): 从数组中去除指定的值</p>
+<pre>
+	_.pull([1, 2, 3, 3], 3);
+	// → [1, 2]
+	_.pull([1, 2, 3, 3], 2, 3);
+	// → [1]
+</pre>
+<p class="bg-primary">_.pullAt(array, values..): 从数组中去除指定索引的值,并返回移除值的集合</p>
+<pre>
+	var array = [5, 10, 15, 20];
+	var evens = _.pullAt(array, 1, 3);
+
+	console.log(array);
+	// → [5, 15]
+
+	console.log(evens);
+	// → [10, 20]
+</pre>
+<p class="bg-primary">_.remove(array, [predicate=_.identity], [thisArg]): 从数组中去除指元素,并返回移除元素的集合</p>
+<pre>
+	var array = [1, 2, 3, 4];
+	var evens = _.remove(array, function(n) {
+	  return n % 2 == 0;
+	});
+
+	console.log(array);
+	// → [1, 3]
+
+	console.log(evens);
+	// → [2, 4]
+</pre>
+<p class="bg-primary">_.union([arrays]): 得到数组并集并去重</p>
+<pre>
+	_.union([1, 2], [4, 2], [2, 1]);
+	// → [1, 2, 4]
+</pre>
+<p class="bg-primary">_.uniq(array, [isSorted], [iteratee], [thisArg]): 去重</p>
+<pre>
+	_.uniq([2, 1, 2]);
+	// → [2, 1]
+
+	// using `isSorted`
+	_.uniq([1, 1, 2], true);
+	// → [1, 2]
+
+	// using an iteratee function
+	_.uniq([1, 2.5, 1.5, 2], function(n) {
+	  return this.floor(n);
+	}, Math);
+	// → [1, 2.5]
+
+	// using the `_.property` callback shorthand
+	_.uniq([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
+	// → [{ 'x': 1 }, { 'x': 2 }]
+</pre>
+<p class="bg-primary">_.zip([arrays]): 将多个数组的值分别按索引对应成一个新的数组，</p>
+<pre>
+	_.zip(['fred', 'barney'], [30, 40], [true, false]);
+	// → [['fred', 30, true], ['barney', 40, false]]
+</pre>
+<p class="bg-primary">_.unzip([arrays]): 相反操作</p>
+<p class="bg-primary">_.without(array, values...): 取得指定值之外的元素</p>
+<pre>
+	_.without([1, 2, 1, 3], 1, 2);
+	// → [3]
+</pre>
+<p class="bg-primary">_.xor([arrays]): 对称删除重复值</p>
+<pre>
+	_.xor([1, 2], [4, 2]);
+	// → [1, 4]
+</pre>
+<script src="http://cdn.bootcss.com/lodash.js/3.10.1/lodash.js"></script>
+<script src="index.js"></script>
+<script>
+</script>
+</body>
+</html>
