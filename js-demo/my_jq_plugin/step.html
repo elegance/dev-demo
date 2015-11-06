@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+	<!--
+	//step-block #787878
+	// done #4bc86a
+	// now #5ac5ff
+	-->
+<style>
+	*, button {
+  		font-family: arial,"Microsoft YaHei";	//默认字体
+		margin: 0;
+		padding:0;
+	}
+	.step {
+		border: 1px solid green;
+		position: relative;
+		height:100px;
+	}
+	.step::before {
+		position: absolute;
+		left:3px;
+		top:3px;
+		width:480px;
+		height:2px;
+	}
+	.step .step-block {
+		display: inline-block;
+	}
+	.step .step-block::before {
+		//划线
+		display:block;
+		position: absolute;
+		top:15px;
+		left:3px;
+		height:2px;
+		content: "";
+	}
+	.step .step-block::after {
+		//画圆
+	}
+	.step .done.step-block::before {
+		background-color: #4bc86a;
+		width:300px;
+	}
+</style>
+</head>
+<body>
+<div>
+<div class="step">
+	<span class="step-block step1  done">填写信息</span>
+	<span class="step-block step2 now ">激活邮箱</span>
+	<span class="step-block step3  ">绑定手机</span>
+    <span class="step-block step4  ">身份认证</span>
+	<span class="step-block step5 "></span>
+</div></div>
+</body>
+</html>

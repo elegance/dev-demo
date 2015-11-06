@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	body * {
+		font-family: Arial, Helvetica, sans-serif;
+		box-sizing: border-box;
+	}
+	.switch {
+		display: inline-block;
+    	position: relative;
+		width: 73px;
+    	height: 28px;
+		background: #ddd;
+		border-radius: 30px;
+		overflow: hidden;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+	}
+	.switch.off {
+		background: #b2b2b2;
+		box-shadow: 0px 0px 2px #a4a4a4 inset;
+	}
+	.switch.on {
+		background: #75b936;
+		box-shadow: 0 0 2px #579022 inset;
+	}
+	.switch .cursor {
+		display: inline-block;
+		position: absolute;
+		top: 3px;
+		width: 22px;
+		height: 22px;
+		border-radius: 100%;
+		background: #fff;
+		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+		z-index: 10;
+		transition: all .2s linear;
+	}
+	.switch .lable {
+		font-family: "Trebuchet MS", Helvetica, sans-serif;
+		font-size: 12px;
+		letter-spacing: 1px;
+		line-height: 18px;
+		color: #fff;
+		font-weight: bold;
+		position: absolute;
+		width: 33px;
+		top: 5px;
+		overflow: hidden;
+		text-align: center;
+		opacity: 0;
+		transition: all .2s ease-in-out .1s;
+	}
+	.switch .lable_on {
+		left: 10px;
+		opacity: 1;
+	}
+	.switch .lable_off {
+		right: -70px;
+    	z-index: 5
+	}
+	.switch.off .lable_off {
+		right: 10px;
+		opacity: 1;
+	}
+	.switch.off .lable_on {
+		left: -70px;
+	}
+	.switch.on .cursor {
+		left: 48px;
+	}
+	.switch.off .cursor {
+		left: 3px;
+	}
+	</style>
+</head>
+<body style="text-align:center;">
+	<div class="switch on">
+		<span class="cursor"></span>
+		<span class="lable lable_on">是</span>
+		<span class="lable lable_off">否</span>
+	</div>
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.js"></script>
+	<script>
+		$('.switch').on('click', function() {
+			if ($(this).hasClass('off')) {
+				$(this).removeClass('off').addClass('on');
+			} else {
+				$(this).removeClass('on').addClass('off');
+			}
+		});
+	</script>
+</body>
+</html>
