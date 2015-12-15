@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="http://cdn.staticfile.org/knockout/3.2.0/knockout-min.js"></script>
+</head>
+<body>
+<button data-bind="click: addSetItem">Add Another Item</button>
+<table>
+	<thead>
+		<th>Passenger Name</th>
+		<th>Meal</th>
+		<th>Surcharge</th>
+	</thead>
+	<tbody data-bind="foreach:seats">
+		<td data-bind="text: name"></td>
+		<td data-bind="text: meal().name"></td>
+		<td data-bind="text: meal().price"></td>
+	</tbody>
+</table>
+</body>
+<script>
+function Seat(name, initMeal) {
+	var self = this;
+	self.name = name;
+	self.meal = ko.observable(initMeal);
+}
+
+function ReservationsViewModel() {
+	var self = this;
+	
+	self.avalibleMeals = [
+		{name: 'Qing Dao Da Xia', price: 38},
+		{name: 'Qie Gao', price: 100}
+	];
+
+	self.seats = ko.observableArray([
+		new Seat('ORH', self.avalibleMeals[0]),
+		new Seat('Merry', self.avalibleMeals[1])
+	]);
+
+	self.addSetItem = function() {
+		self.seats.push(new Seat('Another Seat', self.avalibleMeals[0]));
+	};
+}
+
+ko.applyBindings(new ReservationsViewModel());
+</script>

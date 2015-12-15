@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap 101 Template</title>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+	  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+<style>
+body {
+  background-color: #f5f5f5;
+}
+#main-content {
+  //max-width: 940px;
+  padding: 10px 20px 0px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+.table th.number,
+.table td.number {
+  text-align: right;
+}
+.table th.trade-buttons,
+.table td.trade-buttons {
+  text-align: center;
+}
+.table tfoot {
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="masthead">
+		<h3 class="muted">期货行情 - 大盘指数: <span class="number">123.12</span></h3>
+	</div>
+</div>
+
+<div id="main-content">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>代码</th>
+				<th>名称</th>
+				<th class="number">最新价</th>
+				<th class="number">涨跌额</th>
+				<th class="number">涨幅(结)</th>
+				<th class="number">昨结算</th>
+				<th class="number">今开</th>
+				<th class="number">最高</th>
+				<th class="number">最低</th>
+				<th class="number">成交量</th>
+				<th class="number">持仓量</th>
+				<th>时间</th>
+				<th width="100" class="trade-buttons">快捷操作</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: rows">
+		<tr>
+			<td data-bind="text: code">合约代码</td>
+			<td data-bind="text: name"></td>
+			<td data-bind="text: price, style: {color: changeNum() < 0 ? 'green' : 'red'}" class="number">当前价格</td>
+			<td class="number" data-bind="text: changeNum, style: {color: changeNum() < 0 ? 'green' : 'red'}">涨跌</td>
+			<td class="number">
+				<span data-bind="text: change, style: {color: changeNum() < 0 ? 'green' : 'red'}"></span>
+				<span data-bind="html: arrow"></span>
+			</td>
+			<td data-bind="text: preSettlePrice" class="number">昨结算</td>
+			<td data-bind="text: open, style: {color: open() < preSettlePrice() ? 'green' : 'red'}" class="number">今开</td>
+			<td data-bind="text: high, style: {color: high() < open() ? 'green' : 'red'}" class="number">最高</td>
+			<td data-bind="text: low, style: {color: low() < open() ? 'green' : 'red'}" class="number">最低</td>
+			<td data-bind="text: volume" class="number">成交量</td>
+			<td data-bind="text: openInterest" class="number">持仓量</td>
+			<td data-bind="text: time">时间</td>
+			<td class="trade-buttons">
+				<button class="btn btn-primary">移除</button>
+			</td>
+		</tr>
+		</tbody>
+	</table
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/knockout/3.3.0/knockout-min.js"></script>
+<script src="http://cdn.bootcss.com/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/socket.io/1.3.7/socket.io.js"></script>
+<script src="js/tzb.js"></script>
+<script src="js/futures-quote.js"></script>
+<script>
+</script>
+</body>
+</html>

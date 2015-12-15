@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="http://cdn.staticfile.org/knockout/3.2.0/knockout-min.js"></script>
+</head>
+<body>
+	<h3>分别改变上面两个文本框的值，对比有无ko.observable下效果<h3>
+	<p>First name: <input data-bind="value: firstName"></input></p>
+	<p>First name: <span data-bind="text: firstName"></span></p>
+	<p>Last name: <input data-bind="value: lastName"></input></p>
+	<p>Last name: <span data-bind="text: lastName"></span></p>	
+
+	<h2>有无ko.observable对ko.computed的影响,computed方法取对象值时队友observable的属性按方法获取，没有此属性的则直接取属性<h2>
+	
+	<p>Full name: <span data-bind="text: fullName"></span></p>	
+</body>
+<script>
+function AppViewModel(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = ko.observable(lastName);	// 分别改变上面两个文本框的值，对比有无ko.observable下效果
+	this.fullName = ko.computed(function() {
+		return this.firstName + ' ' + this.lastName();	//注意到没有firstName是属性，lastName()是方法
+	}, this);
+}
+ko.applyBindings(new AppViewModel('欧', '荣辉'));
+</script>
+</html>
