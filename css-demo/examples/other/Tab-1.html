@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+body{font-size:12px;}
+.notice{
+	width:278px; 
+	height:100px;
+	border:1px solid #EEE;
+}
+.notice .notice-hd {
+	position: relative;
+	background:#F7F7F7;
+	height:28px;
+}
+.notice .notice-hd ul {
+	position: absolute;
+	top:0;
+	left:-1px;
+	width: 281px;
+}
+.notice .notice-hd ul li {
+	float:left;
+	text-align:center;
+	width:68px;
+	height:28px;
+	line-height:28px;
+	padding:0 1px;
+	border-bottom:1px solid #EEE;
+	cursor:pointer;
+}
+.notice .notice-hd ul .select {
+	border-left:1px solid #EEE;
+	border-right:1px solid #EEE;
+	border-bottom-color: #FFF;
+	padding:0;
+	background:#FFF;
+	font-weight:bold;
+}
+.notice .notice-bd .mod {
+	display:none;
+	margin:10px;
+}
+.notice .notice-bd .mod.select {
+	display:block;
+}
+</style>
+</head>
+<body>
+<div style="margin:5px auto; width:800px;">
+	<div class="notice"> 
+		<div class="notice-hd">
+			<ul>
+				<li>股票</li>
+				<li class="">期货</li>
+				<li>现货</li>
+				<li class="select">基金</li>
+			</ul>
+		</div>
+		<div class="notice-bd">
+			<div class="mod">股票内容</div>
+			<div class="mod">期货内容</div>
+			<div class="mod">现货内容</div>
+			<div class="mod select">基金内容</div>
+		</div>
+	</div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(function() {
+	var tabLis = $('.notice .notice-hd li');
+	tabLis.each(function(idx, item) {
+		var $that = $(this);
+		$that.click(function() {
+			$that.addClass('select').siblings('li').removeClass('select');
+			$('.notice .notice-bd .mod').eq(idx).addClass('select').siblings('.mod').removeClass('select');
+		});
+	});
+});
+</script>
+</body>
+</html>

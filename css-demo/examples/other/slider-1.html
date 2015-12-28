@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			a {
+				text-decoration:none;
+			}
+			.slider {
+				width:800px;
+				height:327px;
+				position:relative;
+			}
+			.slider img {
+				width:100%;
+				height:100%;
+			}
+			.slider .slider-btn {
+				position:absolute;
+				left:10px;
+				bottom:10px;
+			}
+			.slider .slider-btn a {
+				background:#444;
+				display:inline-block;
+				width:22px;
+				height:22px;
+				border-radius:50%;
+				text-align:center;
+				color:#FFF;
+			}
+			.slider .slider-btn a.active {
+				background:#f70;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="slider">
+			<img id="adSlide0" src="http://pwg2.gtimg.cn/wanggou/855006089/855006089_929765bc9f5937b7fd48d142163b9e0_5279b0b7.jpg/0" style="display: block;" />
+			<img id="adSlide1" src="http://pwg3.gtimg.cn/wanggou/855006089/855006089_5736bb3c1dc2d0deb496eb09ef97936_5278408c.jpg/0" style="display: none;" />
+			<img id="adSlide2" src="http://pwg3.gtimg.cn/wanggou/855006089/855006089_5736bb3c1dc2d0deb496eb09ef97936_5278408c.jpg/0" style="display: none;" />
+			<img id="adSlide3" src="http://pwg2.gtimg.cn/wanggou/855006089/855006089_d73d806b4af48d763cfd21a8f78caa6_527a2461.jpg/0" style="display: none;" />
+			<img id="adSlide4" src="http://pwg1.gtimg.cn/wanggou/855006089/855006089_77916ca7de4299df3119ea3fbef6100_52770422.jpg/0" style="display: none;" />
+			<img id="adSlide5" src="http://pwg2.gtimg.cn/wanggou/855006089/855006089_a16621bc89e69e93e3e308628c7c08c_5279ad5c.jpg/0" style="display: none;" />
+			<img id="adSlide6" src="http://pwg0.gtimg.cn/wanggou/855006089/855006089_2bfe385a1b472cc3dbd991a9f54c447_5279df39.jpg/0" style="display: none;" />
+			<img id="adSlide7" src="http://pwg3.gtimg.cn/wanggou/855006089/855006089_327e8b595b6c904183c89e7b1465290_52765808.jpg/0" style="display: none;" />
+			<div id="btn" class="slider-btn">
+				<a href="javascript:" class="active" data-rel="adSlide0">1</a>
+				<a href="javascript:" data-rel="adSlide1">2</a>
+				<a href="javascript:" data-rel="adSlide2">3</a>
+				<a href="javascript:" data-rel="adSlide3">4</a>
+				<a href="javascript:" data-rel="adSlide4">5</a>
+				<a href="javascript:" data-rel="adSlide5">6</a>
+				<a href="javascript:" data-rel="adSlide6">7</a>
+				<a href="javascript:" data-rel="adSlide7">8</a>
+			</div>
+			<a href="javascript:" class="prev" data-type="prev"></a>
+			<a href="javascript:" class="next" data-type="next"></a>
+		</div>
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+		$(function() {
+			$('.slider .slider-btn a').on('click', function() {
+				changeSlider($(this));
+			});
+
+			// 传入a标签来切换图片
+			function changeSlider($a) {
+				var $imgId = $('#' + $a.attr('data-rel'));
+
+				$a.addClass('active').siblings('a').removeClass('active');
+				$imgId.show().siblings('img').hide();
+			}
+
+			var aArrays = $('.slider .slider-btn a');
+			window.setInterval(function() {
+				var cur = $('.slider .slider-btn a.active').text(),
+					len = aArrays.length;
+				console.log(cur);
+				console.log(len);
+				if (cur >= len) {
+					cur = 0;
+				}
+				changeSlider($('.slider .slider-btn a').eq(cur));
+			}, 2000);
+		});
+		</script>
+	</body>
+</html>
