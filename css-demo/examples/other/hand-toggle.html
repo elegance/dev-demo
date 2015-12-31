@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>纯正手风琴</title>
+	<style>
+		body {font-size:12px;}
+		* {padding: 0;}
+		ul ol {list-style:none;}
+		a {text-decoration:none;}
+
+
+		/***/
+		.hand-toggle {width: 200px;}
+		.hand-list {border: 1px solid #ccc; border-top:0;}
+		.hand-list:first-child {border-top:1px solid #ccc;}
+		.hand-hd {display:block; border-bottom: 1px solid #ddd; border-top:1px solid #fff; background:#eee; font-weight:bold; color:#333; padding:5px 10px;}
+		.hand-bd {padding:10px; color:#666;}
+	</style>
+</head>
+<body>
+<div id="toggle1">
+	<h1>只可展开一个子项的手风琴</h1>
+	<ul class="hand-toggle">
+		<li class="hand-list">
+			<a class="hand-hd" href="#">手风琴效果</a>
+			<div class="hand-bd">典型的手风琴效果的UI就是当前这个效果。</div>
+		</li>
+		<li class="hand-list">
+			<a class="hand-hd" href="#">有一些变体</a>
+			<div class="hand-bd" style="display:none;">手风琴效果还有一些变体。模样虽不像，本质一致。</div>
+		</li>
+		<li class="hand-list">
+			<a class="hand-hd" href="#">甚至这个</a>
+			<div class="hand-bd" style="display:none;">更多展开与收起效果也算，因此，会在下面展示。</div>
+		</li>
+	</ul>
+</div>
+<div id="toggle2">
+	<h1>可展开多个子项的手风琴</h1>
+	<ul class="hand-toggle">
+		<li class="hand-list">
+			<a class="hand-hd" href="#">手风琴效果</a>
+			<div class="hand-bd">典型的手风琴效果的UI就是当前这个效果。</div>
+		</li>
+		<li class="hand-list">
+			<a class="hand-hd" href="#">有一些变体</a>
+			<div class="hand-bd" style="display:none;">手风琴效果还有一些变体。模样虽不像，本质一致。</div>
+		</li>
+		<li class="hand-list">
+			<a class="hand-hd" href="#">甚至这个</a>
+			<div class="hand-bd" style="display:none;">更多展开与收起效果也算，因此，会在下面展示。</div>
+		</li>
+	</ul>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script>
+$(function() {
+	$('#toggle1 .hand-toggle .hand-list .hand-hd').on('click', function() {
+		var $that = $(this),
+			$handBd = $that.next('.hand-bd'),
+			$parentLi = $that.parent();
+
+		if ($handBd.filter(':visible').length > 0) {
+			console.log('已经显示。。')
+		} else {
+			$handBd.slideDown('fast');
+		}
+		$parentLi.siblings().find('.hand-bd').slideUp('fast');
+	})
+
+	$('#toggle2 .hand-toggle .hand-list .hand-hd').on('click', function() {
+		var $that = $(this),
+			$handBd = $that.next('.hand-bd');
+		$handBd.slideToggle('fast');
+	})
+});
+</script>
+</body>
+</html>
