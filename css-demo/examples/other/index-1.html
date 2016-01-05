@@ -4,39 +4,27 @@
 <meta charset="UTF-8">
 <title>首页布局</title>
 <link rel="stylesheet" type="text/css" href="css/base.css">
+<link href="http://cdn.bootcss.com/flexslider/2.6.0/flexslider.min.css" rel="stylesheet">
 <style>
 ul,ol {list-style:none;}
-.top-head {
-    background:#494949;
-    color:#fff;
-}
-.head-title {
-    width:85%;
-    margin:0 auto;
-    padding:13px;       
-    font-size:13px;
-}
-.main-head {
-    width:85%;
-    margin:0 auto;
-    overflow:hidden;
-}
-.logo {
-    padding: 22px 0;
-    float:left;
-}
-.menu {padding:13px; float:left;}
+.top-head { background:#494949; color:#fff; }
+.head-title { width:75%; margin:0 auto; padding:13px;       font-size:13px; }
+.main-head { width:75%; margin:0 auto; overflow:hidden; }
+.logo { padding: 22px 0; float:left; }
+.menu {padding:13px; float:left; margin-left:100px;}
 .menu ul {overflow:hidden; text-align:right;}
 .menu ul li {float:left;}
-.menu ul li a{display:block; margin:10px;}
-.bootom-footer{
-    background:#494949;
-    color:#fff;
-}
-.copyright {
-    width:85%;
-    text-align:center;
-}
+.menu ul li a{display:block; margin:10px; font-size:16px; font-weight:bold; color:#333; padding:5px;}
+.menu ul li a.active, .menu ul li a:hover {border-bottom:2px solid #F3981D; color:#F3981D;}
+
+#slider {overflow:hidden; height:400px;}
+#slider .flexslider {border:0px;}
+#slider .flexslider .slides img {height:400px;}
+
+.main-con {width:75%;margin:0 auto; margin-top:67px;}
+
+.bootom-footer{ background:#494949; color:#fff; }
+.copyright { width:75%; text-align:center; margin-top:30px;}
 </style>
 </head>
 <body>
@@ -49,11 +37,11 @@ ul,ol {list-style:none;}
     </div>
     <div class="main-head">
         <div class="logo">
-            <img src="http://www.aresoft.cn/static/logo.png" alt="$cursor$" width="218px" height="55px">
+            <img src="http://www.aresoft.cn/static/logo.png" alt="" width="218px" height="55px">
         </div>
         <div class="menu">
             <ul>
-                <li><a href="#">首页</a></li>
+                <li><a href="#" class="active">首页</a></li>
                 <li><a href="#">关于我们</a></li>
                 <li><a href="#">产品展示</a></li>
                 <li><a href="#">工程案例</a></li>
@@ -66,8 +54,20 @@ ul,ol {list-style:none;}
 </div>
 <!--头部 头部结束-->
 
+<!-- 图片滚动 -->
+<div id="slider">
+	<div class="flexslider"> 
+		  <ul class="slides"> 
+			<li><img src="http://www.helloweba.com/demo/flexslider/images/s1.jpg" /></li> 
+			<li><img src="http://www.helloweba.com/demo/flexslider/images/s2.jpg" /></li> 
+			<li><img src="http://www.helloweba.com/demo/flexslider/images/s3.jpg" /></li> 
+			<li><img src="http://www.helloweba.com/demo/flexslider/images/s4.jpg" /></li> 
+		  </ul> 
+	</div> 
+</div>
+
 <!--内容 开始-->
-<div class="container">
+<div class="main-con">
     <p>内容</p>
     <p>内容</p>
     <p>内容</p>
@@ -107,5 +107,16 @@ ul,ol {list-style:none;}
     </div>
 </div>
 <!--头部 头部结束-->
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+<script src="http://cdn.bootcss.com/flexslider/2.6.0/jquery.flexslider-min.js"> </script>
+<script>
+	$(function() {
+		$('.flexslider').flexslider({
+			useCSS: false,
+			controlNav: false
+		});
+	});
+</script>
 </body>
 </html>
