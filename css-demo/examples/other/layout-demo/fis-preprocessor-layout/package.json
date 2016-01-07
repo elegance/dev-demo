@@ -1,0 +1,54 @@
+{
+  "name": "fis-preprocessor-layout",
+  "version": "0.0.1",
+  "description": "A processor for fis to extends layout template.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vicerwang/fis-preprocessor-layout"
+  },
+  "keywords": [
+    "fis",
+    "processor",
+    "extends",
+    "layout"
+  ],
+  "author": {
+    "name": "vic01724@sina.cn"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vicerwang/fis-preprocessor-layout/issues"
+  },
+  "homepage": "https://github.com/vicerwang/fis-preprocessor-layout",
+  "gitHead": "8d0004080e41ade5382d1e5cba14c407b6c4523b",
+  "_id": "fis-preprocessor-layout@0.0.1",
+  "_shasum": "a2d073ff81bbbe04080670521edea0843410d63b",
+  "_from": "fis-preprocessor-layout@*",
+  "_npmVersion": "2.7.4",
+  "_nodeVersion": "0.12.2",
+  "_npmUser": {
+    "name": "vic.wang",
+    "email": "vic01724@sina.cn"
+  },
+  "dist": {
+    "shasum": "a2d073ff81bbbe04080670521edea0843410d63b",
+    "size": 2830,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/fis-preprocessor-layout/download/fis-preprocessor-layout-0.0.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "vic.wang",
+      "email": "vic01724@sina.cn"
+    }
+  ],
+  "directories": {},
+  "publish_time": 1451999537975,
+  "_cnpm_publish_time": 1451999537975,
+  "_resolved": "https://registry.npm.taobao.org/fis-preprocessor-layout/download/fis-preprocessor-layout-0.0.1.tgz",
+  "readme": "ERROR: No README data found!"
+}
