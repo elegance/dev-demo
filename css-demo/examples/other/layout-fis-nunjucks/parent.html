@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		变量-{{title}}
+		{% block title %}
+		父页面默认标题-title
+		{% endblock %}
+	</title>
+</head>
+<body>
+	<section class="left">
+		{% block left %}{% endblock %}
+	</section>
+
+	<section class="right">
+		{% block right %}{% endblock %}
+	</section>
+</body>
+</html>

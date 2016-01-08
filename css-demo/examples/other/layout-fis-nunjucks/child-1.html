@@ -1,0 +1,22 @@
+{% set title = "子页面标题" %}
+
+{% extends "parent.html" %}
+
+{% block left %}
+This is the left side!
+{% endblock %}
+
+
+{% block right %}
+This is the right side!
+{% include "include.html" %}
+(就算是include也需写到 block 里面啊，不然把你防止到到哪？)
+{% endblock %}
+
+<!-- 下面的内容不会输出 -->
+{% include "include.html" %}
+
+<!--
+    @require "parent.html"
+    @require "include.html"
+-->
