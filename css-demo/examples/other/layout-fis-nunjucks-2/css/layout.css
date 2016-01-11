@@ -1,0 +1,18 @@
+.top-head { background:#494949; color:#fff; }
+.head-title { width:75%; margin:0 auto; padding:13px;       font-size:13px; }
+.main-head { width:75%; margin:0 auto; overflow:hidden; }
+.logo { padding: 22px 0; float:left; }
+.menu {padding:13px; float:left; margin-left:100px;}
+.menu ul {overflow:hidden; text-align:right;}
+.menu ul li {float:left;}
+.menu ul li a{display:block; margin:10px; font-size:16px; font-weight:bold; color:#333; padding:5px;}
+.menu ul li a.active, .menu ul li a:hover {border-bottom:2px solid #F3981D; color:#F3981D;}
+
+#slider {overflow:hidden; height:400px;}
+#slider .flexslider {border:0px;}
+#slider .flexslider .slides img {height:400px;}
+
+.main-con {width:75%;margin:0 auto; margin-top:67px;}
+
+.bootom-footer{ background:#494949; color:#fff; }
+.copyright { width:75%; text-align:center; margin-top:30px;}
