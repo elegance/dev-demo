@@ -16,6 +16,10 @@ This is the right side!
 <!-- 下面的内容不会输出 -->
 {% include "include.html" %}
 
+{% block ext %}
+<br/>ext content!!
+{% endblock %}
+
 <!--
     @require "parent.html"
     @require "include.html"
