@@ -9,7 +9,7 @@ fis.match('*.html', {
 	parser: require('./fis-parser-nunjucks')
 });
 
-fis.match('*.html', {
+fis.media('prod').match('*.html', {
 	optimizer: function(content, file, settings) {
 		// 更多配置参考：https://github.com/kangax/html-minifier
 		// 在线UI:http://kangax.github.io/html-minifier/

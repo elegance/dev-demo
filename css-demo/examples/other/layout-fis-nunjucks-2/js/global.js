@@ -40,7 +40,7 @@ $(function() {
 	// 头部菜单高亮
 	Util.urlInfo = Util.parseURL(location.href);
 
-	var $actDom = $('#tp-menu-' + Util.urlInfo.file.slice(0, Util.urlInfo.file.lastIndexOf('.')));
+	var $actDom = $('#tp-menu-' + (Util.urlInfo.file.slice(0, Util.urlInfo.file.lastIndexOf('.')) || 'index'));
 	if ($actDom) {
 		$actDom.addClass('active');
 		$actDom.parent().siblings().find('a.active').removeClass('active');
