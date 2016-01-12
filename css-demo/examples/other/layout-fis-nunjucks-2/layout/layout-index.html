@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>{{ title }}</title>
+	<title>王牌灯饰-{{ title }}</title>
 	<link rel="stylesheet" type="text/css" href="/css/base.css">
 	<link rel="stylesheet" type="text/css" href="/css/layout.css">
 	{% block head %}
@@ -35,15 +35,18 @@
 </div>
 <!--头部 头部结束-->
 
-<!--内容 开始-->
-{% block maincon %} 
+{% block top_con %}
 {% endblock %}
-<!--内容 结束-->
+
+<div class="container main-con">
+{% block main_con %} 
+{% endblock %}
+</div>
 
 <!--头部 开始-->
 <div class="bootom-footer">
 
-    <div class="copyright">
+    <div class="container copyright">
         上海量宽投资宝科技<br>
         Copyright @ 2011 Powered by www.tzb360.com   沪ICP备13025079号<br>
     </div>
