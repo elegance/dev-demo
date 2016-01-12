@@ -4,6 +4,7 @@
   "description": "前端编译模板-layout、include支持",
   "main": "fis-conf.js",
   "dependencies": {
+    "html-minifier": "^1.1.1",
     "nunjucks": "^2.3.0"
   },
   "devDependencies": {},

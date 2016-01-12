@@ -41,7 +41,6 @@ $(function() {
 	Util.urlInfo = Util.parseURL(location.href);
 
 	var $actDom = $('#tp-menu-' + Util.urlInfo.file.slice(0, Util.urlInfo.file.lastIndexOf('.')));
-	console.info($actDom);
 	if ($actDom) {
 		$actDom.addClass('active');
 		$actDom.parent().siblings().find('a.active').removeClass('active');
