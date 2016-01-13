@@ -2,6 +2,25 @@
 
 {% extends "layout/layout-index.html" %}
 
+{% block head %}
+<style>
+    .left-pro-nav {float:left; width:205px;}
+    .main-pro {float:left; border:1px solid #494; height:100%;}
+</style>
+{% endblock %}
+
 {% block main_con %}
-产品列表
+<div class="left-pro-nav ovh">
+    <div class="pro-nav-bar">
+        <h4 class="pro-nav-hd">产品分类</h4>
+        <ul class="pro-ul">
+            <li>全部</li>
+            <li>全部</li>
+            <li>全部</li>
+            <li>全部</li>
+        </ul>
+    </div>
+</div>
+<div class="main-pro"></div>
+<div style="clear:both;"></div>
 {% endblock %}
