@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ客服</title>
+	<style type="text/css">
+		body{ font: 12px/180% Arial, Helvetica, sans-serif, "新宋体"; color: #333333; }
+		a {text-decoration:none;}
+		.im-main {position:fixed; right:10px; top:300px; z-index:100;}
+
+		.im-open {position:relative;cursor:pointer;background:#F86539;width:30px; text-align:center; margin-left:70px; padding:10px; line-height:28px; font-size:20px;font-weight:bold; color:#fff;border-radius:5%; }
+		.im-open>i{font-size:16px;}
+
+		@font-face {
+			  font-family: 'iconfont';
+			  src: url('http://at.alicdn.com/t/font_1452764216_5802238.eot'); /* IE9*/
+			  src: url('http://at.alicdn.com/t/font_1452764216_5802238.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+			  url('http://at.alicdn.com/t/font_1452764216_5802238.woff') format('woff'), /* chrome、firefox */
+			  url('http://at.alicdn.com/t/font_1452764216_5802238.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+			  url('http://at.alicdn.com/t/font_1452764216_5802238.svg#iconfont') format('svg'); /* iOS 4.1- */
+		}
+
+		.iconfont{
+			font-family:"iconfont" !important;
+			font-size:16px;font-style:normal;
+			-webkit-font-smoothing: antialiased;
+			-webkit-text-stroke-width: 0.2px;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		.im-con {background:#F9FAFB; border-radius:10px; border:1px solid #ddd; padding:10px; padding-top:20px;}
+		.im-con>i {position:absolute; right:5px; top:0; color:#ddd; font-size:21px;cursor:pointer;}
+		.im-con>i:hover{color:#ea8010;}
+
+		.qq-container {border-bottom:1px dashed #ddd;}
+		.im-con .qq-a {display:block;}
+		.im-tel {border-bottom:1px dashed #ddd; padding: 10px 0;}
+		.im-tel div {font-size:12px; font-weight:bold;}
+		.tel-num {font-weight:bold; color:#e66d15;}
+
+	</style>
+</head>
+<body>
+	<div class="im-main op">
+		<div class="im-open" style="display:none;">
+			在线咨询
+			<i class="iconfont">&#xe606;</i>
+		</div>
+		<div class="im-con">
+			<i class="iconfont">&#xe607;</i>
+			<div class="qq-container">
+				<a href="#" class="qq-a">
+					<img class="img-qq" src="http://demo.lanrenzhijia.com/2015/service0119/images/qq.png">
+					<div>QQ在线咨询</div>
+				</a>
+			</div>
+			<div class="im-tel">
+				<div>售前咨询热线</div>
+				<div class="tel-num">400-123-123</div>
+				<div>售后咨询热线</div>
+				<div class="tel-num">400-123-456</div>
+			</div>
+			<div style="margin-top:5px;">
+				<span style="position:relative;">
+					<i class="iconfont" style="font-size:27px;color:#737373;">&#xe608;</i>&nbsp;&nbsp;&nbsp;
+					<div class="wx-container" style="position:absolute;top:6px;right:70px; width:100px; height:100px;border:1px solid #ddd; border-radius:7px;">
+						<img width="100px" height="100px" src="http://demo.lanrenzhijia.com/2015/service0119/images/weixing-ma.jpg">
+					</div>
+				</span>
+				<i class="iconfont" style="font-size:27px;color:#737373;">&#xe609;</i>
+			</div>
+		</div>
+	</div>
+
+	<script src="http://cdn.bootcss.com/jquery/1.12.0/jquery.js"></script>
+	<script>
+	</script>
+</body>
+</html>
