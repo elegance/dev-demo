@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body { font: 12px/150% Arial,Verdana,"\5b8b\4f53"; color: #666; background: #fff; }
+		a {text-decoration:none; color:#666;}
+		.page .p-num a, .page .p-num b{float:left;line-height:36px; padding:0 14px; margin-right:5px;}
+		.page .p-num a {color:#333; background:#f7f7f7; border:1px solid #ddd;}
+		.page .p-num a:hover {box-shadow: 0 1px 1px rgba(0,1,1,.08);}
+		.page .p-num a.curr {border-color:#fff; cursor:default; color:#e4393c; background:#fff;}
+		.page .p-num a.curr:hover {box-shadow:none;}
+
+		.page .p-num b {color:#ccc;}
+		.page .p-num a.disabled {background:#fff; cursor:default; color:#ccc;}
+
+		.page .p-info {display:inline-block; line-height:36px; margin-left:20px;}
+		.page .p-info .input-txt { width: 30px; height: 32px; margin:0 3px; text-align: center; }
+		.page .btn {display:inline-block; height:36px; border:1px solid #ddd;border-radius:2px; margin-left:10px; background:#f7f7f7; text-align:center;color:#666; padding:0 12px;}
+	</style>
+</head>
+<body>
+<div class="page">
+	<div class="p-wrap">
+		<span class="p-num">
+			<a class="pn-prev disabled" href="#">&lsaquo;上一页</a>
+			<a href="#" class="curr">1</a>
+			<a href="#">2</a>
+			<a href="#">3</a>
+			<b class="pn-break">...</b>
+			<a href="#">8</a>
+			<a class="pn-next" href="#">下一页<i style="font-size:20px">&rsaquo;</i></a>
+		</span>
+		<span class="p-info">
+			共<b>8</b>页&nbsp;&nbsp;到 <input type="text" class="input-txt"/>页<a class="btn" href="#">GO</a>
+		</span>
+	</div>
+</div>
+</body>
+</html>
