@@ -37,12 +37,15 @@ $(function() {
 		};
 	};
 
-	// 头部菜单高亮
+	// 存储url信息
 	Util.urlInfo = Util.parseURL(location.href);
 
+	// 头部菜单高亮，根据文件名显示，如果存在同一个文件名的情况可以扩展增加url参数来active菜单
 	var $actDom = $('#tp-menu-' + (Util.urlInfo.file.slice(0, Util.urlInfo.file.lastIndexOf('.')) || 'index'));
 	if ($actDom) {
 		$actDom.addClass('active');
 		$actDom.parent().siblings().find('a.active').removeClass('active');
 	}
+
+	// 在线咨询的绑定
 });
