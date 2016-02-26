@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义过滤器</title>
+</head>
+<body ng-app="myApp">
+
+	<div ng-controller="firstCtrl">
+		<h3 ng-cloak>{{name | rHello}}</h3>
+		<h3>{{name | rHello:3}}</h3>
+		<h3>{{name | rHello:3:5}}</h3>
+		<hr>
+		<h3 ng-cloak>{{name2 | rJs}}</h3>
+		<h3>{{name2 | rJs:3}}</h3>
+		<h3>{{name2 | rJs:3:5}}</h3>
+	</div>
+	
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="7.2.filter.js"></script>
+	<script>
+		var myApp = angular.module('myApp', ['myApp.filter']);
+
+		myApp.controller('firstCtrl', ['$scope', function($scope) {
+			$scope.name = 'Hello Angularjs';
+			$scope.name2 = 'Hello js';
+		}]);
+
+		myApp.filter('rHello', function() {
+			return function(input, n1, n2) {
+				console.log(input);
+				input = (n1 ? input + '-' + n1 : input);
+				input = (n2 ? input + '-' + n2 : input);
+
+				return input.replace(/hello/i, '您好');
+			};
+		});
+	</script>
+</body>
+</html>

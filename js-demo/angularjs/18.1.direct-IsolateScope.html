@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>独立作用域</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app="myApp">
+	<h1>公共scope，互相影响</h1>
+	<hello></hello>
+	<hello></hello>
+	<hello></hello>
+	<hello></hello>
+
+	<h1>独立scope, 互不影响</h1>
+	<hello2></hello2>
+	<hello2></hello2>
+	<hello2></hello2>
+	<hello2></hello2>
+
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="18.1.js"></script>
+</body>
+</html>

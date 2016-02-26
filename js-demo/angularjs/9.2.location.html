@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+	
+		<div id="div1" style="background:red;height:800px"></div>
+		<div id="div2" style="background:blue;height:800px"></div>
+		<div id="div3" style="background:yellow;height:800px"></div>
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		var m1 = angular.module('myApp', []);
+
+		m1.service('service01',['$http', function($http) {
+			this.getData = function() {
+				var url = 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1&callback=JSON_CALLBACK';
+				return $http.jsonp(url);
+			};
+		}]);
+
+		m1.controller('firstCtrl', ['$scope', 'service01', '$location', '$anchorScroll', '$timeout', function($scope, service01, $location, $anchorScroll, $timeout) {
+			$timeout(function() {
+				$location.hash('div3');
+			}, 1000);
+			$timeout(function() {
+				$location.hash('div2');
+			}, 2000);
+			$timeout(function() {
+				$location.hash('div1');
+			}, 3000);
+			//console.log('location:' + $location.absUrl());
+			//$location.hash('hello');
+			//$location.path('/new');
+
+			//service01.getData().success(function(data) {
+			//	console.log(data);
+			//}).error(function(e) {
+			//	console.error('err:' + e);
+			//});
+		}]);
+	</script>
+</body>
+</html>

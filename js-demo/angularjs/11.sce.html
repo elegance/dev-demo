@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="mainCtrl">
+		<h1 ng-bind-html="title"></h1>
+		<div ng-bind-html="content">
+		</div>
+	</div>
+	
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		angular.module('myApp', [])
+			.controller('mainCtrl', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
+				var url = 'http://www.phonegap100.com/appapi.php?a=getPortalArticle&aid=338&callback=JSON_CALLBACK';
+
+				$http.jsonp(url).success(function(data) {
+					$scope.title = data.result[0].title;
+					$scope.content = $sce.trustAsHtml(data.result[0].content);
+				}).error(function(err) {
+					console.error('err:' + err);
+				});
+			}]);
+	</script>
+</body>
+</html>

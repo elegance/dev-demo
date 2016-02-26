@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="app">
+	<div ng-controller="mainCtrl">
+		{{name}}
+		<h3>{{data.name}}</h3>
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular-resource.min.js"></script>
+	<script>
+		angular.module('app', ['ngResource'])
+			.controller('mainCtrl', ['$scope', '$resource', function($scope, $resource) {
+				var data = $resource('14.2.data.json').get();
+
+				$scope.data = data;
+				$scope.name = '张三';
+			}]);
+	</script>
+</body>
+</html>

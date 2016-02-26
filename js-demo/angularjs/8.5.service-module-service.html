@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+		{{name}}
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+
+		app.provider('providerService01', function() {
+
+			// this.$get 方法来返回函数
+			this.$get = function() {
+				return {
+					msg: 'this is provider providerService01'
+				};
+			};
+		});
+
+		app.factory('factoryService01', function() {
+			// 相对于上面，此处没有this.$get
+			var _name = '';
+
+			return {
+				setName: function(name) {
+					_name = name;
+				},
+				getName: function() {
+					return _name;
+				}
+			};
+		});
+
+		app.service('serviceService01', function() {
+			// 相对于上面，此处没有this.$get
+			var _name = '';
+
+			return {
+				setName: function(name) {
+					_name = name;
+				},
+				getName: function() {
+					return _name;
+				}
+			};
+		});
+
+		app.controller('firstCtrl', ['$scope', 'providerService01', 'factoryService01', 'serviceService01', '$timeout', function($scope, providerService01, factoryService01, serviceService01, $timeout) {
+			factoryService01.setName('张三');
+
+			$scope.name = factoryService01.getName();
+
+			console.log(providerService01);
+
+
+			$timeout(function() {
+				serviceService01.setName('service 李四');
+				$scope.name = serviceService01.getName();
+			}, 2000);
+
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>右侧点击导航</title>
+	<style>
+		#parent div {border: 1px solid #ddd; height:600px; width:500px; margin:20px;}
+		#parent ul {position: fixed; top:30px; right: 200px;}
+		#parent ul li { border: 1px dashed #ddd; cursor: pointer; margin:5px;}
+	</style>
+</head>
+<body ng-app="myApp">
+
+	<div id="parent" ng-controller="mainCtrl">
+		<ul>
+			<li ng-repeat="id in [1,2,3,4,5]" ng-click="changeDiv('div'+id)">{{id}}-------------a</li>
+		</ul>
+		<div ng-repeat="id in [1,2,3,4,5]" ng-attr-id="div{{id}}">
+			{{id}}
+		</div>
+	</div>
+	
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		angular.module('myApp', []).controller('mainCtrl', ['$scope', '$location', '$anchorScroll', function($scope, $location, $anchorScroll) {
+			$scope.changeDiv = function(divId) {
+				console.log(divId);
+				$location.hash(divId);
+			};
+		}]);
+	</script>
+</body>
+</html>

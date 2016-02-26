@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<div ng-app="myApp">
+	<div ng-controller="firstCtrl">
+		<hr>
+			<h3>ng-click</h3>
+		<hr>
+		<div ng-click="run()">点击</div>
+		<hr>
+			<h3>ng-selected</h3>
+		<hr>
+		<input type="checkbox" ng-model="sel"/>
+		<select>
+			<option value="111">111</option>
+			<option value="222" ng-selected="sel">222</option>
+		</select>
+		{{sel}}
+		<hr>
+			<h3>ng-change</h3>
+		<hr>
+		<input type="checkbox" ng-change="change()" ng-model="c">
+		{{c}}
+		<hr>
+			<h3>ng-copy</h3>
+		<hr>
+		<input type="input" ng-copy="ccc='按下键盘复制键的时候触发事件'" >{{ccc}}
+		<hr>
+			<h3>避免出现大括号，导致闪烁：ng-bind, ng-cloak</h3>
+		<hr>
+		<div>普通：{{name}}</div>
+		<div>ng-bind：<span ng-bind="name"></span> </div>
+		<div>ng-cloak：<span ng-cloak>{{name}}</span> </div>
+		<hr>
+			<h3>不解析输出</h3>
+		<hr>
+		<div ng-non-bindable>{{name}}</div>
+	</div>
+</div>
+<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+<script>
+	var app = angular.module('myApp', []);
+
+	app.controller('firstCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+		$rootScope.name = '避免闪烁显示名称';
+
+		$scope.run = function() {
+			console.log('run..');
+			alert('run');
+		};
+
+		$scope.change = function() {
+		
+		};
+	}]);
+</script>
+</body>
+</html>

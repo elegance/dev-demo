@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="app">
+	<div ng-controller="firstCtrl">
+		{{h2}}
+		<div ng-bind-html="h2"></div>
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular-sanitize.min.js"></script>
+	<script>
+		var app = angular.module('app', ['ngSanitize']);	//要引入ngSanitize否则ng-bind-html不会生效
+
+		app.controller('firstCtrl', ['$scope', function($scope) {
+			$scope.h2 = '<h2>h2内容</h2>';
+		}]);
+	</script>
+</body>
+</html>

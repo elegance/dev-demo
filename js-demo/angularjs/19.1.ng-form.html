@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-controller="TestFormCtrl">
+	<form name="myForm" ng-submit="save()">
+		<input type="text" name="userName" ng-model="user.userName" required>
+		<input type="password" name="password" ng-model="user.password" required>
+		<input type="submit" ng-disabled="myForm.$invalid"/>
+	</form>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="19.1.js"></script>
+</body>
+</html>

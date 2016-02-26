@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+		<input type="submit" ng-value="text" ng-disabled="isDisable"/>
+		<input type="text" ng-cloak value="{{text}}" ng-disabled="isDisable" />
+		<input type="checkbox" ng-checked="isDisable"/>
+	</div>
+
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+
+		app.controller('firstCtrl', ['$scope', '$interval', function($scope, $interval) {
+			$scope.isDisable = true;
+
+			var num  = 5;
+			$scope.text = num + '秒';
+
+			var intervalId = $interval(function() {
+				num--;
+				$scope.text = num + '秒';
+
+				if (num == 0) {
+					$interval.cancel(intervalId);
+					$scope.isDisable = false;
+					$scope.text = '可以提交了';
+				}
+			}, 1000);
+		}]);
+	</script>
+</body>
+</html>

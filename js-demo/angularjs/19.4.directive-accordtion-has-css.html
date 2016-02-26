@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body {font-size: 12px;}
+		.accordtion {
+			width:200px;
+		}
+		.accordtion > .item {
+			border: 1px solid #ccc;
+			border-top: 0;
+		}
+		.accordtion > .item:first-child {
+			border-top: 1px solid #ccc;
+		}
+		.accordtion > .item > .title {
+			border-bottom: 1px solid #fff;
+			background: #eee;
+			cursor: pointer;
+			font-weight:bold;
+			color:#333;
+			padding:5px 10px;
+		}
+		.accordtion > .item > .body {
+			padding: 10px;
+			color: #666;
+		}
+	</style>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="mainCtrl">
+		<accordtion>
+			<expander ng-repeat="expander in expanders" title="expander.title" show-me="expander.showMe">
+				{{expander.text}}
+			</expander>
+		</accordtion>
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="19.4.js"></script>
+</body>
+</html>
+

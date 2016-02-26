@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="app">
+{{name}}
+
+<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+<script>
+	var app = angular.module('app', []);
+
+	app.run(['$rootScope', '$timeout', function($rootScope, $timeout) {
+		$rootScope.name = '张三';
+
+		setTimeout(function() {
+			$rootScope.name = '李四';
+		}, 2000); //延时两秒钟，将name改为李四 ，这一步为什么没有效果？
+
+		// 这个时候需要$apply这个方法来处理一下
+
+		setTimeout(function() {
+			$rootScope.$apply(function() {
+				$rootScope.name = '李四-$apply';
+			});
+		}, 3000);
+
+		// 使用$timeout时，就不需要再显示的调用$apply了
+		$timeout(function() {
+			$rootScope.name = '李四-$timeout';
+		}, 4000);
+	}]);
+</script>
+</body>
+</html>

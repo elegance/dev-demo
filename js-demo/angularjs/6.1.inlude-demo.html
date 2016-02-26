@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="app">
+	
+	<div ng-controller="firstCtrl">
+		<div ng-bind="text"></div>
+
+		<div ng-include="url"></div>
+	</div>
+
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		angular.module('app', []).controller('firstCtrl', function($scope) {
+			$scope.text = '本页面内容';
+			$scope.url = '6.2.include.html';
+		});
+	</script>
+</body>
+</html>

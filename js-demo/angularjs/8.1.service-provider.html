@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+		{{name}}
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		// 依赖 $provider模块
+		var app = angular.module('myApp', [], function($provide) {
+
+			//通过provider 的方法
+			$provide.provider('providerService01', function() {
+
+				// this.$get 方法来返回函数
+				this.$get = function() {
+					return {
+						msg: 'this is provider providerService01'
+					};
+				};
+			});
+		});
+		console.log(app);
+
+		app.controller('firstCtrl', ['$scope', 'providerService01', function($scope, providerService01) {
+			$scope.name = 'Hello name！';
+			console.log(providerService01);
+		}]);
+	</script>
+</body>
+</html>

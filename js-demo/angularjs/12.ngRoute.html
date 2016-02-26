@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div class="header" ng-controller="mainCtrl">
+		<a ng-click="$location.path('div1')">这是div01</a>
+		<a ng-click="$location.path('div2')">这是div02</a>
+		<a href="#div3">这是div03</a>
+		<a href="#content/1234">这是内容12</a>
+	</div>
+	<div ng-view>
+	
+	</div>
+	
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular-route.min.js"></script>
+	<script>
+		// 第一：引入angular-route.js
+		// 第二：添加 ngRoute 依赖
+		var app = angular.module('myApp', ['ngRoute']);
+
+		// 第三：通过config 方法使用$routeProvider配置路由
+		app.config(['$routeProvider', function($routeProvider) {
+			$routeProvider
+			.when('/div1', {
+				templateUrl: '12.ngRoute-template1.html',
+				controller: 'div1Ctrl'
+			})
+			.when('/div2', {
+				template: '<p>这是div2 内容,{{text}}</p>',
+				controller: 'div2Ctrl'
+			})
+			.when('/div3', {
+				template: '<p>这是div3 内容,{{text}}</p>',
+				controller: 'div3Ctrl'
+			})
+			.when('/content/:id', {
+				template: '内容{{text}}',
+				controller: 'div4Ctrl'
+			})
+			.otherwise({
+				redirectTo: '/div1'
+			});
+		}]);
+
+		app.controller('div1Ctrl', ['$scope' , function($scope) {
+			$scope.text = '[text div1]';
+		}]);
+		app.controller('div2Ctrl', ['$scope' , function($scope) {
+			$scope.text = '[text div2]';
+		}]);
+		app.controller('div3Ctrl', ['$scope' , function($scope) {
+			$scope.text = '[text div3]';
+		}]);
+		app.controller('div4Ctrl', ['$scope' ,'$routeParams', function($scope, $routeParams) {
+			$scope.text = $routeParams.id;
+		}]);
+
+		app.controller('mainCtrl', ['$scope', '$location', function($scope, $location) {
+			$scope.$location = $location;
+		}]);
+	</script>
+</body>
+</html>

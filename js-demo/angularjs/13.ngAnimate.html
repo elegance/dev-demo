@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.box {width:200px; height:200px; background:red;}
+	</style>
+</head>
+<body ng-app="app">
+	<div ng-controller="mainCtrl">
+		<input type="checkbox" ng-model="bBtn">
+		<div ng-if="bBtn" class="box"></div>
+		{{bBtn}}
+	</div>
+
+
+	<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular-animate.min.js"></script>
+	<script>
+		//第一：引入angular-animate 文件
+		//第二：添加依赖
+		var app = angular.module('app', ['ngAnimate']);
+
+		app.controller('mainCtrl', ['$scope', function($scope) {
+			$scope.bBtn = true;
+		}]);
+
+		app.animation('.box', function() {
+			return {
+				enter: function(ele, done) {
+					console.log(ele);
+					console.log(done);
+
+					$(ele).css({width:0, height:0});
+					$(ele).animate({width:200, height:200}, 1000);
+				},
+				leave: function(ele, done) {
+					$(ele).animate({width:0, height:0}, 1000);
+				}
+			};
+		});
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多Controller中调用指令</title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="MyCtrl1">
+		<loader howToLoad="loadData()">滑动加载数据</loader>
+	</div>
+	<div ng-controller="MyCtrl2">
+		<loader howToLoad="loadData2()">滑动加载数据</loader>
+	</div>
+</body>
+<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+<script src="16.2.js"></script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+	
+	</div>
+	<script src="http://cdn.bootcss.com/angular.js/1.5.0/angular.min.js"></script>
+	<script>
+		var m1 = angular.module('myApp', []);
+
+		m1.service('service01',['$http', function($http) {
+			this.getData = function() {
+				var url = 'http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&page=1&callback=JSON_CALLBACK';
+				return $http.jsonp(url);
+			};
+		}]);
+
+		m1.controller('firstCtrl', ['$scope', 'service01', function($scope, service01) {
+			service01.getData().success(function(data) {
+				console.log(data);
+			}).error(function(e) {
+				console.error('err:' + e);
+			});
+		}]);
+	</script>
+</body>
+</html>
