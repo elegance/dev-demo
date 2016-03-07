@@ -49,6 +49,8 @@
 	例：
 		groupdel test_group1
 5. *gpasswd: 群组管理员功能，待补充*
+6. 系统最近重启时间 `who -b`
+7. 重启记录 `last reboot`
 
 ### 用户管理
 1. useradd [-u UID] [-g初始群组] [-G 次要群组] [-mM] [-c 说明栏] [-d 家目录绝对路径] [-s shell] 使用者账号名
@@ -92,6 +94,8 @@ setfacl [m]:
 
 ### 文件操作 
 1. `scp root@192.168.80.3:/root/lrzsz-0.12.20.tar.gz ./` 从目标机器拷贝文件到本机
+2. `ln -s /path/file /path2/link_file` 创建软链接
+3. `ldd /usr/local/nginx/sbin/nginx` 查看依赖库
 
 
 ### 挂载相关
