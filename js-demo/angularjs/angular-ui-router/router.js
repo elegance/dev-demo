@@ -48,7 +48,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			templateUrl: 'tpls/addusertype.html',
 			controller: function($scope, $state) {
 				$scope.backToPrevious = function() {
-					widonw.history.back();
+					window.history.back();
 				};
 			}
 		})
