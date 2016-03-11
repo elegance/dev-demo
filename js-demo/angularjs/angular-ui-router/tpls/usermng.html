@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="list-group">
+					<a class="list-group-item active" ui-sref="#">用户分类</a>
+					<a class="list-group-item" ui-sref="index.usermng.highendusers">高端用户</a>
+					<a class="list-group-item" ui-sref="index.usermng.normalusers">中端用户</a>
+					<a class="list-group-item" ui-sref="index.usermng.lowusers">低端用户</a>
+					<a class="list-group-item" ui-sref="#">黑名单</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-primary" ng-click="addUserType()">新增用户</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div ui-view>
+			<ng-include src="'tpls/usermng-dft.html'"></ng-include>
+		</div>
+	</div>
+</div>

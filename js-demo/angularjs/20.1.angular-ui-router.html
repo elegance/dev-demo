@@ -1,0 +1,61 @@
+<!--
+/*=============================================================================
+#
+# Author: orh - orh@tzb360.com
+#
+# Last modified: 2016-03-09 17:11
+#
+# Filename: 20.1.angular-ui-router.html
+#
+# Description: 
+#
+=============================================================================*/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定策略</title>
+	<link href="http://cdn.bootcss.com/ionic/1.2.4/css/ionic.min.css" rel="stylesheet">
+</head>
+<body ng-app="myApp">
+	<div ng-controller="firstCtrl">
+		{{name}}
+		<h1></h1>
+		<a class="button button-positive" ui-sref="map">map</a>
+		<a class="button button-positive" ui-sref="music">music</a>
+		<a class="button button-positive" ui-sref="class">class</a>
+	</div>
+	<ui-view></ui-view>
+	<ion-nav-view></ion-nav-view>
+
+	<!-- 内联模板--->
+	<script type="text/ng-template" id="class.html">
+		class.html content. 内联
+	</script>
+	
+	<script src="http://cdn.bootcss.com/ionic/1.2.4/js/ionic.bundle.min.js"></script>
+	<script>
+		var app = angular.module('myApp', ['ionic']);
+		
+		app.config(function($stateProvider) {
+			$stateProvider
+				.state('map', {
+					templateUrl: '20.1.map.html'
+				})
+				.state('music', {
+					templateUrl: '20.1.music.html'
+				})
+				.state('class', {
+					templateUrl: 'class.html'
+				});
+		});
+
+		app.controller('firstCtrl', function($scope, $state, $timeout) {
+			$scope.name = 'test index';
+			
+			$state.go('music');
+		});
+	</script>
+</body>
+</html>
