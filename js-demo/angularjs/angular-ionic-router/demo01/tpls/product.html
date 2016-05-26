@@ -1,0 +1,15 @@
+<ion-view>
+	<ion-content>
+		<ion-list>
+			<ion-item ng-repeat="n in _.range(5)" ui-sref="tab.product.prodTab.hold">
+				{{n}}
+			</ion-item>
+		</ion-list>
+		<hr>
+		<ion-list>
+			<ion-item ng-repeat="n in _.range(5)" ui-sref="tab.product.productMain">
+				sub-head处理{{n}}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
