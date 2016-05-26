@@ -1,20 +1,20 @@
 $(function() {
 	var pools = [
 		{
-			code: "IF1511",
-			name: "沪深1511"
-		},
-		{
-			code: "IF1512",
-			name: "沪深1512"
-		},
-		{
-			code: "IF1603",
-			name: "沪深1603"
-		},
-		{
 			code: "IF1606",
 			name: "沪深1606"
+		},
+		{
+			code: "IF1607",
+			name: "沪深1607"
+		},
+		{
+			code: "IF1609",
+			name: "沪深1609"
+		},
+		{
+			code: "IF1612",
+			name: "沪深1612"
 		}
 	];
 
@@ -95,26 +95,25 @@ $(function() {
 		return Tzb.NumberExt.fixed(n, 2, 'round');
 	}
 	function fm(n) {
-		return Tzb.NumberExt.fixed(n / 10000, 2);
+		return Tzb.NumberExt.fixed(n, 2);
 	}
 	
 	var viewModel = new QuotesViewModel();
 	ko.applyBindings(viewModel);
 	viewModel.loadDatas(pools);
 
-	var quotesSocket = io.connect('/futures');
+	var quotesSocket = io.connect('http://120.55.88.227/futures');
 	quotesSocket.on('connect', function() {
 		console.info('Connected');
 		var sendStr = '';
 		$.each(pools, function(idx, item) {
-			sendStr += item.code + '.CF,';
+			sendStr += item.code + '.CFFEX,';
 		});
 		quotesSocket.send(sendStr.slice(0, sendStr.lastIndexOf(',')));
 
 		// 接收行情推送
 		quotesSocket.on('message', function(message) {
-			//console.info('message:' + message);
-			if (message) {
+			if (message && message.indexOf('_code') <0) {
 				var data = $.parseJSON(message),
 					day = data.day.slice(0, 4) + '-' + data.day.slice(4, 6) + '-' + data.day.slice(6, 8),
 					time = Tzb.utils.lpad(data.time, 9), //时间不足9位时，左侧补0，9位：'hhmissSSS'
