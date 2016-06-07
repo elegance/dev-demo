@@ -3,6 +3,7 @@
 vim/.netrwhist
 node_modules
 .svn
+.class
 #################
 ## Eclipse
 #################
