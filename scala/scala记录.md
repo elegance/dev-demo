@@ -343,4 +343,44 @@ foldLeft(z: U)(op: (U, T) => U)
 ```
 List(1, 2, 3).foldLeft(0)(_ + _)
 List(1, 2, 3).foldLeft(1)(_ * _)
+```G
+
+### Range 
+1 to 10 by 2
+(1 to 10).toList
+1 until 10  //开区间
+
+### Stream (Stream is a lazy List)
+具有惰性求值的特点, Stream的连接操作符是：`#::`
 ```
+val s1 = 1 #:: 2 #:: 3 #:: Stream.empty
+val s2 = (1 to 100000000).toStream
+// 取值
+s2.head 
+s2.tail
+```
+### tupel 元组
+可以当做函数的返回类型返回多个字段
+```
+(1, 2)
+1 -> 2
+val t = (1, "john", "Math", 95)
+t._1
+t._2
+t._3
+```
+
+### Map<k,v>
+val p = Map(1 -> "David", 9 -> "eric")
+p(1)
+p(9)
+p.contains(1)
+p.keys
+p.values
+p + (8 -> "John") //新增元素
+p - 8 //移除元素
+p ++ List(2 -> "Alice", 3 -> "Bob") //新增多个元素
+p -- List(1, 2, 9) //减去多个元素
+
+### 快速排序实例
+repl: `:paste` 大块代码编辑， `Ctrl+d` 退出
