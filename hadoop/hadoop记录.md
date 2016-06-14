@@ -220,3 +220,155 @@ info struct<name:string, age:int, sex:string>
 时间数类型
 1. Date: 日期 年月日,不包含时间
 2. Timestamp: 
+
+### Hive数据存储
+1. 基于HDFS
+2. 没有专门的数据存储格式
+3. 存储结构主要包括：数据库、文件、表、视图
+4. 可以直接加载文本文件
+5. 创建表时，指定Hive数据的列分隔符与行分隔符
+
+#### 表
+. Table内部表
+    1. 与数据库中的Table在概念上是类似的
+    2. 每一个Table在Hive中都有一个相对应的目录存储数据
+    3. 所有的Table数据(不包含External Table)都保存在这个目录中
+    4. 删除表时，元数据与数据都会被删除
+    ```
+    create table t1(tid int, tname string, age int);
+
+    create table t2(tid int, tname string, age int)
+    location '/mytable/hive/t2'; --指定位置
+
+    create table t3(tid int, tname string, age int)
+    row format delimited fields terminated by ','; -- 指定行的格式，delimited指定使用逗号作为分隔符
+
+    create table t4
+    as 
+    select * from sample_data; --使用查询语句建立一张表
+
+    create table t5Scott,21
+    row format deliKing,20mited fields terminated by ','
+    as
+    select * from sample_data; --使用查询语句、并指定行中字段的分隔符为逗号来创建表
+    --使用命令查看比对下 t4、t5文件所对应的数据
+    # hdfs dfs -cat /user/hive/warehouse/t4/000000_0
+    # hdfs dfs -cat /user/hive/warehouse/t5/000000_0
+
+    alter table t1 add columns(english int); --给表添加新的列
+    ```
+. Partition 分区表
+    分区条件：比如将性别作为条件，或者年龄、用户ID等
+    ```
+    create table partition_table
+    (sid int, sname string)
+    partitioned by (gender string)
+    row format delimited fields terminated by ',';
+    ```
+. External Table 外部表
+    . 指向已经在HDFS中存在的数据，可以创建Partition
+    . 它和内部表在元数据的组织上是相同的，而实际数据的存储则有较大的差异
+    . 外部表**只有一个过程**，加载数据和创建表同时完成，并不会移动到数据仓库目录中，只是与外部数据建立一个连接
+    当删除一个外部表时，仅删除该链接。
+    --
+    举例如下：
+    ```
+    --1. 建立三个文件：
+    student01.txt：   
+        Tom,23
+        Mary,20
+    student02.txt:
+        Mike,25
+    student03.txt:
+        Scott,21
+        King,20
+
+    --2. 将文件放入HDFS中
+    # hadoop fs -put ~/hive-data/student01.txt input/
+    # hadoop fs -put ~/hive-data/student02.txt input/
+    # hadoop fs -put ~/hive-data/student03.txt input/
+
+    --3. 建表语句
+    hive> create external table extenal_student
+        > (sid int, sname string, age int)
+        > row format delimited fields terminated by ','
+        > location '/input';
+    ```
+. Bucket Table 桶表
+    桶表是对数据进行哈希取值，然后放入到不同文件中存储。
+    ```
+    create table bucket_table
+    (sid int, sname string, age int)
+    clustered by(sname) into 5 buckets;
+    ```
+#### 视图
+    虚表(View) 可以跨越多张表
+    ```
+    create view empinfo
+    as
+    select e.empno, e.name, d.name
+    from emp e, dept d
+    where e.deptno=d.deptno;
+    ```
+
+## Hive 进阶
+
+### 使用Load语句执行数据导入
+- 语法：
+    ```
+    LOAD DATA [LOCAL] INPATH 'filepath' [OVERWRITE]
+    INTO TABLE tableName [PARTITION (partCol1=val1, partCol2=val2 ...)]
+    ```
+- exapmle:
+    ```
+    -- 1. 准备数据文件
+    student01.txt:
+        1,Tom,23
+        2,Mary,20
+    student01.txt:
+        3,Mike,25
+    student01.txt:
+        4,Scott,21
+        5,King,20
+    -- 2. 将student01.txt导入t3
+    hive> load data local '/root/data/student01.txt' into table t3;
+    -- 3. 将/root/data下的所有文件导入t3中，并且覆盖原来的数据
+    hive> load data local inpath '/root/data/' overwrite into table t3;
+    ```
+### 使用Sqoop进行数据的导入
+    Apache Sqoop 工具用于数据导入、导出,下载页：http://www.apache.org/dyn/closer.lua/sqoop/1.4.6
+    安装：解压后配置环境变量`HADOOP_COMMON_HOME`、`HADOOP_MAPRED_HOME`
+    ```
+    export HADOOP_COMMON_HOME=/usr/local/src/hadoop-1.2.1
+    export HADOOP_MAPRED_HOME=/usr/local/src/hadoop-1.2.1
+    ```
+    
+    example 
+        1.使用Sqloop将oracle数据导入到HDFS中
+        ```
+        ./sqoop import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --target-dir '/sqloop/emp'
+        ```
+        `-m`:指定`mapreduce`的进程数
+        2.使用Sqloop将oracle数据导入到Hive中
+        ```
+        ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 
+        ```
+        3.使用Sqloop将oracle数据导入到Hive中，并且指定表名
+        ```
+        ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --hive-table emp1
+        ```
+        4.使用Sqloop将oracle数据导入到Hive中，并且指定where条件
+        ```
+        ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --hive-table emp2 --where 'DEPTNO=10'
+        ```
+        5.使用Sqloop将oracle数据导入到Hive中，并且使用查询语句
+        ```
+        ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger -m 1 --query 'SELECT * FROM EMP WHERE SAL<2000 AND $CONDITIONS' --target-dir '/sqloop/emp5' --hive-table emp5
+        ```
+
+        6.使用Sqloop将Hive数据导入到oracle中
