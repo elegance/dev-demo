@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="redesign " lang="zh-CN" dir="ltr" data-ffo-opensans="true" data-ffo-opensanslight="true">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+<style>
+a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+pre {
+	font-size: 14px;
+	font-size: 1rem;
+	line-height: 19px;
+	border: 0;
+	background: #f4f7f8;
+	color: #4d4e53;
+	padding: 15px;
+	overflow: auto;
+	margin: 0 0 20px;
+	font-family: Consolas,Monaco,"Andale Mono",monospace;
+}
+pre code {
+	font-family: inherit;
+	font-weight: inherit;
+	font-style: normal;
+}
+code[class*=language-], pre[class*=language-] {
+	font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+pre[class*=language-] {
+	padding: 1em;
+	overflow: auto;
+}
+:not(pre) > code[class*=language-], pre[class*=language-] {
+	background: #f5f2f0;
+}
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+:not(pre):not(code) > code[class*=language-], pre.syntaxbox, pre.twopartsyntaxbox, pre[class*=language-] {
+	background: url("blueprint-dark.png") top center #fafbfc;
+	border-left: 5px solid #558abb;
+	color: #4d4e53;
+	font-family: Consolas,Monaco,"Andale Mono",monospace;
+	font-weight: 400;
+	-moz-tab-size: 4;
+	tab-size: 4;
+	-moz-hyphens: none;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+pre[class*=language-] {
+	margin: 0 0 20px;
+}
+code[class*=language-], pre[class*=language-] {
+	color: #4d4e53;
+	text-shadow: none;
+}
+pre span.comment {
+	display: inline;
+}
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
+}
+code[class*=language-] ::selection, code[class*=language-]::selection, pre[class*=language-] ::selection, pre[class*=language-]::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+article, aside, audio, canvas, figcaption, figure, figure img, footer, header, hgroup, main, nav, section, video {
+	display: block;
+}
+article {
+	position: relative;
+}
+.column-6, .column-half, aside {
+	width: 48.5%;
+}
+.column-container > [class^=column-] {
+	margin-right: 3%;
+	float: left;
+	min-height: 1px;
+}
+.column-container-reverse.column-container > [class^=column-] {
+	float: right;
+}
+#wiki-content, #wiki-left, #wiki-right {
+	min-height: 1px;
+}
+.column-container {
+	clear: both;
+}
+.column-container::after {
+	content: " ";
+	clear: both;
+	display: table;
+}
+.clear {
+	clear: both;
+}
+.center {
+	margin: 0 auto;
+	position: relative;
+	max-width: 1400px;
+	padding-left: 24px;
+	padding-right: 24px;
+}
+.wiki-main-content .center {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.wiki-main-content {
+	background: #fff;
+	min-height: 300px;
+}
+main > .center {
+	padding-top: 30px;
+}
+.clear::after {
+	content: " ";
+	clear: both;
+	display: table;
+}
+main {
+	background: #fff;
+	min-height: 200px;
+}
+body {
+	color: #4d4e53;
+	background-image: url("../../img/header-background.4c35c324fbeb.png");
+	background-repeat: repeat;
+	background-position: 0 0,0 0,0 0;
+	background-color: #eaeff2;
+	font-family: "Open Sans",Arial,sans-serif;
+	line-height: 1.5;
+}
+html {
+	background: #fff;
+	font-size: 14px;
+}
+address, caption, cite, code, dfn, th, var {
+	font-style: inherit;
+	font-weight: inherit;
+}
+code {
+	font-family: Consolas,"Liberation Mono",Courier,monospace;
+	word-wrap: break-word;
+}
+pre.line-numbers > code {
+	position: relative;
+}
+.atrule.token, .attr-value.token, .keyword.token {
+	color: #07a;
+}
+.function.token {
+	color: #dd4a68;
+}
+.punctuation.token {
+	color: #999;
+}
+.language-css .string.token, .style .string.token, .entity.token, .operator.token, .url.token {
+	color: #a67f59;
+	background: hsla(0,0%,100%,.5);
+}
+.attr-name.token, .builtin.token, .char.token, .inserted.token, .selector.token, .string.token {
+	color: #690;
+}
+.boolean.token, .constant.token, .deleted.token, .number.token, .property.token, .symbol.token, .tag.token {
+	color: #905;
+}
+span.comment {
+	display: none;
+}
+.cdata.token, .comment.token, .doctype.token, .prolog.token {
+	color: #708090;
+}
+pre[class*=language-] span.comment {
+	display: inherit;
+}
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0px;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em;
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.line-numbers-rows > span::before {
+	content: counter(linenumber);
+	color: #999;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
+}
+</style>
+</head>
+<body class="document  " data-search-url="" contextmenu="edit-history-menu" data-slug="Web/JavaScript/Reference/Functions/Default_parameters">
+    <h1>样式来源地址：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes</h1>
+    <main id="content"><div class="center clear"><div class="wiki-main-content" id="document-main" role="main"><div class="center"><div class="wiki-right-present wiki-left-present" id="wiki-column-container"><div class="column-container column-container-reverse"><div class="column-half wiki-column text-content" id="wiki-content"><article id="wikiArticle"><pre class="brush: js line-numbers  language-js"><code class=" language-js"><span class="token keyword">function</span> <span class="token function">multiply</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  b <span class="token operator">=</span> <span class="token keyword">typeof</span> b <span class="token operator">!==</span> <span class="token string">'undefined'</span> <span class="token operator">?</span>  b <span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> a<span class="token operator">*</span>b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 5</span><span class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></article></div></div></div></div></div></div></main></body>
+</html>
+
