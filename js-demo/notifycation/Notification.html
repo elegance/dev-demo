@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            p { text-align:center; }
+        </style>
+    </head>
+    <body>
+        <p>标题：<input id="title" type="text" name="title" value="测试标题"></p>
+        <p>内容：<input id="content" type="text" name="content" value="测试内容"></p>
+        <p>延时：<input id="delay" type="text" name="delay" value="5">(秒)</p>
+        <p><button id="btnTrigger">go</button></p>
+        
+    </body>
+    <script >
+        document.querySelector('#btnTrigger').onclick = function() {
+            setTimeout(function() {
+                notifyMe(document.querySelector('#title').value, {
+                    body: document.querySelector('#content').value
+                });
+            }, document.querySelector('#delay').value * 1000);
+        };
+
+        function notifyMe(title, opts) {
+
+            if (!('Notification' in window)) {
+                alert('当前浏览器不支持桌面通知！')
+            } else if (Notification.permission === 'granted') {
+                doNotify(title, opts);
+            } else if (Notification.permission === 'denied') {
+                alert('你拒绝了桌面通知的授权，需要重新打开页面，并允许。');
+            } else {
+                Notification.requestPermission().then((permission) => {
+                    if (permission === 'granted') {
+                        doNotify(title, opts);   
+                    } else {
+                        alert('请求授权，被拒绝。');
+                    }
+                });
+            }
+        }
+
+        function doNotify(title, opts) {
+            new Notification(title, opts);
+        }
+    </script>
+</html>
