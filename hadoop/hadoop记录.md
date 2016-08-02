@@ -350,21 +350,25 @@ info struct<name:string, age:int, sex:string>
         --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --target-dir '/sqloop/emp'
         ```
         `-m`:指定`mapreduce`的进程数
+
         2.使用Sqloop将oracle数据导入到Hive中
         ```
         ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
         --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 
         ```
+
         3.使用Sqloop将oracle数据导入到Hive中，并且指定表名
         ```
         ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
         --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --hive-table emp1
         ```
+
         4.使用Sqloop将oracle数据导入到Hive中，并且指定where条件
         ```
         ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
         --password tiger --table emp --columns 'empno,ename,job,sal,deptno' -m 1 --hive-table emp2 --where 'DEPTNO=10'
         ```
+
         5.使用Sqloop将oracle数据导入到Hive中，并且使用查询语句
         ```
         ./sqoop import --hive-import --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
@@ -372,3 +376,64 @@ info struct<name:string, age:int, sex:string>
         ```
 
         6.使用Sqloop将Hive数据导入到oracle中
+        ```
+        ./sqoop export --connect jdbc:oracle:thin:@192.168.2.11:1521:orcl --username scott 
+        --password tiger -m 1 --table MYEMP --export-dir ****
+        ```
+
+### Hive数据查询
+
+#### 函数 `nvl`
+
+数学函数：`round`,`ceil`,`floor`等
+字符函数：`lower`,`upper`,`length`,`concat`,`substr`,`trim`,`lpad`,`rpad`等
+收集函数：返回map中集合的个数，size(map(<key, value>, <key, value>))
+    `select size(map(1,'Tom', 2, 'Marry'))`
+转换函数：cast 转换数据格式
+    `select cast(1 as bigint); select cast('2016-06-15' as date);`
+日期函数：`to_date`,`year`,`month`,`day`,`weekofyear`,`datediff`,`date_add`,`date_sub`
+条件函数：
+    - coalesce: 从左到右返回第一个不为null的值
+    - case.. when... :条件表达式
+聚合函数：`count`,`sum`,`min`,`max`,`avg`
+表生成函数：`explode` 将集合生成行
+    `select explode(map(1, 'Tom', 2, 'Marry', 3, 'Mike'));`
+
+#### Hive的表连接
+. 等值连接
+. 不等值连接
+. 外连接 左外、右外
+. 自连接
+
+#### 简单查询的Ftech Task功能
+. 从Hive0.10.0版本开始支持
+. 三种配置方式
+    . set hive.fetch.task.conversion=more; #在当前hive提示符下 就不会开启mapreduce作业来执行
+    . hive --hiveconf hive.fetch.task.conversion=more #启动hive命令行之前
+    . 修改hive-site.xml文件
+
+#### Hive子查询
+. hive只支持：from和where子句中的子查询
+
+### Hive的java客户端操作
+. 启动Hive远程服务 `# hive --service hiveserver`
+
+####客户端连接方式
+1. JDBC
+2. Thrift Client
+
+### 自定义函数
+1. 创建java类并继承org.apache.hadoop.hive.ql.exec.UDF
+2. 需要实现evaluate函数，evaluate函数支持重载
+3. 将程序打包放置到目标机器
+4. 进入hive客户端，添加jar包
+    `hive> add jar /root/udf-test.jar`
+5. 创建临时函数
+```
+hive> create temporary function <函数名>
+as 'Java类名';
+```
+
+6. `select <函数名> from table;`
+
+7. `hive> drop temporary function <函数名>;`
