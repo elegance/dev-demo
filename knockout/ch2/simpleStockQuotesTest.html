@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>行情测试</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.css" rel="stylesheet">
+    <style>
+        .vconsole {
+            height: 600px;
+        }
+        
+        .vconsole .vc-hd {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        
+        .vconsole .vc-bd {
+            padding: 0 0 30px 0;
+            height: 530px;
+            overflow-y: scroll;
+            border-top: none;
+            display: none;
+        }
+        
+        .vconsole .vc-bd.active {
+            display: block;
+        }
+        
+        .vconsole .vc-bd .vc-item {
+            margin: 0;
+            padding: 6px 8px;
+            overflow: hidden;
+            line-height: 1.3;
+            border-bottom: 1px dashed #eee;
+            word-break: break-word;
+        }
+        
+        .vconsole .vc-bd .vc-item.log-type-recv {
+            color: green;
+        }
+    </style>
+</head>
+
+<body style="padding-top: 15px;">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">行情订阅测试</div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label for="iptConnUrl" class="col-sm-2 control-label">连接地址：</label>
+                        <div class="col-sm-10">
+                             <div class="input-group">
+                                <input type="text" class="form-control" id="iptConnUrl" value="http://120.55.88.227/simpleStocks" placeholder="连接地址，如“http://127.0.0.1/simpleStocks”">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-primary" id="btnConn">连接</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="iptSendMsg" class="col-sm-2 control-label">股票代码：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="iptSendMsg" placeholder="股票代码,多个股票代码使用“,”分隔，如“600361.SH,600362.SH”">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">消息类型：</label>
+                        <div class="col-sm-10">
+                            <label class="radio-inline">
+                                <input type="radio" name="sendType" value="message" checked="checked">message(订阅)
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sendType" value="appendMessage">appendMessage(追加订阅)
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sendType" value="unsubcribe">unsubcribe(退订)
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="sendType" value="unsubcribeAll">unsubcribeAll(退订全部-无需参数)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" class="btn btn-primary disabled" id="btnSend">发送消息</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <!--<hr>-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">消息输出：</label>
+                        <div class="col-sm-10">
+                            <div class="panel panel-default vconsole">
+                                <div class="vc-hd">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#">All</a></li>
+                                        <li role="presentation"><a href="#">message</a></li>
+                                        <li role="presentation"><a href="#">batchMessage</a></li>
+                                    </ul>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="vc-bd active">
+                                    </div>
+                                    <div class="vc-bd">
+                                    </div>
+                                    <div class="vc-bd">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/socket.io/1.4.6/socket.io.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/simpleStockQuotesTest.js"></script>
+</body>
+
+</html>
