@@ -1,0 +1,80 @@
+@import "//at.alicdn.com/t/font_1473665534_3253617.css";
+
+body {
+    margin: 5px;
+}
+
+#vconsole {
+    .vc-hd {
+        $bg-color : #F3F3F3;
+        background-color: $bg-color;
+
+        li {
+            margin: 2px;
+
+            a {
+                background-color: $bg-color;
+                color: #333;
+                padding: 1px 10px;
+                border-radius: 20px;
+
+                &:hover {
+                    color: #FFF;
+                    background-color: #C2C2C2;
+                }
+            }
+
+            &.active a {
+                background-color: #AAAAAA;
+                color: #FFF;
+            }
+        }
+    }
+    .panel-body {
+        padding: 0;
+        height: 500px;
+        overflow-y: scroll;
+
+        .vc-item {
+            $vcItemPdLeft : 21px;          
+            $vcItemMgRight: 5px;
+
+            margin: 0;
+            padding: 2px 8px 2px $vcItemPdLeft;
+            font-size: 12px;
+            line-height: 1.3;
+            background-color: #FFF;
+            border: none;
+            border-bottom: 1px solid #eee;
+            border-radius: 0;
+            word-break: break-word;
+            white-space: pre-wrap;
+
+            i {
+                font-size: 9px;
+                margin-right: $vcItemMgRight;
+                margin-left: -12px;
+            }
+
+            &.vc-item-debug {
+                padding-left: $vcItemPdLeft + $vcItemMgRight;
+                color: blue;
+            }
+
+            &.vc-item-info {
+                color: #008000;
+            }
+
+            &.vc-item-warn {
+                border-color: #FFF5C2;
+                background-color: #FFFBE6;
+            }
+
+            &.vc-item-error {
+                color: #FF0000;
+                border-color: #FFD7D7;
+                background-color: #FFF0F0;
+            }
+        }
+    }
+}
