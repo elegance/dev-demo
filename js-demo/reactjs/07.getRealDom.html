@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取真实DOM节点</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <pre>Notice:
+        1. `onClick`不能为小写
+    </pre>
+    <pre>Skills:
+        1. 获取真实DOM节点: 节点需要设置`ref`属性，获取时使用到`this.refs.[refName]`属性
+        2. React组件支持很多事件，除了`Click`,还有`KeyDown`、`Copy`、`Scroll`等，完整的事件清单请查看<a href="http://facebook.github.io/react/docs/events.html#supported-events">官方文档</a>
+    </pre>
+    <div id="example"></div>   
+    <script type="text/babel">
+        var MyComponent = React.createClass({
+            handleClick: function () {
+                this.refs.myTextInput.focus();
+            },
+            render: function () {
+                return (
+                    <div>
+                        <input type="text" ref="myTextInput"/>
+                        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <MyComponent />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>
