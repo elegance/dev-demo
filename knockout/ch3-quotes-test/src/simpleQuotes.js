@@ -12,7 +12,7 @@
  * @require Tzb.js [NumberExt.fixed]
  */
 (function (global) {
-    var socket = io.connect('http://120.55.88.227/socket.io/simpleStocks');
+    var socket = io.connect('http://120.55.88.227/simpleStocks');
 
     global.simpleQuote = new SimpleQuote();
     socket.on('message', global.simpleQuote.onMessage);
@@ -183,7 +183,7 @@
             var codes = [],
                 tmpDatas = Array.isArray(data) ? data : [data];
 
-            data.forEach(function (row) {
+            tmpDatas.forEach(function (row) {
                 codes = codes.concat(getCodesFun(row));
             });
 

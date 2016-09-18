@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>普通账户计算一次</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="padding-top: 15px;">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">单次订阅多值计算</div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <!--<div class="form-group">
+                        <label for="iptSendMsg" class="col-sm-2 control-label">股票代码：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="iptSendMsg" placeholder="股票代码,多个股票代码使用“,”分隔，如“600361.SH,600362.SH”">
+                        </div>
+                    </div>-->
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body" id="fundInfo">
+                                    <div class="row">
+                                        <div class="col-md-4">可分配资金:{{assignFunding | currency }}</div>
+                                        <div class="col-md-4">闲置资金：{{avaiCapital | currency }}</div>
+                                        <div class="col-md-4">初始资金：{{initFunding | currency }}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">总市值：{{currmarketcap | currency }}</div>
+                                        <div class="col-md-4">总收益：{{totalprfit | currency }}</div>
+                                        <div class="col-md-4">持仓盈亏：{{beraprfit | currency }}</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/socket.io/1.4.6/socket.io.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="http://cdn.bootcss.com/vue/1.0.26/vue.min.js"></script>
+    <script src="simpleQuotes.js"></script>
+    <script src="normalCalcOnece.js"></script>
+</body>
+</html>
