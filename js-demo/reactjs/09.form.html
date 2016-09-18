@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <pre>Notice:
+        1. 文本框输入的值不能用`this.props.value`来获取，需要通过事件，如`onChange`回调 通过`event.target.value`读取用户输入值。`textarea`、`select`、`radio`都属于这种情况
+          更多介绍请参考<a href="http://facebook.github.io/react/docs/forms.html">官方文档</a>
+    </pre>
+    <pre>Skills:
+        1. `event.target`在事件中可获取Dom
+    </pre>
+    <div id="example"></div>   
+    <script type="text/babel">
+        var Input = React.createClass({
+            render: function () {
+                var text = this.state.value;
+                return (
+                    <div>
+                        <input type="text" value={text} onChange={this.handleChange} />
+                        <p>{text}</p>
+                    </div>
+                );
+            },
+            getInitialState: function () {
+                return {value: 'Hello!'};
+            },
+            handleChange: function (event) {
+                console.log(event.target);
+                this.setState({value: event.target.value});
+            }
+        });
+
+        ReactDOM.render(
+            <Input />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

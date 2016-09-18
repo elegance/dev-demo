@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>   
+    <pre>
+        1. 上面Demo使用了jQuery完成了Ajax请求，是为了便于说明。React本身没有任何依赖，可以使用其它的库来完成Ajax。
+    </pre>
+    <script type="text/babel">
+        var UserGist = React.createClass({
+            getInitialState: function () {
+                return {
+                    username: '',
+                    avatar: ''
+                };
+            },
+            componentDidMount: function () {
+                $.get(this.props.source, (resp) => {
+                    console.log(resp);
+                    var user = resp.results[0];
+                    if (this.isMounted) {
+                        this.setState({
+                            username: user.login.username,
+                            avatar: user.picture.medium
+                        });
+                    }
+                });
+            },
+            render: function () {
+                return (
+                    <div>               
+                        {this.state.username}'s <img src={this.state.avatar}/>
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <UserGist source="https://randomuser.me/api/?results=1"/>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

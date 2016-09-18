@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello React-ReactDOM.render-将模板转为HTML语言，并插入指定的DOM节点</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <h1>Hello, world! Test.</h1>,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

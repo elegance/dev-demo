@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的生命周期</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <pre>Notice:
+        1. 组件的`style`属性的设置方式值得注意，要写成`style={{opacity: this.state.opacity}}`,因为<a href="https://facebook.github.io/react/tips/inline-styles.html">React组件样式</a>,
+         所以第一重大括号表示javascript语法，第二重大括号表示演示对象
+    </pre>
+    <pre>Skills:
+        组件的声明周期分成三个状态：
+            1. Mounting: 已插入真是DOM
+            2. Updating: 正在被重新渲染
+            3. Unmounting: 已移除真实DOM
+
+        React为每个状态提供了两种处理函数，`will`函数在进入状态之前调用，`did`函数在进入状态之后调用，三种状态共计五种处理函数：
+            1. componentWillMount()
+            2. componentDidMount()
+            3. componentWillUpdate(object nextProps, object nextState)
+            4. componentDidUpdate(object prevProps, object prevState)
+            5. componentWillUnmount()
+        
+        此外，React还提供了两种状态处理函数。
+            1. componentWillReceiveProps(object nextProps): 已加载组件收到新的参数时调用
+            2. shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+    </pre>
+    <div id="example"></div>
+    <pre>
+        上面的Demo在`Hello`组件加载后，通过`componentDidMount`方法设置一个定时器，每个100毫秒，就重新设置组件的透明度，从而引发重新渲染。
+    </pre>
+    <script type="text/babel">
+        var Hello = React.createClass({
+            getInitialState: function () {
+                return {
+                    opacity: 1.0
+                };
+            },
+            componentDidMount: function () {
+                this.timer = setInterval(() => {
+                    var opacity = this.state.opacity;
+                    opacity -= .05;
+                    if (opacity < 0.1) {
+                        opacity = 1.0;
+                    }
+                    this.setState({
+                        opacity: opacity
+                    });
+                }, 100);
+            },
+            render: function () {
+                return (
+                    <div style={{opacity: this.state.opacity}}>
+                        Hello {this.props.name}
+                    </div>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <Hello name="world" />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>

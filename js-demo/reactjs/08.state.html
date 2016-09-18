@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <pre>Notice:
+        1. `this.props`和`this.state`都用于描述组件的特性，可能产生混淆，简单的区分方法就是`this.props`一单定义就不能修改,而`this.state`会随着用户互动而产生变化的特性
+    </pre>
+    <pre>Skills:
+        1. 组件通过`getInitialState`方法来设置初始状态对象
+        2. 通过`this.state`属性取值
+        3. `this.setState`来修改状态值，每次修改后会自动调用`this.render`方法
+    </pre>
+    <div id="example"></div>   
+    <script type="text/babel">
+
+    var LinkButton = React.createClass({
+        render: function () {
+            var text = this.state.liked ? 'like' : 'have\'t liked';
+            return (
+                <p onClick={this.handleClick}>
+                    You {text} this. Click to toggle;
+                </p>
+            );
+        },
+        handleClick: function (event) {
+            this.setState({liked: !this.state.liked});
+        },
+        getInitialState: function () {
+            return {liked: false};
+        }
+    });
+
+    ReactDOM.render(
+        <LinkButton />,
+        document.getElementById('example')
+    );
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件（component）</title>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+    <script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+    <pre>Notice: 
+        1. 组件类第一个字母必须大写
+        2. 组件类只能包含一个顶级标签
+        3. 添加组件属性时`class`要写成`className`，`for`属性要写成`htmlFor`，应为`class`、`for`是javascript的保留关键字
+    </pre>   
+    <pre>Skills:
+        1. React.createClass 创建组件
+        2. this.props 取得属性
+    </pre>
+    <div id="example"></div>   
+    <script type="text/babel">
+        var HelloMessage = React.createClass({
+            render: function () {
+                return <h1>Hello {this.props.name}</h1>;
+            }
+        });
+
+        ReactDOM.render(
+            <HelloMessage name="John" />,
+            document.getElementById('example')
+        );
+    </script>
+</body>
+</html>
