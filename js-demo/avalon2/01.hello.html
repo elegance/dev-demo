@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>avalon-ch1</title>
+    <style>
+        .ms-controller {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <pre>Skills:
+        1. `avalone.define`，插入带`$id`属性的对象，通过define返回出来的vm对象，看起来像普通对象，单大部分属性已经被重写了
+        2. `ms-duplex`: 双向绑定
+        3. `{{}}`: 文本绑定
+    </pre>
+    <pre>Q:
+        1. 既然是指令内部的变量，为什么还需要`@`符号，给人的感觉有些冗余，降低了些阅可读性？待我慢慢深入了解。
+    </pre>
+    <hr>
+    <div ms-controller="test">
+        <input type="text" ms-duplex="@a" />
+        <p>{{@a}}</p>
+    </div>
+<script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+<script>
+    var vm = avalon.define({
+        $id: 'test',
+        a: 111
+    });
+</script>
+
+</body>
+
+</html>

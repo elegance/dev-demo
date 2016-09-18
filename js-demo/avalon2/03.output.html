@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据填充</title>
+</head>
+<body>
+    <pre>Skills:
+        1. `{{expr}}`、`ms-text`、`ms-html`
+    </pre>
+    <div ms-controller="test">
+        <p>
+            <pre>
+            a ms-duplex: <input type="text" ms-duplex="@a" /><br>
+            {{@a}}
+            ms-text: <strong ms-text="@a"></strong>
+            </pre>
+        </p>
+        <p>
+            <pre>
+            a ms-duplex: <input type="text" ms-duplex="@b" /><br>
+            {{@b}}
+            ms-text: <strong ms-html="@b"></strong>
+            </pre>
+        </p>
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            a: 'a:<a href="http://www.so.com">ms-text</a>',
+            b: 'b:<a href="http://www.so.com">ms-html</a>'
+        });
+    </script>
+</body>
+</html>

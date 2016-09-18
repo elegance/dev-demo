@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性操作</title>
+</head>
+<body>
+    <pre>Q:
+        1. ms-attr 中以`{`单个大括号开头？
+    </pre>
+    <div ms-controller="test">
+        <div ms-attr="{title: @title, src: @src, lang: @lang}">
+            {{@src === 'abc' ? 'abc to empty' : @src}}
+        </div>
+        <input type="text" ms-duplex="@src" />
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            title: 'title-text',
+            src: 'src-text',
+            lang: 'lang-text'
+        });
+    </script>
+</body>
+</html>

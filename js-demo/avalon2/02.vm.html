@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vm</title>
+    <style>
+        div[ms-controller] { 
+            margin-left: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <pre>Skills:
+        1. 控制打印的`vm`会有一些以`$`开头的特殊的属性，具体含义可以查看<a href="https://segmentfault.com/a/1190000004882922">这里</a>
+        2. `define`创建的vm为顶层vm，内部有`masterFactory`生成，如果vm中有嵌套的对象，那么它也会转变为vm，此时的子级vm由内部的`slaveFactory`生成
+        3. `$watch`监听属性变化
+    </pre>
+    <hr>
+    <h3>$watch demo:</h3>
+    <div ms-controller="test">
+        <input type="text" ms-duplex="@a" />
+        <p>{{@a}}</p>
+    </div>
+    <h3>嵌套vm</h3>
+    <div ms-controller="test2">
+        a:<input type="text" ms-duplex="@a" />
+        <p>{{@a}}</p>
+        b.c:<input type="text" ms-duplex="@b.c" />
+        <p>{{@b.c}}</p>
+    </div>
+    <h3>嵌套 ms-controller</h3>
+    <div ms-controller="test3">
+        <p>{{@aa}}</p>
+        <div ms-controller="test3.1">
+            <p>{{@aa}}::{{@dd}}</p>
+            <div ms-controller="test3.1.1">
+                <p>{{@aa}}:{{@dd}}</p>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        //-----------------------------------------$watch demo
+        console.group('demo1');
+        var vm = avalon.define({
+            $id: 'test',
+            a: 11,
+            b: 22
+        });
+
+        vm.$watch('a', (newVal, oldVal) => {
+            console.log(`a: ${newVal} <- ${oldVal}`);
+        });
+
+        console.log(vm);
+
+        console.groupEnd();
+        // ----------------------------------------嵌套vm
+        console.group('demo2');
+        var vm2 = avalon.define({
+            $id: 'test2',
+            a: 11,
+            b: {
+                c: 22
+            }
+        });
+        console.log(vm2.b);
+        console.groupEnd();
+        // ------------------------------------------嵌套ms-controller
+        var vm3 = avalon.define({
+            $id: 'test3',
+            aa: 'test3-aa'
+        });
+
+        var vm31 = avalon.define({
+            $id: 'test3.1',
+            dd: 'test3.1-dd'
+        });
+
+        var vm311 = avalon.define({
+            $id: 'test3.1.1',
+            aa: 'test3.1.1-aa',
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式操作</title>
+    <style>
+         div[ms-controller] { 
+            margin-left: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .slider {
+            width: 100%;
+            height: 20px;
+            position: relative;
+        }
+        .handerx {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            color: #fff;
+            background: #000;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>普通样式切换Demo：</h3>
+    <div ms-controller="test">
+        <div style="width:200px;height:50px" ms-css="{background: @background}">
+        </div>
+        <select ms-duplex="@background">
+            <option value="yellow">黄</option>
+            <option value="red">红</option>
+            <option value="green">绿</option>
+        </select>
+    </div>
+    <h3>简单动画效果：</h3>
+    <div ms-controller="test2">
+        <div class="slider" style="background:red">
+            <div class="handerx" ms-css="{left: @percent+'%'}">{{@percent}}</div>
+            <div style="background:greenyellow; height:20px;" ms-css="{width: @percent+'%'}"></div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            background: 'red'
+        });
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            percent: 0
+        });
+
+
+        var direction = true;
+
+        setInterval(() => {
+            if (direction) {
+                vm2.percent < 100 ? vm2.percent++ : direction = false;
+            } else {
+                vm2.percent > 0 ? vm2.percent-- : direction = true;
+            }
+        }, 100);
+    </script>
+</body>
+</html>

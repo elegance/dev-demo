@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示隐藏处理</title>
+    <style>
+        div[ms-controller] { 
+            margin-left: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 300px;
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        td {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <pre>Skills:
+        1. ms-visible 来控制显示和隐藏
+        2. ms-for 使用(i, el) 第一个参数可以获取到元素
+    </pre>
+    <h3>简单显示隐藏：</h3>
+    <div ms-controller="test">
+        <table border="1">
+            <tr ms-for="el in @array">
+                <td ms-visible="@toggle">{{el}}</td>
+                <td ms-visible="@toggle">{{el+10}}</td>
+            </tr>
+        </table>
+        <div style="display:none" class="menu" ms-visible="@toggle">item</div>
+        <button style="display:none" class="btn" ms-visible="@toggle">btn</button>
+        <p><button ms-click="@toggle = !@toggle" >click me</button></p>
+    </div>
+    <h3>简单Tab实现:</h3>
+    <div ms-controller="testTab">
+        <div class="tab">
+            <div class="tab-hd">
+                <button ms-for="(i, hd) in @hds" ms-click="@currIdx = i">{{hd}}</button>
+            </div>
+            <div class="tab-hd">
+                <div ms-for="(i, bd) in @bds" ms-visible="@currIdx === i">{{bd}}</div>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            toggle: false,
+            array: [1, 2, 3, 4]
+        });
+
+        var vm2 = avalon.define({
+            $id: 'testTab',
+            currIdx: 0, //默认为第0个，
+            hds: ['Tab1', 'Tab2', 'Tab3'],
+            bds: ['内容1', '内容2', '内容3']
+        });
+    </script>
+</body>
+</html>
