@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css class类名处理</title>
+    <style>
+        div[ms-controller] { 
+            margin-left: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .test {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            color: red;
+            user-select: none;
+            position: relative;
+        }
+
+        .aaa {
+            border: 1px dashed blue;
+            color: blue;
+        }
+        .aaa:before {
+            content: ".aaa";
+            position: absolute;
+            left: 30px;
+            top: 35px;
+        }
+        .bbb {
+            border: 1px dashed blue;
+            color: blue;
+        }
+        .bbb:before {
+            content: ".bbb";
+            position: absolute;
+            left: 30px;
+            top: 35px;
+        }
+
+        .zebra-table {
+            border-collapse: collapse;
+            width: 400px;
+            border: 1px solid solid;
+        }
+        .zebra-table td {
+            border: 1px solid solid;
+            text-indent: 1em;
+        }
+        .zebra-table .even td {
+            background: #ddd;
+            color: white;
+        }
+        .zebra-table .hover td{
+            color: red;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <pre>Skills:
+        1. ms-class 类的写法支持, 详细可以查看<a href="https://segmentfault.com/a/1190000004894518">这里</a>
+        2. ms-holver 无效。。。
+    </pre>
+    <pre>Q:
+        1. 报错异常不明确，空格、html注释都会引起异常信息的不同，且异常信息不明确
+        2. date 过滤器好像没法精确到毫秒
+        3. ms-for 好像是重渲染，不知道有没有类似ko的单独输出的方式
+    </pre>
+    <h3>Demo01: </h3>
+    <div ms-controller="test">
+        <div class="test" ms-class="{aaa: @toggle}" ms-click="@toggle = !@toggle">click me</div>
+        <p>{{@toggle}}</p>
+        <div class="test" ms-class="@bbb"></div>
+        <div class="test" ms-class="[@x, @y, @z]">类：.x .y .z</div>
+    </div>
+    <h3>Demo02 斑马表格:</h3>
+    <div ms-controller="test2">
+        <table class="zebra-table">
+            <tr ms-for="($index, el ) in @array" ms-hover="'hover'" ms-class="{even: $index % 2 == 0}">
+                <td>{{$index}}</td>
+                <td>{{new Date - 0 | date("yyyy-MM-dd HH:mm:ss")}}</td>
+            </tr>
+        </table>
+       
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            toggle: false,
+            bbb: 'bbb',
+            x: 'x',
+            y: 'y',
+            z: 'z'
+        });
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            array: avalon.range(0, 14)
+        });
+
+        setTimeout(() => {
+            vm2.array.push(18);
+        }, 2000);
+    </script>
+</body>
+</html>
