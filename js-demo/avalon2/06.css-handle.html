@@ -26,6 +26,10 @@
     </style>
 </head>
 <body>
+    <pre>Skills:
+        1. ms-css 设置样式
+        2. ms-duplex-number 加上`change`过滤器与不加的区别在于，前者是光标脱离后响应到vm，后者是修改则响应到。
+    </pre>
     <h3>普通样式切换Demo：</h3>
     <div ms-controller="test">
         <div style="width:200px;height:50px" ms-css="{background: @background}">
@@ -43,18 +47,28 @@
             <div style="background:greenyellow; height:20px;" ms-css="{width: @percent+'%'}"></div>
         </div>
     </div>
+    <h3>矩形定制Demo:</h3>
+    <div ms-controller="test3">
+        <div style="background:#A9EA00;" ms-css="{width: @w, height: @h}">
+        </div>
+        <p>{{@w}} X {{@h}}</p>
+        <p>W: <input type="text" ms-duplex-number="@w|change" /></p>
+        <p>H: <input type="text" ms-duplex-number="@h" /></p>
+    </div>
     <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
     <script>
+        // -------------------------------------------------- demo 1
         var vm = avalon.define({
             $id: 'test',
             background: 'red'
         });
 
+
+        // -------------------------------------------------- demo 2
         var vm2 = avalon.define({
             $id: 'test2',
             percent: 0
         });
-
 
         var direction = true;
 
@@ -65,6 +79,13 @@
                 vm2.percent > 0 ? vm2.percent-- : direction = true;
             }
         }, 100);
+
+        // -------------------------------------------------- demo 3
+        var vm3 = avalon.define({
+            $id: 'test3',
+            w: 100,
+            h: 100
+        });
     </script>
 </body>
 </html>

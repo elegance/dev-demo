@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环操作</title>
+    <style>
+         div[ms-controller] { 
+            margin-left: 80px;
+            padding: 9px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid #ccc;
+        }
+        td,th {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <pre>
+    </pre>
+
+    <h3>1. 二维数组遍历</h3>
+    <div ms-controller="test">
+        <table>
+            <tr ms-for="(i, el) in @array">
+                <td ms-for="e in el">
+                    第<b style="color:orchid">{{i}}</b>行：{{e}}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <h3>2. 大表格</h3>
+    <div ms-controller="test2">
+        <button ms-click="@clearItv()">
+            {{@itvId != null ? '取消生成数据' : '开始生成数据'}}
+        </button>
+        <table>
+            <tr>
+                <th ms-for="el in @heads">{{el}}</th>
+            </tr>
+            <tr ms-for="tr in @list">
+                <td ms-for="td in tr | selectBy(['name', 'age', 'sex'])" ms-attr="{align:td ==='age' ? 'left' : 'right'}">{{td}}</td>
+            </tr>
+        </table>
+    </div>
+    <script src="http://cdn.bootcss.com/avalon.js/2.1.5/avalon.js"></script>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            array: [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+        });
+        
+        setTimeout(() => {
+            vm.array.set(0, [13, 14, 15, 16]);
+        }, 3000);
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            heads: ['name', 'age', 'sex'],
+            list: [],
+            itvId: null,
+            clearItv: function () {
+                if (this.itvId) {
+                    clearInterval(this.itvId);
+                    this.itvId = null;
+                } else {
+                    startGenData();
+                }
+            }
+        });
+
+        function genData() {
+            var ret = [];
+            for (var i = 0, j = 1000; i < j; i++) {
+                ret.push({
+                    name: Math.random(),
+                    age: 3 + Math.ceil((Math.random() *30)),
+                    sex: 1-Math.random() > 0.5 ? '男' : '女'
+                });
+            }
+            return ret;
+        }
+
+        function startGenData () {
+            vm2.itvId = setInterval(() => {
+                console.time('genData');
+                var tmp = genData();
+                console.timeEnd('genData');
+                
+                console.time('render');
+                vm2.list = tmp;
+                console.timeEnd('render');
+            }, 200);
+        } 
+    </script>
+</body>
+</html>
