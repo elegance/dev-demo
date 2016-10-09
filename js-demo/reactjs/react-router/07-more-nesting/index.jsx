@@ -5,7 +5,7 @@ import {Router, Route, hashHistory} from 'react-router';
 import App from './modules/App.jsx';
 import About from './modules/About.jsx';
 import Repos from './modules/Repos.jsx';
-import Repo from './modules/Repo.jsx'
+import Repo from './modules/Repo.jsx';
 
 render(
     <Router history={hashHistory}>
