@@ -1,71 +1,71 @@
-package pattern.ch01;
+package pattern.ch05;
 
 /**
  * <pre>
- * 1. 封装、继承、多态 （继承-重写-父指子）
- * 2. 简单工厂模式 产生实例
+ * 1. 封装、继承、多态 （继承-重写-父指子） 2. 简单工厂模式 产生实例 修改为工厂方法
+ * 
  * <pre>
  */
 public class Calc {
-    
+
     public static void main(String[] args) {
-        // 多态：同样的请求不同的响应
-        // 父类 (operation)引用指向子类
+        IOperationFactory operFactory = new AddFactory();
+        Operation oper = operFactory.createOperation();
+
+        oper.numberA = 2;
+        oper.numberB = 2;
+
+        System.out.println(oper.getResult());
+
+        operFactory = new SubFactory();
+        oper = operFactory.createOperation();
+
+        oper.numberA = 2;
+        oper.numberB = 2;
+
+        System.out.println(oper.getResult());
+
+        // 客户端新增1：乘方工厂实例化
+        operFactory = new PowerFactory();
         
-        Operation oper = OperationFactory.getOperate("+");
-        oper.numberA = 2;
-        oper.numberB = 2;
+        // 得到乘方计算类
+        oper = operFactory.createOperation();
 
-        System.out.println(oper.getResult());
-
-        oper = OperationFactory.getOperate("-");
-        oper.numberA = 2;
-        oper.numberB = 2;
-        System.out.println(oper.getResult());
-
-        oper = OperationFactory.getOperate("*");
-        oper.numberA = 2;
-        oper.numberB = 2;
-        System.out.println(oper.getResult());
-        
-        oper = OperationFactory.getOperate("/");
-        oper.numberA = 2;
-        oper.numberB = 2;
-        System.out.println(oper.getResult());
-
-        oper = OperationFactory.getOperate("^");
         oper.numberA = 2;
         oper.numberB = 3;
+
         System.out.println(oper.getResult());
     }
+
+    static interface IOperationFactory {
+        Operation createOperation();
+    }
+
+    static class AddFactory implements IOperationFactory {
+        public Operation createOperation() {
+            return new OperationAdd();
+        }
+    }
+    static class SubFactory implements IOperationFactory {
+        public Operation createOperation() {
+            return new OperationSub();
+        }
+    }
+    static class MulFactory implements IOperationFactory {
+        public Operation createOperation() {
+            return new OperationMul();
+        }
+    }
+    static class DivFactory implements IOperationFactory {
+        public Operation createOperation() {
+            return new OperationDiv();
+        }
+    }
     
-    /**
-     * 工厂模式来 实例化对象
-     */
-    static class OperationFactory {
-        public static Operation getOperate(String operate) {
-            Operation oper = null;
-            switch (operate) {
-                case "+":
-                    oper = new OperationAdd();
-                    break;
-                case "-":
-                    oper = new OperationSub();
-                    break;
-                case "*":
-                    oper = new OperationMul();
-                    break;
-                case "/":
-                    oper = new OperationDiv();
-                    break;
-                // 新增2: 分支判断
-                case "^":
-                    oper = new OperationPower();
-                    break;
-                default:
-                    throw new RuntimeException("未知操作符：" + operate);
-            }
-            return oper;
+    // 新增2：生成乘方实例工厂类
+    static class PowerFactory implements IOperationFactory {
+        public Operation createOperation() {
+            return new OperationPower();
         }
     }
     
