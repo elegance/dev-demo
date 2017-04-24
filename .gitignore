@@ -12,6 +12,7 @@ node_modules
 .project
 .metadata
 bin/
+target/
 tmp/
 *.tmp
 *.bak
