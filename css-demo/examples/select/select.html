@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>select美化</title>
+	</head>
+	<style>
+		html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font: inherit;
+			font-size: 100%;
+			vertical-align: baseline;
+		}
+		tbody section {
+			border: 0;
+			margin: 0 auto;
+			width: 100px;
+			background-color: inherit;
+		}
+		div.cs-select {
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			text-align: right;
+			height: 27px;
+			margin-top: -15px;
+			z-index: 100;
+			width: 100%;
+			max-width: 500px;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		.blue {
+			color: #0998e6;
+		}
+
+		.cs-skin-elastic>span {
+			z-index: 100;
+		}
+		.cs-select span {
+			display: block;
+			position: relative;
+			cursor: pointer;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-indent: 1em;
+		}
+		.cs-placeholder {
+			padding-right: 20px;
+		}
+		.blue span {
+			color: #0998e6;
+		}
+		.cs-select>span::after {
+			content: ' ';
+			padding-left: 2px;
+			position: absolute;
+			display: inline-block;
+			width: 9px;
+			margin-left: 6px;
+			height: 6px;
+			background: url(/icons.png) 0 0 no-repeat;
+		}
+		.cs-select>span::after, .cs-select .cs-selected span::after {
+			speak: none;
+			position: absolute;
+			top: 50%;
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+		.cs-skin-elastic .cs-options {
+			overflow: visible;
+			background: transparent;
+			opacity: 1;
+			visibility: visible;
+			pointer-events: none;
+			left: 0;
+			right: 0;
+			top: 28px;
+		}
+		.cs-select .cs-options {
+			position: absolute;
+			overflow: hidden;
+			width: 100%;
+			background: inherit;
+			visibility: hidden;
+		}
+		.cs-options {
+			text-align: left;
+		}
+		.cs-select ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		.cs-skin-elastic .cs-options>ul::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+		}
+		.cs-skin-elastic .cs-options ul li {
+			opacity: 0;
+			-webkit-transform: translate3d(0,-25px,0);
+			transform: translate3d(0,-25px,0);
+			-webkit-transition: opacity .15s,-webkit-transform .15s;
+			transition: opacity .15s,transform .15s;
+		}
+		.cs-select ul li:nth-of-type(1) {
+			border-top: 1px solid #b2b2b2;
+		}
+		.cs-select ul li {
+			background-color: #fff;
+			border-left: 1px solid #b2b2b2;
+			border-right: 1px solid #b2b2b2;
+		}
+		.cs-select ul li {
+			background-color: #fff;
+			border-left: 1px solid #b2b2b2;
+			border-right: 1px solid #b2b2b2;
+		}
+		.sl {
+			line-height: 25px;
+		}
+		.cs-select select {
+			display: none;
+		}
+		.cs-select {
+			position: relative;
+		}
+		select {
+			height: 30px;
+			width: 140px;
+		}
+
+		/**  **/
+		table tr td {
+			width: 144px;
+			height: 36px;
+		}
+	</style>
+
+	<body>
+		<p><br></p>
+		<table>
+			<tr>
+				<td>
+					test
+				</td>
+				<td>
+					test
+				</td>
+				<td>
+					<section style="display: block;">
+						<div class="cs-select cs-skin-elastic blue" tabindex="0">
+							<span class="cs-placeholder">已启动</span>
+							<div class="cs-options">
+								<ul>
+									<li class="sl cs-selected" data-option="null" data-value="1"><span>启动</span></li>
+									<li class="sl" data-option="null" data-value="2"><span>暂停</span></li>
+									<li class="sl" data-option="null" data-value="5"><span>停止买入</span></li>
+									<li class="sl" data-option="null" data-value="6"><span>停止卖出</span></li>
+								</ul>
+							</div>
+							<select class="cs-select cs-skin-elastic" name="selStraStatus" data-straid="768" data-status="1">
+								<option value="1" data-class="sl" selected="">已启动</option>
+								<option value="2" data-class="sl">暂停</option>
+								<option value="5" data-class="sl">停止买入</option>
+								<option value="6" data-class="sl">停止卖出</option>
+							</select>
+						</div>
+					</section>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

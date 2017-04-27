@@ -1,0 +1,33 @@
+@import './reset.css';
+
+body {
+    font-size: 12px;
+}
+
+table {
+    $border-color: #D1D1D1;
+
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-bottom: none;
+
+    tr {
+        td {
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid $border-color;
+        }
+        height: 36px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #F4F6FA;
+    }
+}
+
+.cs-select {
+    select {
+        display: none;
+    }
+}
