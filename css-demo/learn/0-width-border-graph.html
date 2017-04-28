@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容宽度为0，使用border宽度来构造图形</title>
+</head>
+<body>
+    <style>
+        /* 4个不同朝向的等腰直角三角形，斜边在分别四个方向组成一个正方形*/
+        .triangle4 {
+            width: 0; /* 注意box-sizing默认content-box; 其宽高设定的是元素内容框，内边距和边框将在高度宽度之外绘制*/
+            /* 下面利用border 宽度来展现图形*/
+            border-top: 50px solid black;
+            border-right: 50px solid purple;
+            border-bottom: 50px solid blue;
+            border-left: 50px solid red;
+        }
+        /*朝下*/
+        .triangle-bottom {
+            width: 0;
+            border: 50px solid transparent; /*4个三角形同上，不过都是透明的，看不出效果*/
+            /* 设置斜边在顶部，即直角朝向底部*/
+            border-top-color: black; /*将其中一个设为不透明，则可以用来显示不同朝向的4个三角形*/
+        }
+        .triangle-top {
+            width: 0;
+            border: 50px solid transparent;
+            border-bottom-color: black;
+        }
+        .triangle-right {
+            width: 0;
+            border: 50px solid transparent;
+            border-left-color: black;
+        }
+        .triangle-left {
+            width: 0;
+            border: 50px solid transparent;
+            border-right-color: black;
+        }
+    </style>
+    <div class="triangle4"></div>
+    <p></p>
+    <div class="triangle-bottom"></div>
+    <p></p>
+    <div class="triangle-top"></div>
+    <p></p>
+    <div class="triangle-right"></div>
+    <p></p>
+    <div class="triangle-left"></div>
+</body>
+</html>
