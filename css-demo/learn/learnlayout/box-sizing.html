@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title></title>
+	<style>
+		.simple {
+			width:500px;
+			margin: 20px auto;
+			border: 1px solid green;
+		}
+		.fancy {
+			width: 500px;
+			margin: 20px auto;
+			padding: 50px;
+			border: 1px solid green;
+			border-width: 10px;
+			//box-sizing:border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="simple">我小一些</div>
+	<div class="fancy">我大一些</div>
+	<div class="simple">我小一些</div>
+	<div class="fancy" style="box-sizing:border-box;">我加了box-sizing:border-box，所以我一样大,box-sizing支持IE8+</div>
+</body>
+</html>

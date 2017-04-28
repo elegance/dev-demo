@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		div, body, section { margin: 0; padding:0;}
+		.box {
+			border: 2px solid #FDC72F;
+			height: 100px;
+			float: left;
+		}
+		.section {
+			border: 2px solid #6AC5AC;
+			height: 200px;
+			width: 300px;
+			margin: 2em;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		在这个例子中， section 元素实际上是在 div 之后的（译注：DOM结构上）。然而 div 元素是浮动到左边的，于是 section 中的文字就围绕了 div ，并且 section 元素包围了整个元素。如果我们想让 section 显示在浮动元素之后呢？
+	</div>
+	<div class="section">
+		我感觉好像我在漂浮！
+	</div>
+</body>
+</html>

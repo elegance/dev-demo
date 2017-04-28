@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>position属性</title>
+	<style>
+		div {
+			border: 3px solid green;
+			padding: 50px;
+		}
+		.static {
+			position: static;
+		}
+		.relative1 {
+			position: relative;
+		}
+		.relative2 {
+			position: relative;
+			border-color: #D64078;
+			width:500px;
+			left:30px;
+			top: -10px;
+		}
+		.fixed {
+			position: fixed;
+			bottom:0;
+			right:0;
+			border-color:#FDC72F;
+			width:300px;
+		}
+		.relative {
+			position: relative;
+			width: 300px;
+			height: 400px;
+		}
+		.absolute {
+			position: absolute;
+			width: 100px;
+			height: 200px;
+			border-color: #D64078;
+			right:0;
+			top:50;
+		}
+	</style>
+</head>
+<body>
+	<div class="static">
+		static 是默认值。任意 position: static; 的元素不会被特殊的定位。一个 static 元素表示它不会被“positioned”，一个 position 属性被设置为其他值的元素表示它会被“positioned”。
+	</div>
+	<p></p>
+	<div class="relative1">
+		relative 表现的和 static 一样，除非你添加了一些额外的属性。
+	</div>
+	<div class="relative2">
+		在一个相对定位(position为relative)的元素上设置top、right、bottom、left属性会使其偏离正常位置，其它的元素则不会调整位置来弥补它偏离后剩下的空隙
+	</div>
+	<p></p>
+	<div class="fixed">
+		我的position:fixed，相对于视窗定位，你滚动页面我还是停留在相同的位置
+	</div>
+	<div class="relative">
+		这个元素是相对定位的
+		<div class="absolute">
+			这个元素是绝对定位的，相对于positioned祖先元素|body 定位
+		</div>
+	</div>
+</body>
+</html>

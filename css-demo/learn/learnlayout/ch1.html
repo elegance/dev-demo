@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+display属性:<br/>
+block:块级元素，一个块级元素会开始新的一行并且尽可能撑满容器。常见块级元素有：div、p、form和html5中的新元素：header、footer、section<br/>
+inline:行内元素，一个行内元素可以在段落中包裹一些文字而不会打乱布局，常见的行内元素有：span、a等<br/>
+none:隐藏元素，一些特殊元素的默认值就是它，例如script，与visibility属性不一样，把display设置为none不会保留元素该显示的空间，而把visibility:hidden还会保留<br/>
+其他display值：例如list-item、table，详见：https://developer.mozilla.org/en-US/docs/CSS/display<br/>
+额外：每个元素都有默认的display类型，不过你可以随时重写它。虽然"人工制造"一个行内元素可能看起来很难理解，不过可以把特有语义的元素改成行内元素。常见的例子是：把li元素inline,制造成水平菜单
+<br/>
+
+box-sizing属性<br/>
+content-box:宽高分别应用到元素的内容框，在宽高之外绘制元素的内边距和边框<br/>
+border-box：宽高即为元素的框盒，内边距和边框都将在已设定的宽和高内绘制<br/>
+inherit: 从父元素继承box-sizing属性<br/>
+
+margin属性：设置块元素的width，可以阻止它从左到右撑满容器，然后可以设置左外边距为auto使其水平居中，元素会占据你所指定的宽度，然后剩余的宽度会一分为二成为左右外边距,唯一的问题是：当浏览器窗口比元素的宽度还要窄的时，浏览器会显示一个水平的滚动条来容纳页面
+这种情况下使用max-width替代width可以使浏览器更好的处理小窗口的情况,所有的主流浏览器包括IE7+内都支持max-width
+
+<br/>
+position属性:<br/>
+static:是position的默认值，任意position: static的元素都不会被特殊的定位。一个static元素表示它不会被"positioned"，一个position属性设置为其它值时表示他会被"positioned".<br/>
+relative:相对定位，relative 表现的和 static 一样，除非你添加了一些额外的属性,在一个相对定位（position属性的值为relative）的元素上设置 top 、 right 、 bottom 和 left 属性会使其偏离其正常位置。其他的元素则不会调整位置来弥补它偏离后剩下的空隙<br/>
+fixed: 一个固定定位(position属性为fixed)的元素相对于视窗来定位，这意味着即便页面滚动他还是会停留在相同的位置。和relative一样top、right、bottom、left属性都可用	<br/>
+absolute: 绝对定位，absolute是最棘手的position值。absolute与fixed表现类似，除了它不是相对于视窗而是相对于最近的"positioned"祖先元素。如果绝对定位的元素没有"positioned"祖先元素，那么它是相对于文档的body元素，并且他会随着页面的滚动而移动。记住一个"positioned"元素是指position指不是static的元素<br/>
+
+
+float：float可用于实现文字环绕<br/>
+clean: 用于控制浮动
+</body>
+</html>
