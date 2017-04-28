@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>before、after应用-气泡消息</title>
+</head>
+<body>
+    <style>
+        .test-div {
+            position: relative; /* 让before、after等元素定位*/
+            margin: auto; /* 水平居中 为了体现效果*/
+            width: 150px;
+            height: 36px;
+            border-radius: 5px;
+            border: 1px solid black;
+            background: rgba(245, 245, 245, 1);
+        }
+        .test-div:before, .test-div:after {
+            content: "";
+            position: absolute; /*绝对定位*/ /**  absolute|fixed 脱离文档流，行内元素将被重置为块级元素*/
+            top: 8px; /* 定位top 8px */
+            width: 0; /* 开始边框图形，内容零宽*/
+            border: 6px solid transparent; /* 4个 透明的等腰直角三角形，直角边6px，斜边12px，整个体现出1个12px的透明正方形，元素两个，即两个重叠的正方形*/
+        }
+        .test-div:before {
+            /*需要一个朝左的箭头，覆盖底部的边框，展现出左侧无边框框凸起三角形*/
+            border-right-color: rgba(245, 245, 245, 1); /* 设置 right 即代表直角表在右侧，直角朝向左侧*/
+            left: -11px; /* 正方形12px，往左偏离11px，1px用于覆盖底部的1px边框*/
+        }
+        .test-div:after {
+            /*在来一个同样直角朝左的三角形，溢出的部分正好作为边框，其余部分被before的三角形覆盖*/
+            border-right-color: rgba(0, 0, 0, 1);
+            left: -12px; /* 多偏离1px 作为边框*/
+            z-index: -1; /* 保证在before的下层*/
+        }
+    </style>
+    <div class="test-div"></div>
+</body>
+</html>
