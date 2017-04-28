@@ -27,7 +27,33 @@ table {
 }
 
 .cs-select {
+    // 默认隐藏原生的select下拉
     select {
+        display: none;
+    }
+
+    // 让自定义层相对于 本div来定位
+    position: relative;
+    width: 100px;
+
+    // 文本后置下拉图标
+    .cs-text {
+        position: relative;
+
+        &:after {
+            content: ""; //content是 after/before的必要元素
+            position: absolute; // 绝对定位，块级元素
+            width: 9px;
+            height: 6px;
+            top: 5px;
+            margin-left: 6px;
+
+            background: url(../icons.png) 0 0 no-repeat;
+        }
+    }
+
+    // 自定义层默认隐藏
+    .cs-ul {
         display: none;
     }
 }
