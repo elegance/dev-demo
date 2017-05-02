@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        .level1 {
+            background-color: rgba(3, 130, 173, .5);
+            width: 100%;
+        }
+        .level1:before {
+            content: "level1";
+        }
+
+        .level2 {
+            background-color: #D1D1D1;
+            width: 60%;
+            margin: auto;
+        }
+        .level2:before {
+            content: "level2";
+        }
+        .level3 {
+            background-color: #fb7777;
+            width: 40%;
+            margin: auto;
+        }
+        .level3:before {
+            content: "level3";
+        }
+        ul {list-style: none;}
+    </style>
+</head>
+<body>
+    <a href="http://www.cnblogs.com/dannyxie/p/5642727.html">参考</a><br>
+    当你要使用`return false`、`e.preventDefault`、`e.stopPropagation()`，请区分好你是要阻止默认事件、还是防止事件冒泡。
+    <h3>一、默认 事件会冒泡、一些元素的事件会有默认行为</h3>
+    <div id="default">
+        <h4>1. 事件冒泡：子层级元素的事件会冒泡式触发父元素同事件执行</h4>
+        <p>
+            level3的点击：先触发本身事件弹出“我是level3”，再冒泡至父元素level2触发事件弹出“level2”，再冒泡至祖先元素level3触发事件弹出"我是level1"<br>
+            level2的点击：先触发本身事件弹出“我是level2”，再冒泡至父元素level3触发事件弹出"我是level3"<br>
+            level1的点击：触发本身事件弹出“我是level1”
+        </p>
+        <div class="level1">
+            <ul class="level2">
+                <li class="level3"></li>  
+            </ul>
+        </div>
+        <h4>2. 元素事件的默认行为</h4>
+        <p>
+            <a href="http://www.bing.com">bing搜索-普通a链接点击就跳转了</a>
+        </p>
+        <form action="">
+            <input type="SUBMIT" value="提交按钮-点击会提交页面（刷新）">
+        </form>
+    </div>
+
+
+    <p>
+    出现这种事件影响的情况主要场景是：<b>父子节点同在、监听事件和浏览器默认动作</b>。一般的解决方式有：`return false`、`e.stopPropagation()`、`e.preventDefault()`。看下他们有什么区别，都改什么时候使用?
+    </p>
+    <b>监听事件</b>:  指在节点上能被监听的页面操作。如: select 节点的 change 事件, a 节点的 click 事件；
+    <br><b>浏览器默认动作</b>:  指特定页面元素上带有的功能。如: 点击 a 链接节点的跳转动作, 表单提交动作。
+
+    <h3 style="text-decoration: line-through;">二、在子级元素事件里使用`return false`来阻止冒泡</h3>
+    <p>
+        `return false`：停止回调函数并立即返回false，实际上还另外做了两件事情：阻止默认事件(preventDefault)、阻止事件冒泡(stopPropagation)
+    </p>
+    <div id="retFalse">
+        <div class="level1">
+            <ul class="level2">
+                <li class="level3"></li>  
+            </ul>
+        </div>
+    </div>
+
+    <h3>三、stopPropagation() 停止事件冒泡</h3>
+    <div id="stopX">
+        <div class="level1">
+            <ul class="level2">
+                <li class="level3"></li>  
+            </ul>
+        </div>
+    </div>
+
+    <h3>四、preventDefault() 阻止默认事件-a链接`click`会跳转、submit按钮`click`会提交表单</h3>
+    <div id="stopX">
+        <div class="level1">
+            <ul class="level2">
+                <li class="level3"></li>  
+            </ul>
+        </div>
+    </div>
+
+    <div id="preventX">
+        <p>
+            <a href="http://www.bing.com">bing搜索-点击我也不会跳转</a>
+        </p>
+        <form action="">
+            <input type="SUBMIT" value="提交按钮-点击我也不会提交刷新页面">
+        </form>
+    </div>
+    
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+        $('#default')
+            .delegate('.level1', 'click', function() {
+                alert('我是level1'); 
+            })
+            .delegate('.level2', 'click', function() {
+                alert('我是level2'); 
+            })
+            .delegate('.level3', 'click', function() {
+                alert('我是level3'); 
+            });
+        
+        $('#retFalse')
+            .delegate('.level1', 'click', function() {
+                alert('我是level1'); 
+            })
+            .delegate('.level2', 'click', function() {
+                alert('我是level2'); 
+                return false;
+            })
+            .delegate('.level3', 'click', function() {
+                alert('我是level3'); 
+                return false;
+            });
+
+        $('#stopX')
+            .delegate('.level1', 'click', function(e) {
+                alert('我是level1'); 
+            })
+            .delegate('.level2', 'click', function(e) {
+                alert('我是level2'); 
+                e.stopPropagation();
+            })
+            .delegate('.level3', 'click', function(e) {
+                alert('我是level3'); 
+                e.stopPropagation();
+            });
+        
+        $('#preventX')
+            .delegate('a', 'click', function(e) {
+                console.log(e);
+                e.preventDefault(); //阻止默认的跳转事件
+            })
+            .delegate('input[type="SUBMIT"]', 'click', function(e) {
+                e.preventDefault(); //阻止提交按钮的默认提交事件
+            });
+    </script>
+
+</body>
+</html>
