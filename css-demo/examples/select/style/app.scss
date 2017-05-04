@@ -1,0 +1,94 @@
+@import './reset.css';
+
+body {
+    font-size: 12px;
+}
+
+table {
+    $border-color: #D1D1D1;
+
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-bottom: none;
+
+    tr {
+        td {
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid $border-color;
+        }
+        height: 36px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #F4F6FA;
+    }
+}
+
+.cs-select {
+    // 默认隐藏原生的select下拉
+    select {
+        display: none;
+    }
+
+    // 让自定义层相对于 本div来定位
+    position: relative;
+    width: 100px;
+    cursor: pointer;
+    text-align: right;
+    padding-right: 12px;
+    outline: none;
+
+    // 文本后置下拉图标
+    .cs-text {
+        position: relative;
+
+        &:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border: 5px solid transparent; // 4个边框透明，4个等腰直角三角形
+            border-top-color: #999;
+            top: 5px;
+            margin-left: 6px;
+        }
+    }
+
+    // 自定义层默认隐藏
+    .cs-ul {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 30px;
+        left: 5px;
+        z-index: 1;
+
+        border: 1px solid  #b2b2b2;
+        background-color: #fff;
+        text-align: left;
+
+        li {
+            line-height: 25px;
+            padding: 0px 10px;
+
+            &:hover {
+                background-color: #ebf5ff;
+            }
+            
+            &.li-active {
+                background-color: #0998e6!important;
+            }
+        }
+    }
+
+    // 激活后
+    &.cs-active {
+        .cs-text:after  {
+            transform: rotate(180deg) translateY(50%);
+        }
+        .cs-ul {
+            display: block;
+        }
+    }
+}

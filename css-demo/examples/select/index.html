@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>select</title>
+</head>
+<body>
+    <script src="dist/main.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>
+                <div class="cs-select" tabindex="0">
+                    <span class="cs-text">已启动</span>
+                    <ul class="cs-ul">
+                        <li class="cs-li selected">启动</li>
+                        <li class="cs-li">暂停</li>
+                        <li class="cs-li">停止买入</li>
+                        <li class="cs-li">停止卖出</li>
+                    </ul>
+                    <select>
+                        <option value="1">已启动</option>
+                        <option value="2">暂停</option>
+                        <option value="3">停止买入</option>
+                        <option value="4">停止卖出</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>
+                <div class="cs-select cs-active" tabindex="0">
+                    <span class="cs-text">已启动</span>
+                    <ul class="cs-ul">
+                        <li class="cs-li selected">启动</li>
+                        <li class="cs-li">暂停</li>
+                        <li class="cs-li">停止买入</li>
+                        <li class="cs-li">停止卖出</li>
+                    </ul>
+                    <select>
+                        <option value="1">已启动</option>
+                        <option value="2">暂停</option>
+                        <option value="3">停止买入</option>
+                        <option value="4">停止卖出</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>
+                <div class="cs-select cs-active" tabindex="0">
+                    <span class="cs-text">已启动</span>
+                    <ul class="cs-ul">
+                        <li class="cs-li selected">启动</li>
+                        <li class="cs-li">暂停</li>
+                        <li class="cs-li">停止买入</li>
+                        <li class="cs-li li-active">停止卖出</li>
+                    </ul>
+                    <select>
+                        <option value="1">已启动</option>
+                        <option value="2">暂停</option>
+                        <option value="3">停止买入</option>
+                        <option value="4">停止卖出</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <div style="margin: auto; width: 300px;">
+        <div style="height: 5px; width: 10px; background: url(./icons.png) 0 0 no-repeat;">
+        </div>
+    </div>
+    <script>
+        $('.cs-select').on({
+            click: function() {
+                $(this).toggleClass('cs-active');
+            },
+            blur: function() {
+                $(this).removeClass('cs-active');
+            }
+        });
+    </script>
+</body>
+</html>

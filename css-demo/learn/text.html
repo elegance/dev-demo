@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>几种常用的文本属性</title>
+</head>
+<body>
+    <style>
+/**/
+body > div {
+    border: 1px solid blue;
+}
+/*处理空白符*/
+
+.wsnm {
+    /*默认*/
+    white-space: normal;
+}
+.wspre {
+    white-space: pre;
+}
+    </style>
+    http://www.w3school.com.cn/css/css_text.asp
+    <div class="wsnm">
+        This     paragraph has    many
+    spaces           in it.
+        <div> 注释 white-space: normal 时，会合并所有的空白符，并忽略换行符
+        </div>
+    </div>
+
+
+    <h3>抽象文本开始缩进(text-indent) </h3>
+    <h3>抽象文本装饰(text-decoration) </h3>
+    <h3>抽象字符间距(word-spacing) </h3>
+    <h3>抽象字母间距(letter-spacing) </h3>
+    <h3>抽象文本转换问题(text-transform)：原样、全大写、全小写、驼峰 </h3>
+
+    <h3>抽象空白问题(white-space)：文本可能溢出指定宽度、文本可能有空格、换行 </h3>
+    <pre>
+        white-space: 处理空白问题(空格、换行)，
+            normal: 合并空格，忽略换行，文本超出自动换行
+            pre: 保留空格，保留换行，不自动换行
+            nowrap: 合并空格，不换行，文本超出不自动换行
+            pre-line: 保留换行，合并空格，超出文本自动换行
+            pre-wrap: 保留空格，保留换行，超出文本自动换行
+    </pre>
+</body>
+</html>

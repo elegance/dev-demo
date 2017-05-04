@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>select美化</title>
+		<link rel="stylesheet" href="style/reset.css">
+		<link href="https://cdn.bootcss.com/layer/3.0.1/skin/default/layer.min.css" rel="stylesheet">
+		<style>
+.ui-select {
+  position: relative;
+  width: 100px;
+  cursor: pointer;
+  text-align: right;
+  padding-right: 12px;
+  outline: none;
+}
+.ui-select select {
+  display: none;
+}
+.ui-select .ui-select-text {
+  position: relative;
+}
+.ui-select .ui-select-text:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border: 5px solid transparent;
+  border-top-color: #999;
+  top: 5px;
+  margin-left: 6px;
+}
+.ui-select .ui-select-ul {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 30px;
+  left: 5px;
+  z-index: 1;
+  border: 1px solid  #b2b2b2;
+  background-color: #fff;
+  text-align: left;
+}
+.ui-select .ui-select-ul li {
+  line-height: 25px;
+  padding: 0px 10px;
+}
+.ui-select .ui-select-ul li:hover {
+  background-color: #ebf5ff;
+}
+.ui-select .ui-select-ul li.li-active {
+  background-color: #0998e6 !important;
+}
+.ui-select.ui-select-active .ui-select-text:after {
+  transform: rotate(180deg) translateY(50%);
+}
+.ui-select.ui-select-active .ui-select-ul {
+  display: block;
+}
+		.red {
+			color: #ff1919;
+		}
+		.blue {
+			color: #0998e6;
+		}
+		</style>
+	</head>
+
+	<body>
+		 <select class="test">
+			<option value="1" selected>启动</option>
+			<option value="2">暂停</option>
+			<option value="3">停止买入</option>
+			<option value="4">停止卖出</option>
+		</select>
+		 <select class="test">
+			<option value="1">启动</option>
+			<option value="2">暂停</option>
+			<option value="3" selected>停止买入</option>
+			<option value="4">停止卖出</option>
+		</select>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+		<!-- 用于测试 -->
+		<script src="https://cdn.bootcss.com/layer/3.0.1/layer.min.js"></script>
+		<script>
+			;(function($) {
+				// 构造函数
+				function UISelect(ele, opt) {
+					this.ele = ele;
+					this.$wrapDiv = null;
+					this.$textSpan = null;
+					this.defaults = {
+						instanceKey: 'uiSelect',
+						mounted: $.noop, // 初始化后
+						// when data changes
+						beforeUpdate: $.noop,  //改变前
+						updated: $.noop // 改变后
+					};
+					this.options = $.extend({}, this.defaults, opt);
+					this._init();
+					this.options.mounted.call(this);
+				}
+
+				// 插件方法
+				UISelect.prototype = {
+					constructor: UISelect, //保留构造函数作为原型
+					// 初始化
+					_init: function() { 
+						var instance = this.ele.data(this.options.instanceKey);
+						if (instance) { //已经实例化了，直接返回
+							return instance;
+						} else {
+							this.ele.data(this.options.instanceKey, this);
+						}
+						this._setHtml();
+						this._bindEvent();
+					},
+
+					// 设置html，包裹div，前置span、ul
+					_setHtml: function() {
+						var instance = this,
+							$textSpan = $('<span class="ui-select-text"></span>'),
+							$ul = $('<ul class="ui-select-ul"></ul>');
+
+						this.ele.find('option').each(function() {
+							if (this.selected) {
+								$textSpan.text(this.text).attr('data-val', this.value)
+							}
+							$ul.append('<li class="' + (this.selected ? 'li-active' : '') + '" data-val="' + this.value + '">' + this.text + '</li>');
+						})
+						.end().wrap('<div tabindex="0" class="ui-select"></div>').before($textSpan).before($ul)
+						.data(this.options.isInitFlagKey, true);
+
+						this.$wrapDiv = this.ele.parent('.ui-select');
+						this.$textSpan = this.$wrapDiv.find('.ui-select-text');
+					},
+
+					// 绑定相关事件
+					_bindEvent: function() {
+						var instance = this,
+							isPending = false; // 是否为处理中
+
+						this.$wrapDiv.on({
+							click: function() {
+								$(this).toggleClass('ui-select-active');
+							},
+							blur: function() {
+								if (!isPending) {
+									$(this).removeClass('ui-select-active');
+								}
+							}
+						}).delegate('li:not(.li-active)', 'click', function(e) {
+							e.stopPropagation(); // 阻止事件冒泡至wrap-div
+							var $this = $(this),
+								$oldLi = $this.siblings('li.li-active'),
+								dfd = null;
+
+							isPending = true;
+							var rs = instance.options.beforeUpdate();
+
+							if (typeof rs === 'object' && typeof rs.then === 'function') { // 是promise式返回
+								dfd = rs;
+							} else {
+								dfd = $.Deferred();
+								rs === false ? dfd.reject() : dfd.resolve();
+							}
+
+							dfd.promise().then(function() {
+								instance.selectLi($this);
+								instance.options.updated.call(instance, {
+									undo: function() { //提供方法于更新异常时可撤销界面的修改
+										instance.selectLi($oldLi);
+									}
+								});
+							}).always(function() {
+								isPending = false;
+								instance.$wrapDiv.trigger('blur');
+							});
+						});
+					},
+					selectLi: function($newLi) {
+						var $oldLi = $newLi.siblings('li.li-active');
+						$oldLi.removeClass('li-active');
+						$newLi.addClass('li-active');
+						this.$textSpan.text($newLi.text()).attr('data-val', $newLi.attr('data-val'));
+					}
+				};
+
+				// 连接jquery
+				$.fn.uiSelect = function(options) {
+					return this.each(function() {
+						return new UISelect($(this), options);
+					});
+				};
+			})(jQuery);
+
+			$('.test:first').uiSelect({
+				// beforeUpdate 支持回调返回 false 来阻止
+				mounted: function() {
+					setShowInfo(this.$textSpan);
+				},
+				beforeUpdate: function() {
+					return window.confirm('是否继续');
+				},
+				updated: function(info) {
+					setShowInfo(this.$textSpan);
+
+					console.log(info.text, info.val);
+					// if xhr error 发生错误时可以取消dom修改
+					setTimeout(info.undo, 3000);
+					
+				}
+			});
+
+			var sel2 = $('.test:last').uiSelect({
+				mounted: function() {
+					setShowInfo(this.$textSpan);
+				},
+				updated: function() {
+					setShowInfo(this.$textSpan);
+				},
+				// beforeUpdate 支持返回异步的promise 来实现阻止或继续
+				beforeUpdate: function() {
+					var dfd = $.Deferred();
+
+					var s = layer.confirm('会影响其他操作，是否继续修改?', {
+						btn: ['是', '否']
+					}, function(index) {
+						dfd.resolve();
+						layer.close(index);
+					}, function() {
+						dfd.reject();
+					});
+					return dfd.promise();
+				}
+			});
+
+			function setShowInfo($span) {
+					var text = transText($span.text()),
+						classes = spanClasses(text);
+
+					$span.text(text)
+						 .addClass(classes[0]).removeClass(classes[1]);
+			}
+
+		    //"暂停" => span "已暂停"、li中的"启动" => span "已启动"，其它不变
+			function transText(text) {
+				if (text === '启动') {
+					return '已启动';
+				}
+				if (text === '暂停') {
+					return '已暂停';
+				}
+				return text;
+			}
+
+			function spanClasses(text) {
+				return text === '已启动' ? ['blue', 'red'] : ['red', 'blue'];  // 文字为“启动”时为blue样式，文字为其它时为红色
+			}
+			// option "已启动" => li 中 "启动"
+			// li 中的 "暂停" => span "已暂停"、li中的"启动" => span "已启动"，其它不变
+			// span 文本为 "启动"时，则颜色为蓝色，否则为红色
+		</script>
+	</body>
+</html>

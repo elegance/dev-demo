@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>em、rem</title>
+</head>
+<body>
+    <pre>
+    1em等于当前的字体尺寸，数值的改变意味着字体大小的调整。em 有继承这个特性，也就是说，外部父元素定义了字体的em大小，内部子元素会继承这一属性的样式。
+    rem = root em 。顾名思义，root即根部的，顶部的。也就是根部的em，这个根部指的是HTML根元素。所以rem的大小是针对HTML根元素的大小做字体的相对大小的调整。
+    </pre>
+    <style>
+        /** 解除注释对比即可看出 em 与 rem 的区别
+        html {
+            font-size: 12px;
+        }**/
+        body {
+            font-size: 12px;
+        }
+        div {
+            width: 200px;
+            height: 100px;
+            float: left;
+        }
+        .first-div {
+            font-size: 1em;
+        }
+        .second-div {
+            font-size: 2em;
+        }
+        .third-div {
+            font-size: 1rem;
+        }
+        .fourth-div {
+            font-size: 2rem;
+        }
+    </style>
+    <div class="first-div">Hello World</div>
+    <div class="second-div">Hello World</div>
+    <div class="third-div-">Hello World</div>
+    <div class="fourth-div">Hello World</div>
+</body>
+</html>
