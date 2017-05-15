@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getUserMedia + CSS filter滤镜</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .none {
+            filter: none;
+        }
+        .blur {
+            filter: blur(3px);
+        }
+        .grayscale {
+            filter: grayscale(1);
+        }
+        .invert {
+            filter: invert(1);
+        }
+        .sepia {
+            filter: sepia(1);
+        }
+        #snapshot {
+            margin: 0 10px 25px 0;
+            width: 110px;
+        }
+        video {
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <video autoplay></video>
+
+        <label for="filter">Filter:</label>
+
+        <select id="filter">
+            <option value="none">None</option>
+            <option value="blur">Blur</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="invert">Invert</option>
+            <option value="sepia">Sepia</option>
+        </select>
+
+        <button id="snapshot">拍照</button>
+
+        <canvas></canvas>
+
+    </div>
+    <script src="js/lib/adapter.js"></script>
+    <script src="js/lib/common.js"></script>
+    <script src="js/04.js"></script>
+</body>
+</html>

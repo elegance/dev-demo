@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>getUserMedia + CSS filter滤镜</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+        }
+        
+        button {
+            margin: 0 10px 20px 0;
+            width: 90px;
+        }
+        
+        div#buttons {
+            margin: 0 0 1em 0;
+        }
+        
+        div#container {
+            max-width: 100%;
+        }
+        
+        p#dimensions {
+            height: 1em;
+            margin: 0 0 1.5em 0;
+        }
+        
+        video {
+            background: none;
+            height: auto;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="qvga">QVGA</button>
+            <button type="button" class="btn btn-primary" id="vga">VGA</button>
+            <button type="button" class="btn btn-primary" id="hd">HD</button>
+            <button type="button" class="btn btn-primary" id="full-hd">Full HD</button>
+        </div>
+
+        <p id="dimensions"></p>
+
+        <video id="gum-res-local" autoplay></video>
+    </div>
+    <script src="js/lib/adapter.js"></script>
+    <script src="js/lib/common.js"></script>
+    <script src="js/05.js"></script>
+</body>
+
+</html>
