@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MouseEvent接口</title>
+    <style>
+        div {
+            height: 200px;
+            width: 200px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div id="testDiv"></div>
+    <script>
+    const mouseEvents = ['mouseenter' ,'mouseover' ,'mousemove' ,'mousedown' ,'mouseup' ,'click' ,'dblclick' ,'contextmenu' ,'wheel' ,'mouseleave' ,'mouseout' ,'select']
+    const mouseEventPInfo = ['type', 'eventPhase', /*'currentTarget', 'target',*/ 'timeStamp', 'clientX', 'clientY', 'screenX', 'screenY'];
+    const targetEle = document.querySelector('#testDiv');
+
+    mouseEvents.forEach((mouseEventName) => {
+        targetEle.addEventListener(mouseEventName, (e) => {
+            var infoLine = '';
+            mouseEventPInfo.forEach(k => infoLine += k + ':' + e[k] + ',');
+            console.log(mouseEventName, infoLine);
+        });
+    });
+    </script>
+</body>
+</html>

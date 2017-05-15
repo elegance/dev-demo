@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EventTarget</title>
+    <style>
+        pre, code {
+            color: #CB4B16;
+        }
+    </style>
+</head>
+<body>
+    EventTarget 是一个由可以接收事件的对象实现的接口，并且可以为它们创建侦听器。
+
+    可以理解为其实现对象中有：listeners 存储事件与对应的事件回调列表， 
+    <pre>
+    addEventListener: fn,
+    removeEventListener: fn,
+    dispatchEvent: fn,
+
+    listeners: {
+        'click': [fn1, fn2],
+        'dbclick': [fn3, fn4]
+    }
+    </pre>
+    <code>Element</code>，<code>document</code>和<code>window</code>是最常见的时间目标。
+
+
+    <p>
+        下面体现下事件的几个方面：
+    </p>
+    <div id="div1" style="background-color:#CB4B16;">click me</div>
+
+    <script>
+        function $(selector) {
+            return document.querySelector(selector);
+        }
+
+        const mouseEventPInfo = ['type', 'eventPhase', 'currentTarget', 'target', 'timeStamp', 'clientX', 'clientY', 'screenX', 'screenY'];
+        // 浏览器最大化窗口时,一般 显示器宽（screen.width) 与 网页宽(window.innerWidth/outerWidth)是一致的，
+        // clientX，clientY 网页视窗 坐标
+        // screenX, screenY 显示器 坐标
+
+        function div1ClickHandler(e) {
+            console.log('目标，直接执行');
+            printEventGivenInfo('div1Click', e, mouseEventPInfo);
+        }
+
+        // div1 作为 EventTarget 
+        // handler: 处理者，处理程序，是一个函数
+        // listener: 听众，事件监听者，1个或多个监听某一具体事件，这个概念是对于事件来说的
+        // handler 是一个函数，而 listener 是一个 <event, 函数>对，成对出现
+
+        // click : Interface MouseEvent: screenX，screenY, clientX, clientY
+        $('#div1').addEventListener('click', div1ClickHandler);
+
+        // 对比下 冒泡触发的事件有何不同
+        function bodyClickHandler(e) {
+            if (e.eventPhase === e.CAPTURING_PHASE) { // 捕获阶段，事件正在被目标元素的祖先对象处理
+                // e.stopPropagation(); // 如果在 事务传播 的捕获阶段，停止了传播，那么目标节点也获取不到事件了
+                console.log('捕获，前置执行。');
+            } else if (e.eventPhase === e.AT_TARGET) { // 	事件对象已经抵达the event's target. 为这个阶段注册的事件监听被调用
+                console.log('目标，直接执行');
+            } else if (e.eventPhase === e.BUBBLING_PHASE) { // 冒泡阶段，事件对象逆向向上传播回目标元素的祖先元素, 从父亲元素开始，并且最终到达包含元素 Window
+                // e.stopPropagation(); // 如果在 事务传播 的 "冒泡"阶段 停止传播了，那意味不会再继续往上传播，目标
+                console.log('冒泡，后置执行。');
+            }
+            printEventGivenInfo('bodyClick', e, mouseEventPInfo);
+        }
+        document.body.addEventListener('click', bodyClickHandler, false); // 捕获阶段绑定函数，是否先于下方的任何事件目标，接收到该事件。
+        document.body.addEventListener('click', bodyClickHandler, true); // 点击按钮时，我在按钮处理函数前就执行了，-_-!! 超前判断 ------前置处理
+                                                                         // 默认为false，
+                                                                        // 为false时则是在冒泡阶段绑定函数。
+                                                                        // 为true时则是在捕获阶段绑定函数。
+
+        // 打印事件的主要信息
+        function printEventGivenInfo(name , e, attrs = []) {
+            console.group(name);
+            attrs.forEach(attr => console.log(attr, e[attr]));
+            console.groupEnd(name);
+        }
+
+        // 可以看出来：非冒泡触发时，target 与 currentTarget 相同，冒泡则不相同
+    </script>
+</body>
+</html>
