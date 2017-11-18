@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package org.orh.serializable.protobuf;
+option java_outer_classname = "PBUser";
+
+option optimize_for = SPEED;
+
+message User {
+    string name = 1;
+    int32 age = 2;
+}
