@@ -290,3 +290,11 @@ for i, v in ipairs(a) do print(i, v) end -- 2, 3, 4
 table.sort(a, function(v1, v2) return v1 > v2 end)
 
 for i, v in ipairs(a) do print(i, v) end -- 4, 3, 2
+
+-- Standard Libraries - operating system facilities.
+
+-- OS functions:
+-- os.clock, os.date, os.difftime, os.execute, os.exit, os.getenv,
+-- os.remove, os.rename, os.setlocale, os.time, os.tmpname
+
+print(os.date())
