@@ -91,6 +91,21 @@ end
 -- 4) 条件表达式与/或/非: and or not
 --
 
+--
+------ 条件赋值 - 类似“三目运算”
+a = 1
+b = ( a == 1 ) and 'one' or 'not one'
+print(b) -- one
+
+-- 等价于
+a = 1
+if a == 1 then
+	b = 'one'
+else
+	b = 'not one'
+end
+print(b)
+
 
 ------ for 循环
 --
