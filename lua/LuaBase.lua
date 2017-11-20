@@ -277,3 +277,16 @@ for k, v in pairs(_G) do
 	print(k, v)
 end
 
+--   -- Standard Libraries - table.
+
+-- Table functions:
+-- table.concat, table.insert, table.maxn, table.remove, table.sort
+
+a = {2}
+table.insert(a, 3)
+table.insert(a, 4)
+for i, v in ipairs(a) do print(i, v) end -- 2, 3, 4
+
+table.sort(a, function(v1, v2) return v1 > v2 end)
+
+for i, v in ipairs(a) do print(i, v) end -- 4, 3, 2
