@@ -11,6 +11,19 @@ print('hi')
 	这是块注释
 --]]
 
+--------------------------------------------- 打印-输入、输出
+print('hello')
+io.write('hello\n')
+
+io.write(string.format('My name is %s, I am %s\n', 'poxi', '18'))
+
+-- 定义 一个 printf 格式化打印
+function printf(fmt, ...)
+	io.write(string.format(fmt, ...))
+end
+
+printf("Hello %s from %s on %s\n", os.getenv"USER" or "there",  _VERSION, os.date())
+
 
 --------------------------------------------- 变量
 ------ 数字
@@ -91,6 +104,21 @@ end
 -- 4) 条件表达式与/或/非: and or not
 --
 
+--
+------ 条件赋值 - 类似“三目运算”
+a = 1
+b = ( a == 1 ) and 'one' or 'not one'
+print(b) -- one
+
+-- 等价于
+a = 1
+if a == 1 then
+	b = 'one'
+else
+	b = 'not one'
+end
+print(b)
+
 
 ------ for 循环
 --
@@ -121,6 +149,16 @@ repeat
 	sum = sum ^ 2 -- 幂操作
 	print(sum)
 until sum > 1000
+
+
+------ for k, v in pairs 
+--
+-- 例 1
+for k, v in pairs({1, 2, 3, 4}) do
+	print(k, v)
+end
+
+
 
 
 --------------------------------------------- 函数
@@ -239,3 +277,24 @@ for k, v in pairs(_G) do
 	print(k, v)
 end
 
+--   -- Standard Libraries - table.
+
+-- Table functions:
+-- table.concat, table.insert, table.maxn, table.remove, table.sort
+
+a = {2}
+table.insert(a, 3)
+table.insert(a, 4)
+for i, v in ipairs(a) do print(i, v) end -- 2, 3, 4
+
+table.sort(a, function(v1, v2) return v1 > v2 end)
+
+for i, v in ipairs(a) do print(i, v) end -- 4, 3, 2
+
+-- Standard Libraries - operating system facilities.
+
+-- OS functions:
+-- os.clock, os.date, os.difftime, os.execute, os.exit, os.getenv,
+-- os.remove, os.rename, os.setlocale, os.time, os.tmpname
+
+print(os.date())
