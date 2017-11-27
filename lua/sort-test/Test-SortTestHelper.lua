@@ -1,3 +1,4 @@
+local socket = require('socket')
 local SortTestHelper = require('SortTestHelper')
 
 ---------------------------------------------- generateRandomArray
@@ -30,3 +31,11 @@ print(SortTestHelper.isSorted(arr))
 local QuickSort = require('./sort/QuickSort')
 local arr2 = SortTestHelper.generateRandomArray(10000)
 SortTestHelper.testSort('QuickSort', QuickSort.sort, arr2)
+
+
+local start = socket.gettime()
+local arr3 = SortTestHelper.generateRandomArray(10000)
+table.sort(arr3, function(a, b)
+    return a < b
+end)
+print('elased: ' .. (socket.gettime() - start))
