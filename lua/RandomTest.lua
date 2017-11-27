@@ -12,3 +12,6 @@ print(math.random(5, 10))
 
 -- 设置随机种子
 math.randomseed(os.time())
+
+-- 以下随机种子提供随机性
+math.randomseed(tonumber(tostring(os.time()):reverse():sub(1,6)))
