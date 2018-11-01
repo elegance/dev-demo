@@ -3,16 +3,33 @@
 " -----------------  WebSite: http://www.noteing.com
 " -----------------     Date: 2012-05-01
 
-colorscheme blackboard       " 着色模式：蓝色背景,Vim\vimfiles\colors下
-set guifont=Envy_Code_R:h11  " 字体 && 字号，系统安装的字体
+"colorscheme blackboard       " 着色模式：蓝色背景,Vim\vimfiles\colors下
+
+"# 配色来源https://github.com/altercation/vim-colors-solarized
+"# 要将solarized.vim 文件移动至vim下的colors下
+"set background=dark
+"set background=light
+"colorscheme solarized
+"colorscheme summerfruit256
+
+"syntax enable
+set background=light
+colorscheme solarized
+
+set guifont=Envy_Code_R:h14  " 字体 && 字号，系统安装的字体
 set tabstop=4                " 设置tab键的宽度
 set shiftwidth=4             " 换行时行间交错使用4个空格
-set expandtab                " 将Tab键更改为四个空格
 set autoindent               " 自动对齐
+set expandtab                "tab键永远输入的是空格
 set backspace=2              " 设置退格键可用
+set softtabstop=0            " 关闭softtabstop 永远不要将空格和tab混合输入
 set cindent shiftwidth=4     " 自动缩进4空格
-set smartindent              " 智能自动缩进
-set ai!                      " 设置自动缩进
+
+"对于下列文件类型，4个空格太宽了，看起来比较累，可以换成2个空格
+autocmd FileType coffee,html,css,xml,yaml,json set sw=2 ts=2
+
+"set smartindent              " 智能自动缩进
+"set ai!                      " 设置自动缩进
 set nu!                      " 显示行号
 "set showmatch               " 显示括号配对情况
 set mouse=a                  " 启用鼠标
@@ -63,7 +80,7 @@ au BufRead,BufNewFile *.s,*.asm,*.h,*.c,*.cpp,*.cc,*.java,*.cs,*.erl,*.hs,*.sh,*
 " 设置编码
 set fenc=utf-8
 set encoding=utf-8
-set fileencodings=utf-8,gbk,cp936,latin-1
+set fileencodings=utf-8,gbk,cp936,UTF-16LE,latin-1
 " 解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
@@ -118,12 +135,10 @@ function! ViewInBrowser(name)
     let file = expand("%:p")
 	exec ":update " . file
 	"echo ":silent !start ". "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" ." " . file
-    exec ":silent !start ". "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" ." " . file
+	exec ":silent !start ". "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe --enable-file-cookies--allow-file-access-from-files" . " " . file
+    "exec ":silent !start ". "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" ." " . file
 endfunction
 map <f12><f12> :call ViewInBrowser("cr")<cr>
-
-"用于删除win32下难看的蓝色^M（其实是换行符\r）
-nmap mm :%s/\r//g<cr>
 
 "Vundle 插件管理{{{
 filetype off
@@ -140,6 +155,10 @@ filetype plugin indent on
 "比snipmate更强的代码片段补,这个暂时不适用因为网速还没找到很好的资料来使用它暂时先使用snipmate
 "Bundle 'drmingdrmer/xptemplate'   
 Bundle 'msanders/snipmate.vim'
+
+"#->配色
+Bundle 'altercation/vim-colors-solarized'
+
 "#-> 编写html代码
 "Bundle 'mattn/zencoding-vim'
 Bundle 'mattn/emmet-vim'
@@ -148,8 +167,6 @@ Bundle 'mattn/emmet-vim'
 Bundle 'walm/jshint.vim'
 "#支持多重选取内容的 Vim 插件 https://github.com/terryma/vim-multiple-cursors
 Bundle 'terryma/vim-multiple-cursors'
-"增加了rgb显示颜色和同行显示多处颜色
-Bundle 'skammer/vim-css-color'
 
 "格式②：vim-scripts里面的仓库，直接打仓库名即可。
 "#-> vim脚本，提供了一些实用函数和命令,其它插件有可能依赖它
@@ -157,14 +174,31 @@ Bundle 'L9'
 "#-> 
 Bundle 'ctags.vim'
 Bundle 'taglist.vim'
+"#->配色
+Bundle 'Colour-Sampler-Pack'
+
+Bundle 'genutils'
+Bundle 'lookupfile'
+let g:LookupFile_TagExpr = '"./filenametags.tags"'
 
 "#-> VIM中的文件查找利器
 Bundle 'FuzzyFinder'    
+"//在你的vimrc文件中增加像如下这样格式的key bindings  http://uniquejava.iteye.com/blog/1485884
+"//格式为：  
+"//模式 <快捷键> 要执行的命令  
+"//模式：看下表，nmap为普通模式,imap为编辑模式  
+"//C表示ctrl,A表示Alt,S表示Shift,<CR>表示回车
+"map <C-S-r> :FufFile<CR>
+"map <C-S-r> :FufFileRecursive<CR>
+"nnoremap <leader>tb :FufBuffer<CR>
 "#-> 可以打开历史文件列表以达到快速切换文件的目的
 Bundle 'bufexplorer.zip' 
 
 "#-> VIM 中查看一个文件中包含的函数列表，或是一个类包含的方法列表
 "Bundle 'taglist.vim'    
+
+"->  节点匹配
+Bundle 'matchit.zip'
 
 "#-> 高亮显示多个单词
 Bundle 'Mark'    
@@ -204,5 +238,61 @@ nmap <silent> <F8> :WMToggle<cr>
 
 "格式③：非Github的Git仓库,这里我已经把它 注释掉了，当执行 BundleInstall时这个插件就不会安装了，执行BundleClean 就会清除这个插件所占用的目录
 "Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+
+" es6 javascript
+Bundle 'isRuslan/vim-es6.git'
+Bundle 'Lokaltog/vim-powerline'
+""undle 'Valloric/YouCompleteMe'
+Bundle 'ternjs/tern_for_vim'
 filetype plugin indent on     " required 
 "}}}"
+
+
+
+
+"进行版权声明的设置
+"添加或更新头
+map <F4> :call TitleDet()<cr>'s
+function AddTitle()
+    call append(0,"/*=============================================================================")
+    call append(1,"#")
+    call append(2,"# Author: orh - orh@tzb360.com")
+    call append(3,"#")
+    call append(4,"# Last modified: ".strftime("%Y-%m-%d %H:%M"))
+    call append(5,"#")
+    call append(6,"# Filename: ".expand("%:t"))
+    call append(7,"#")
+    call append(8,"# Description: ")
+    call append(9,"#")
+    call append(10,"=============================================================================*/")
+    echohl WarningMsg | echo "Successful in adding the copyright." | echohl None
+endf
+"更新最近修改时间和文件名
+function UpdateTitle()
+    normal m'
+    execute '/# *Last modified:/s@:.*$@\=strftime(":\t%Y-%m-%d %H:%M")@'
+    normal ''
+    normal mk
+    execute '/# *Filename:/s@:.*$@\=":\t\t".expand("%:t")@'
+    execute "noh"
+    normal 'k
+    echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+endfunction
+"判断前10行代码里面，是否有Last modified这个单词，
+"如果没有的话，代表没有添加过作者信息，需要新添加；
+"如果有的话，那么只需要更新即可
+function TitleDet()
+    let n=1
+    "默认为添加
+    while n < 10
+        let line = getline(n)
+        if line =~ '^\#\s*\S*Last\smodified:\S*.*$'
+            call UpdateTitle()
+            return
+        endif
+        let n = n + 1
+    endwhile
+    call AddTitle()
+endfunction
