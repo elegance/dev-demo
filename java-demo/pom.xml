@@ -101,7 +101,11 @@
 			<artifactId>jmh-generator-annprocess</artifactId>
 			<version>1.19</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.rocksdb</groupId>
+			<artifactId>rocksdbjni</artifactId>
+			<version>6.10.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
