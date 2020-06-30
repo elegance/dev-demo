@@ -1,4 +1,5 @@
-set tabstop=4                " 设置tab键的宽度                                                                                                                              
+set tabstop=4                " 设置tab键的宽度                                    
+set clipboard=unnamed,unnamedplus " 未命名复制 ，+ 命名复制 共享至系统复制板                                                        
 set shiftwidth=4             " 换行时行间交错使用\个空格
 set autoindent               " 自动对齐
 set backspace=2              " 设置退格键可用
