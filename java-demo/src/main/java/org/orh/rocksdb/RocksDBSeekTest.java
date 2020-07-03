@@ -100,5 +100,11 @@ public class RocksDBSeekTest {
             cnt++;
         }
         assertThat(cnt, equalTo(6));
+
+        // 上界设置为0 ，则不会遍历到数据
+        readOptions.setIterateUpperBound(new Slice("0"));
+        iter = rocksDB.newIterator(columnFamilyHandler, readOptions);
+        iter.seekToFirst();
+        assertThat(iter.isValid(), equalTo(false));
     }
 }
