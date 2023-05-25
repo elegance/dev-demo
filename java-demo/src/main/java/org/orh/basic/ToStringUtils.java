@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +51,10 @@ public class ToStringUtils {
 
             // 解析k/v格式的属性名/值
             Pair<String, String> keyValue = TokenUtils.parseToken(token);
+            if (keyValue.getValue() == null || keyValue.getValue().equals("null")) {
+                // System.out.println(keyValue.getKey() + "=" + keyValue.getValue());
+                continue;
+            }
             Field field = FieldUtils.getField(clazz, keyValue.getKey(), true);
             Object value = TypeValueUtils.buildTypeValue(field, keyValue.getValue());
             FieldUtils.writeField(field, result, value, true);
@@ -181,6 +186,8 @@ public class ToStringUtils {
                 return Long.valueOf(value);
             } else if (type == String.class) {
                 return value;
+            } else if (type == BigDecimal.class) {
+                return new BigDecimal(value);
             }
             throw new RuntimeException("basicTypeValue error, type=" + type + ", value=" + value);
         }
