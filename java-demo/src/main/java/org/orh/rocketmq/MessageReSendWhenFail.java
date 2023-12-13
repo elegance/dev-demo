@@ -220,7 +220,7 @@ public class MessageReSendWhenFail {
 
     static {
         // 模拟 99.99% true 处理成功， 0.01 false 处理失败
-        WeightObj<Boolean>[] weightObjs = new WeightObj[]{new WeightObj(Boolean.TRUE, 99.99), new WeightObj(Boolean.TRUE, 0.01)};
+        WeightObj<Boolean>[] weightObjs = new WeightObj[]{new WeightObj(Boolean.TRUE, 99.99), new WeightObj(Boolean.FALSE, 0.01)};
         wr = RandomUtil.weightRandom(weightObjs);
     }
 
