@@ -1,6 +1,6 @@
 package org.orh.basic;
 
-import javafx.util.Pair;
+import cn.hutool.core.lang.Pair;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
 
@@ -121,7 +121,7 @@ public class ToStringUtils {
         static Pair<String, String> parseToken(String token) {
             assert Objects.nonNull(token) && token.contains("=");
             int pos = token.indexOf("=");
-            return new javafx.util.Pair<>(token.substring(0, pos), token.substring(pos + 1));
+            return new Pair<>(token.substring(0, pos), token.substring(pos + 1));
         }
     }
 

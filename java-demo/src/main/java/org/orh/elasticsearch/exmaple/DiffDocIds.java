@@ -25,6 +25,7 @@ import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.Scroll;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
+import org.orh.basic.LogConfUtil;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
 
@@ -66,7 +67,8 @@ public class DiffDocIds {
 
 
     public static void main(String[] args) throws IOException {
-        configLogBack();
+        // 配置下日志输出级别，避免输出太多debug信息
+        LogConfUtil.configLogBack();
 
         RangeQueryBuilder filterCondition = QueryBuilders.rangeQuery("create_time").gte("2023-12-17 00:00:00");
 
@@ -172,17 +174,4 @@ public class DiffDocIds {
         clientNew.close();
     }
 
-    private static void configLogBack() {
-        try {
-            LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-            JoranConfigurator configurator = new JoranConfigurator();
-            configurator.setContext(lc);
-            lc.reset();
-            String logConfig = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <configuration  debug=\"true\"> <contextName>logback</contextName> <!--日志输出到控制台规则 --> <appender name=\"console\" class=\"ch.qos.logback.core.ConsoleAppender\"> <encoder> <pattern> %d[%level]%c{100}.%M:%L%m%n </pattern> </encoder> </appender> <root level=\"ERROR\"> <appender-ref ref=\"console\"/> </root> </configuration>";
-            configurator.doConfigure(new ByteArrayInputStream(logConfig.getBytes()));
-            StatusPrinter.printInCaseOfErrorsOrWarnings(lc);
-        } catch (JoranException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
