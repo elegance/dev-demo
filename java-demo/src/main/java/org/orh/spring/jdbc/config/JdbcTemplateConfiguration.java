@@ -21,7 +21,7 @@ public class JdbcTemplateConfiguration {
     DataSource canalDataSourceProd() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl("jdbc:mysql://TODO:3306/canal_adapter?characterEncoding=utf8");
-        dataSource.setUsername("prod_canal_adp_rw");
+        dataSource.setUsername("TODO");
         dataSource.setPassword("TODO");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setMinimumIdle(1);
@@ -46,7 +46,7 @@ public class JdbcTemplateConfiguration {
     DataSource bizDataSourceQa() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl("jdbc:mysql://TODO/show_center?useUnicode=true&characterEncoding=utf-8&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true");
-        dataSource.setUsername("qa_mtc");
+        dataSource.setUsername("TODO");
         dataSource.setPassword("TODO");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setMinimumIdle(1);
@@ -59,7 +59,7 @@ public class JdbcTemplateConfiguration {
     DataSource xxlJobDataSourceQa() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl("jdbc:mysql://TODO/xxl_job?useUnicode=true&characterEncoding=utf-8&transformedBitIsBoolean=true&autoReconnect=true&failOverReadOnly=false&useSSL=false&allowMultiQueries=true");
-        dataSource.setUsername("qa_mtl");
+        dataSource.setUsername("TODO");
         dataSource.setPassword("TODO");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setMinimumIdle(1);
